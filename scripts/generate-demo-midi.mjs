@@ -104,6 +104,17 @@ function writeSong({ file, title, bpm, unit, melody, progression }) {
       ...noteEvents(seq, unit, channel, vel),
     ])
 
+  // Exact duration (end of the last note-off), so stations can be scheduled
+  // without downloading the file.
+  const lastOff = Math.max(
+    ...[melody, chords, bass].flatMap((seq) =>
+      noteEvents(seq, unit, 0, 1)
+        .filter((e) => (e.bytes[0] & 0xf0) === 0x80)
+        .map((e) => e.tick),
+    ),
+  )
+  DURATIONS[file] = Math.round(((lastOff * tempo) / 1e6 / PPQ) * 1000) / 1000
+
   const header = chunk('MThd', [0, 1, 0, 4, (PPQ >> 8) & 255, PPQ & 255])
   const bytes = Buffer.from([
     ...header,
@@ -117,6 +128,7 @@ function writeSong({ file, title, bpm, unit, melody, progression }) {
 }
 
 mkdirSync(OUT, { recursive: true })
+const DURATIONS = {}
 
 // Greensleeves (traditional). 6/8, unit = one eighth note.
 const Am = ['A2', ['A3', 'C4', 'E4']]
@@ -372,20 +384,24 @@ writeSong({
     C:8 G:4 C:12`),
 })
 
+// Which genre stations (see src/themes.ts) play each song. [] = free play only.
+// keepScale: the song already belongs to that genre, so skip its default scale.
+const SONGS = [
+  { title: 'Greensleeves', file: 'greensleeves.mid', genres: ['medieval', 'court'] },
+  { title: 'Drunken Sailor', file: 'drunken-sailor.mid', genres: ['tavern', 'tropical', 'kobold'] },
+  { title: 'The Entertainer', composer: 'Scott Joplin', file: 'the-entertainer.mid', genres: ['tavern', 'tropical', 'kobold'] },
+  { title: 'Oh! Susanna', composer: 'Stephen Foster', file: 'oh-susanna.mid', genres: ['tavern', 'kobold'] },
+  { title: 'Amazing Grace', file: 'amazing-grace.mid', genres: ['celtic', 'asian'] },
+  { title: 'Ode to Joy', composer: 'Ludwig van Beethoven', file: 'ode-to-joy.mid', genres: ['court'] },
+  { title: 'Happy Birthday', composer: 'Mildred & Patty Hill', file: 'happy-birthday.mid', genres: [] },
+  { title: 'Auld Lang Syne', file: 'auld-lang-syne.mid', genres: ['celtic', 'tavern', 'asian'] },
+  { title: 'Sakura Sakura', file: 'sakura.mid', genres: ['asian'], keepScale: true },
+]
+
 writeFileSync(
   join(OUT, 'index.json'),
   JSON.stringify(
-    [
-      { title: 'Greensleeves', file: 'greensleeves.mid' },
-      { title: 'Drunken Sailor', file: 'drunken-sailor.mid' },
-      { title: 'The Entertainer', file: 'the-entertainer.mid' },
-      { title: 'Oh! Susanna', file: 'oh-susanna.mid' },
-      { title: 'Amazing Grace', file: 'amazing-grace.mid' },
-      { title: 'Ode to Joy', file: 'ode-to-joy.mid' },
-      { title: 'Happy Birthday', file: 'happy-birthday.mid', radio: false },
-      { title: 'Auld Lang Syne', file: 'auld-lang-syne.mid' },
-      { title: 'Sakura Sakura', file: 'sakura.mid' },
-    ],
+    SONGS.map((song) => ({ composer: 'Traditional', ...song, duration: DURATIONS[song.file] })),
     null,
     2,
   ) + '\n',

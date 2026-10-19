@@ -3,7 +3,7 @@
  * the page, and the animation that reacts to the music.
  */
 
-export type Motif = 'motes' | 'embers' | 'leaves' | 'petals' | 'bubbles' | 'fog' | 'sparkles'
+export type Motif = 'motes' | 'embers' | 'leaves' | 'petals' | 'bubbles' | 'fog' | 'sparkles' | 'skitter'
 
 export interface ThemeColors {
   bg: string
@@ -23,6 +23,10 @@ export interface Theme {
   tagline: string
   motif: Motif
   colors: ThemeColors
+  /** Scale songs are remapped into by default (src/music/noteSets.ts). */
+  scale?: string
+  /** Playback speed of the whole station. */
+  tempo?: number
 }
 
 export const THEMES: Theme[] = [
@@ -80,6 +84,7 @@ export const THEMES: Theme[] = [
     set: 'asian',
     tagline: 'Lanterns, cedar and quiet courtyards.',
     motif: 'petals',
+    scale: 'yo',
     colors: {
       bg: '#141212',
       surface: '#1d1a19',
@@ -112,6 +117,7 @@ export const THEMES: Theme[] = [
     set: 'dungeon',
     tagline: 'Torchlight, damp stone, something breathing.',
     motif: 'fog',
+    scale: 'harmonic-minor',
     colors: {
       bg: '#0b0a0f',
       surface: '#131119',
@@ -136,6 +142,24 @@ export const THEMES: Theme[] = [
       line: '#2d2c42',
       accent: '#d8b45a',
       accent2: '#b0324a',
+    },
+  },
+  {
+    id: 'kobold',
+    name: 'Kobold',
+    set: 'kobold',
+    tagline: 'Scurrying feet, stolen pots, a very small tuba.',
+    motif: 'skitter',
+    scale: 'harmonic-minor',
+    tempo: 1.3,
+    colors: {
+      bg: '#11130b',
+      surface: '#1a1d10',
+      ink: '#eef0d2',
+      muted: '#9da078',
+      line: '#34381f',
+      accent: '#c6e04a',
+      accent2: '#ff9f1c',
     },
   },
 ]

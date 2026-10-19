@@ -70,6 +70,21 @@ export class Player {
     return (ctx.outputLatency || 0) + (ctx.baseLatency || 0)
   }
 
+  /**
+   * performance.now() time at which audio scheduled for context time `t`
+   * reaches the speakers. getOutputTimestamp() pairs the two clocks exactly
+   * (and includes output latency); reading currentTime and performance.now()
+   * side by side can be off by a whole audio buffer.
+   */
+  heardAt(t: number): number {
+    const ctx = this.ensureContext()
+    const ts = ctx.getOutputTimestamp?.()
+    if (ts && ts.performanceTime && ts.contextTime !== undefined && ts.performanceTime > 0) {
+      return ts.performanceTime + (t - ts.contextTime) * 1000
+    }
+    return performance.now() + (t - ctx.currentTime + this.latency()) * 1000
+  }
+
   private ensureContext(): AudioContext {
     if (!this.ctx) this.ctx = new AudioContext({ latencyHint: 'playback' })
     return this.ctx
@@ -130,7 +145,7 @@ export class Player {
     // Decide the start position only now that everything is loaded, so a slow
     // download doesn't put this listener behind everyone else.
     const t0 = ctx.currentTime + LEAD
-    const heardAtPerf = performance.now() + (LEAD + this.latency()) * 1000
+    const heardAtPerf = this.heardAt(t0)
     const from = typeof options.from === 'function' ? options.from(heardAtPerf) : options.from
 
     tracks.forEach((track, i) => {

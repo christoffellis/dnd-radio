@@ -16,6 +16,9 @@ export const INSTRUMENTS: Instrument[] = [
   { gm: 'pan_flute', name: 'Pan flute' },
   { gm: 'ocarina', name: 'Ocarina' },
   { gm: 'oboe', name: 'Oboe' },
+  { gm: 'clarinet', name: 'Clarinet' },
+  { gm: 'piccolo', name: 'Piccolo' },
+  { gm: 'harmonica', name: 'Harmonica' },
   { gm: 'english_horn', name: 'English horn' },
   { gm: 'bassoon', name: 'Bassoon' },
   { gm: 'bagpipe', name: 'Bagpipes' },
@@ -58,6 +61,7 @@ export const INSTRUMENTS: Instrument[] = [
   { gm: 'taiko_drum', name: 'Taiko' },
   { gm: 'melodic_tom', name: 'Tom drum' },
   { gm: 'woodblock', name: 'Woodblock' },
+  { gm: 'tinkle_bell', name: 'Tinkle bell' },
   { gm: 'acoustic_grand_piano', name: 'Piano' },
 ]
 
@@ -218,6 +222,25 @@ export const INSTRUMENT_SETS: InstrumentSet[] = [
       v('contrabass', 'bass'),
     ],
     percussion: 'timpani',
+  },
+  {
+    id: 'kobold',
+    name: 'Kobold',
+    description: 'A frantic polka band: clarinet, accordion, xylophone and a very small tuba.',
+    voices: [
+      v('clarinet', 'lead'),
+      v('piccolo', 'lead'),
+      v('accordion', 'harmony'),
+      v('banjo', 'harmony'),
+      v('pizzicato_strings', 'harmony'),
+      v('harmonica', 'pad'),
+      v('bassoon', 'pad'),
+      v('xylophone', 'accent'),
+      v('tinkle_bell', 'accent'),
+      v('tuba', 'bass'),
+      v('contrabass', 'bass'),
+    ],
+    percussion: 'woodblock',
   },
 ]
 

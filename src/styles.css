@@ -44,9 +44,45 @@ body {
 .masthead {
   display: flex;
   align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
   gap: 10px;
   color: var(--accent);
   transition: color var(--fade);
+}
+
+.genre {
+  flex: 0 1 220px;
+  margin-left: auto;
+}
+
+.genre select {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.tagline {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 h1 {
@@ -60,8 +96,8 @@ h1 {
 }
 
 .status {
-  margin-left: auto;
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: 8px;
   font-family: var(--serif);
@@ -97,7 +133,7 @@ h1 {
 
 .stage {
   position: relative;
-  margin: 20px 0 16px;
+  margin: 16px 0 16px;
   height: 300px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -155,18 +191,16 @@ h1 {
   gap: 12px;
 }
 
-.bar {
+.wave {
   flex: 1;
-  height: 2px;
-  background: var(--line);
+  min-width: 0;
+  height: 22px;
+  display: block;
 }
 
-.fill {
-  height: 100%;
-  background: var(--accent);
-  transition:
-    width 250ms linear,
-    background-color var(--fade);
+.wave-ring {
+  display: block;
+  flex: none;
 }
 
 .time {
@@ -239,6 +273,7 @@ select:disabled {
 }
 
 button.primary {
+  gap: 10px;
   min-width: 132px;
   min-height: 46px;
   justify-content: center;
@@ -271,35 +306,16 @@ input[type='checkbox'] {
   font-size: 0.9rem;
 }
 
-/* ---- Setting (themes) -------------------------------------------------- */
+/* ---- Text ------------------------------------------------------------- */
 
 .label {
-  margin: 32px 0 10px;
+  margin: 18px 0 10px;
   font-family: var(--serif);
   font-weight: 500;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.themes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.chip {
-  min-height: 36px;
-  padding: 6px 12px;
-  background: transparent;
-  color: var(--muted);
-}
-
-.chip.active {
-  color: var(--ink);
-  border-color: var(--accent);
-  background: var(--surface);
 }
 
 .swatch {
@@ -474,9 +490,32 @@ footer {
   font-size: 0.8rem;
 }
 
+footer a {
+  color: var(--muted);
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 620px) {
+  .masthead {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .status {
+    margin-left: auto;
+  }
+  .genre {
+    order: 3;
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
+  /* Edge to edge on phones; the text keeps its padding. */
   .stage {
-    height: 240px;
+    height: 260px;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .now {
+    padding: 0 16px 14px;
   }
   .tracks li {
     grid-template-columns: 8px 1fr;

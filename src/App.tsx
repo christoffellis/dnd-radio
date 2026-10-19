@@ -1,35 +1,48 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import PianoRoll, { type RollTrack } from './components/PianoRoll.tsx'
 import Visualizer from './components/Visualizer.tsx'
+import { WaveProgress, WaveRing } from './components/Wave.tsx'
 import { Player } from './music/engine.ts'
 import { INSTRUMENTS, instrumentName } from './music/instruments.ts'
 import { keyName } from './music/key.ts'
-import { parseMidi } from './music/midi.ts'
+import { ACCEPTED_FILES, fetchSong, songFromBuffer } from './music/load.ts'
 import { NOTE_SETS, NOTE_SET_GROUPS, getNoteSet } from './music/noteSets.ts'
 import { prepare, type PreparedSong } from './music/prepare.ts'
-import { defaultSplit } from './music/split.ts'
+import { defaultSplit, isPolyphonic } from './music/split.ts'
 import type { Key, Mode, Song } from './music/types.ts'
 import { SyncedClock, type ClockStatus } from './radio/clock.ts'
 import { buildSchedule, locate, type Location } from './radio/schedule.ts'
-import { THEMES, applyThemeColors, getTheme } from './themes.ts'
+import { THEMES, applyThemeColors, getTheme, type Theme } from './themes.ts'
 
-interface LibraryEntry {
-  title: string
-  file: string
-  /** false keeps a song out of the radio rotation. */
-  radio?: boolean
-}
-
-/** A song that can be played: stock or uploaded. */
-interface Track {
+/** A playable song: bundled, from the classics corpus, or uploaded. */
+interface Entry {
   id: string
   title: string
-  song: Song
-  radio: boolean
+  composer: string
+  group: string
+  url: string
+  tune?: number
+  /** Seconds at normal speed. */
+  duration: number
+  genres: string[]
+  keepScale: boolean
+}
+
+interface StockSong {
+  title: string
+  file: string
+  composer?: string
+  duration: number
+  genres: string[]
+  keepScale?: boolean
+}
+
+interface Classics {
+  base: string
+  pieces: { group: string; path: string; title: string; composer: string; duration: number; genres: string[]; tune?: number }[]
 }
 
 interface SongSettings {
-  /** Which song these settings belong to. */
   key: string
   overrides: Record<number, string>
   split: Set<number> | null
@@ -68,23 +81,39 @@ function parseKeyChoice(choice: string): Key | null {
   return { tonic: Number(tonic), mode: mode as Mode }
 }
 
-function Progress({ getPosition, duration }: { getPosition: () => number | null; duration: number }) {
+/** FNV-1a: a stable hash so every listener gets the same station order. */
+function hash(s: string): number {
+  let h = 0x811c9dc5
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return h >>> 0
+}
+
+/** The station's playlist: every song tagged with the genre, in a fixed shuffled order. */
+function playlistFor(entries: Entry[], genre: string): Entry[] {
+  return entries
+    .filter((e) => e.genres.includes(genre))
+    .sort((a, b) => hash(`${genre}:${a.id}`) - hash(`${genre}:${b.id}`))
+}
+
+function scaleFor(theme: Theme, entry: Entry | null, choice: string): string {
+  if (choice !== 'genre') return choice
+  return entry?.keepScale ? 'original' : (theme.scale ?? 'original')
+}
+
+function Clock({ getPosition, duration }: { getPosition: () => number | null; duration: number }) {
   const [, setTick] = useState(0)
   useEffect(() => {
     const id = window.setInterval(() => setTick((t) => t + 1), 250)
     return () => window.clearInterval(id)
   }, [])
   const pos = Math.min(Math.max(getPosition() ?? 0, 0), duration)
-  const pct = duration > 0 ? (pos / duration) * 100 : 0
   return (
-    <div className="progress">
-      <div className="bar">
-        <div className="fill" style={{ width: `${pct}%` }} />
-      </div>
-      <span className="time">
-        {formatTime(pos)} <span className="dim">/ {formatTime(duration)}</span>
-      </span>
-    </div>
+    <span className="time">
+      {formatTime(pos)} <span className="dim">/ {formatTime(duration)}</span>
+    </span>
   )
 }
 
@@ -107,27 +136,25 @@ export default function App() {
   const [clock] = useState(() => new SyncedClock())
   const [clockStatus, setClockStatus] = useState<ClockStatus>(clock.status)
   const clockReady = useRef<Promise<unknown>>(Promise.resolve())
+  const energyRef = useRef(0)
 
-  // ---- Library ------------------------------------------------------------
+  // ---- Catalog ------------------------------------------------------------
 
-  const [library, setLibrary] = useState<Track[]>([])
-  const [uploads, setUploads] = useState<Track[]>([])
-  const radioTracks = useMemo(() => library.filter((t) => t.radio), [library])
-  const schedule = useMemo(
-    () => buildSchedule(radioTracks.map((t) => t.song.duration)),
-    [radioTracks],
-  )
+  const [entries, setEntries] = useState<Entry[]>([])
+  const [uploads, setUploads] = useState<Entry[]>([])
+  const [songs, setSongs] = useState<Record<string, Song>>({})
+  const [failed, setFailed] = useState<Record<string, string>>({})
 
   // ---- Settings -----------------------------------------------------------
 
   const [themeId, setThemeId] = useState<string>(() => load('theme', 'medieval'))
   const theme = getTheme(themeId)
-  const [noteSetId, setNoteSetId] = useState('original')
-  const noteSet = getNoteSet(noteSetId)
+  const stationTempo = theme.tempo ?? 1
+  const [scaleChoice, setScaleChoice] = useState('genre')
   const [volume, setVolume] = useState<number>(() => load('volume', 90))
 
   const [mode, setMode] = useState<'radio' | 'free'>('radio')
-  const [freeTrack, setFreeTrack] = useState<Track | null>(null)
+  const [freeEntry, setFreeEntry] = useState<Entry | null>(null)
   const [tempo, setTempo] = useState(1)
   const [loop, setLoop] = useState(true)
 
@@ -136,11 +163,22 @@ export default function App() {
   const [message, setMessage] = useState('')
   const [slot, setSlot] = useState<Location | null>(null)
 
-  // ---- Current song -------------------------------------------------------
+  // ---- Station ------------------------------------------------------------
 
-  const current: Track | null =
-    mode === 'radio' ? (slot ? (radioTracks[slot.index] ?? null) : null) : freeTrack
-  const songKey = mode === 'radio' ? `r:${slot?.startMs ?? ''}` : `f:${freeTrack?.id ?? ''}`
+  const playlist = useMemo(() => playlistFor(entries, theme.id), [entries, theme.id])
+  const schedule = useMemo(
+    () => buildSchedule(playlist.map((e) => e.duration / stationTempo)),
+    [playlist, stationTempo],
+  )
+
+  const current: Entry | null =
+    mode === 'radio' ? (slot ? (playlist[slot.index] ?? null) : null) : freeEntry
+  const currentSong = current ? (songs[current.id] ?? null) : null
+  const songKey =
+    mode === 'radio' ? `r:${theme.id}:${slot?.startMs ?? ''}` : `f:${freeEntry?.id ?? ''}`
+  const noteSetId = scaleFor(theme, current, scaleChoice)
+  const noteSet = getNoteSet(noteSetId)
+  const playTempo = mode === 'radio' ? stationTempo : tempo * stationTempo
 
   // Per-song settings reset automatically when the song changes.
   const [songSettings, setSongSettings] = useState<SongSettings>({
@@ -156,36 +194,36 @@ export default function App() {
   const updateSettings = (patch: Partial<SongSettings>) => setSongSettings({ ...settings, ...patch })
 
   const split = useMemo(
-    () => settings.split ?? (current ? defaultSplit(current.song) : new Set<number>()),
-    [settings.split, current],
+    () => settings.split ?? (currentSong ? defaultSplit(currentSong) : new Set<number>()),
+    [settings.split, currentSong],
   )
 
   const prepared = useMemo<PreparedSong | null>(() => {
-    if (!current) return null
-    return prepare(current.song, {
+    if (!currentSong) return null
+    return prepare(currentSong, {
       setId: theme.set,
       noteSetId,
       key: parseKeyChoice(settings.keyChoice),
       overrides: settings.overrides,
       split,
     })
-  }, [current, theme.set, noteSetId, settings.keyChoice, settings.overrides, split])
+  }, [currentSong, theme.set, noteSetId, settings.keyChoice, settings.overrides, split])
 
   const prepareDefault = useCallback(
-    (track: Track) =>
-      prepare(track.song, {
+    (entry: Entry, song: Song) =>
+      prepare(song, {
         setId: theme.set,
-        noteSetId,
+        noteSetId: scaleFor(theme, entry, scaleChoice),
         key: null,
         overrides: {},
-        split: defaultSplit(track.song),
+        split: defaultSplit(song),
       }),
-    [theme.set, noteSetId],
+    [theme, scaleChoice],
   )
 
   // Latest values for timers and async callbacks.
-  const latest = useRef({ on, mode, songKey, prepared, tempo, loop, current })
-  latest.current = { on, mode, songKey, prepared, tempo, loop, current }
+  const latest = useRef({ on, mode, songKey, prepared, playTempo, loop, current, currentSong, songs })
+  latest.current = { on, mode, songKey, prepared, playTempo, loop, current, currentSong, songs }
 
   // ---- Theme --------------------------------------------------------------
 
@@ -209,27 +247,71 @@ export default function App() {
     let cancelled = false
     const base = import.meta.env.BASE_URL
     ;(async () => {
+      const list: Entry[] = []
       try {
-        const entries = (await (await fetch(`${base}midi/index.json`)).json()) as LibraryEntry[]
-        const tracks = await Promise.all(
-          entries.map(async (e): Promise<Track> => {
-            const buf = await (await fetch(`${base}midi/${e.file}`)).arrayBuffer()
-            return { id: e.file, title: e.title, song: parseMidi(buf, e.title), radio: e.radio !== false }
-          }),
-        )
-        if (!cancelled) setLibrary(tracks)
+        const stock = (await (await fetch(`${base}midi/index.json`)).json()) as StockSong[]
+        for (const s of stock) {
+          list.push({
+            id: `stock:${s.file}`,
+            title: s.title,
+            composer: s.composer ?? 'Traditional',
+            group: 'Station songs',
+            url: `${base}midi/${s.file}`,
+            duration: s.duration,
+            genres: s.genres,
+            keepScale: !!s.keepScale,
+          })
+        }
+        const classics = (await (await fetch(`${base}classics.json`)).json()) as Classics
+        for (const p of classics.pieces) {
+          list.push({
+            id: `m21:${p.path}${p.tune ? `#${p.tune}` : ''}`,
+            title: p.title,
+            composer: p.composer,
+            group: p.group,
+            url: classics.base + p.path.split('/').map(encodeURIComponent).join('/'),
+            tune: p.tune,
+            duration: p.duration,
+            genres: p.genres,
+            keepScale: false,
+          })
+        }
       } catch {
-        if (!cancelled) setMessage('Could not load the station’s songs.')
+        if (!cancelled) setMessage('Could not load the station’s song list.')
       }
+      if (!cancelled) setEntries(list)
     })()
     return () => {
       cancelled = true
     }
   }, [])
 
+  const loadingIds = useRef(new Set<string>())
+  const ensureSong = useCallback((entry: Entry) => {
+    if (latest.current.songs[entry.id] || loadingIds.current.has(entry.id)) return
+    loadingIds.current.add(entry.id)
+    fetchSong(entry.url, entry.title, entry.tune)
+      .then((song) => {
+        setSongs((s) => ({ ...s, [entry.id]: song }))
+        setFailed((f) => {
+          const { [entry.id]: _, ...rest } = f
+          return rest
+        })
+      })
+      .catch((e: unknown) => {
+        setFailed((f) => ({ ...f, [entry.id]: e instanceof Error ? e.message : 'Could not load.' }))
+      })
+      .finally(() => loadingIds.current.delete(entry.id))
+  }, [])
+
+  // Always have the current song loading (to show it, and to play it).
+  useEffect(() => {
+    if (current) ensureSong(current)
+  }, [current, ensureSong])
+
   // ---- Radio --------------------------------------------------------------
 
-  /** startMs of the radio slot that's been scheduled; null = nothing yet. */
+  /** startMs of the slot that's been scheduled; null = nothing yet. */
   const scheduledSlot = useRef<number | null>(null)
 
   useEffect(() => {
@@ -238,7 +320,6 @@ export default function App() {
       const before = clock.atPerf(probe)
       const status = await clock.sync()
       setClockStatus({ ...status })
-      // If the clock estimate moved noticeably, re-align what's playing.
       if (Math.abs(clock.atPerf(probe) - before) > 40) scheduledSlot.current = null
     }
     clockReady.current = syncNow()
@@ -247,7 +328,7 @@ export default function App() {
   }, [clock])
 
   const startRadioSlot = useCallback(
-    (prep: PreparedSong, startMs: number, layer: boolean) => {
+    (prep: PreparedSong, startMs: number, layer: boolean, speed: number) => {
       if (!layer) {
         setBusy(true)
         const pending = [...new Set(prep.playTracks.map((t) => t.gm))].filter((g) => !player.isCached(g))
@@ -255,8 +336,8 @@ export default function App() {
       }
       player
         .play(prep.playTracks, {
-          tempo: 1,
-          from: (heardAtPerf) => (clock.atPerf(heardAtPerf) - startMs) / 1000,
+          tempo: speed,
+          from: (heardAtPerf) => ((clock.atPerf(heardAtPerf) - startMs) / 1000) * speed,
           layer,
         })
         .then(() => {
@@ -281,41 +362,64 @@ export default function App() {
       if (!loc) return
       setSlot((prev) => (prev && prev.startMs === loc.startMs ? prev : loc))
 
+      // Fetch the next song early.
+      const upcoming = playlist[loc.nextIndex]
+      if (upcoming) ensureSong(upcoming)
+
       if (!latest.current.on) return
       const ahead = locate(schedule, now + LOOKAHEAD_MS)
       if (!ahead || scheduledSlot.current === ahead.startMs) return
+      const entry = playlist[ahead.index]
+      const song = latest.current.songs[entry.id]
+      if (!song) {
+        ensureSong(entry) // schedule as soon as it arrives; we re-join the live position
+        if (scheduledSlot.current === null) setBusy(true)
+        return
+      }
 
       const first = scheduledSlot.current === null
       scheduledSlot.current = ahead.startMs
       const L = latest.current
       const prep =
-        L.songKey === `r:${ahead.startMs}` && L.prepared
-          ? L.prepared
-          : prepareDefault(radioTracks[ahead.index])
-      startRadioSlot(prep, ahead.startMs, !first)
+        L.songKey === `r:${theme.id}:${ahead.startMs}` && L.prepared ? L.prepared : prepareDefault(entry, song)
+      startRadioSlot(prep, ahead.startMs, !first, stationTempo)
 
-      // Warm up the instruments the following song will need.
-      const following = radioTracks[ahead.nextIndex]
-      if (following) void player.preload(prepareDefault(following).playTracks.map((t) => t.gm)).catch(() => {})
+      const following = playlist[ahead.nextIndex]
+      const followingSong = following && latest.current.songs[following.id]
+      if (followingSong) {
+        void player.preload(prepareDefault(following, followingSong).playTracks.map((t) => t.gm)).catch(() => {})
+      }
     }
     tick()
     const id = window.setInterval(tick, 250)
     return () => window.clearInterval(id)
-  }, [mode, schedule, clock, radioTracks, prepareDefault, startRadioSlot, player])
+  }, [mode, schedule, playlist, clock, theme.id, stationTempo, prepareDefault, startRadioSlot, player, ensureSong])
 
   // Settings changed mid-song: re-join the live position with the new sound.
+  // (A song merely finishing its download is not a change, so it's not in here.)
+  const settingsSig = [
+    theme.set,
+    noteSetId,
+    settings.keyChoice,
+    JSON.stringify(settings.overrides),
+    settings.split ? [...settings.split].join(',') : 'auto',
+    playTempo,
+  ].join('|')
   const lastSongKey = useRef(songKey)
+  const lastSig = useRef(settingsSig)
   useEffect(() => {
-    const sameSong = lastSongKey.current === songKey
+    const changed = lastSongKey.current === songKey && lastSig.current !== settingsSig
     lastSongKey.current = songKey
-    if (!sameSong || !latest.current.on) return
+    lastSig.current = settingsSig
+    if (!changed || !latest.current.on) return
     if (latest.current.mode === 'radio') {
       scheduledSlot.current = null
     } else if (player.isPlaying) {
-      void playFree(player.position())
+      // Wait a frame so `prepared` reflects the new settings.
+      requestAnimationFrame(() => void playFree(player.position()))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prepared, tempo])
+  }, [songKey, settingsSig])
 
   // ---- Free play ----------------------------------------------------------
 
@@ -325,7 +429,7 @@ export default function App() {
       if (!prep) return
       setBusy(true)
       try {
-        await player.play(prep.playTracks, { tempo: latest.current.tempo, from })
+        await player.play(prep.playTracks, { tempo: latest.current.playTempo, from })
         setMessage('')
       } catch (e) {
         setOn(false)
@@ -337,12 +441,21 @@ export default function App() {
     [player],
   )
 
+  // Start free play once the chosen song has arrived.
+  const wantFreePlay = useRef(false)
+  useEffect(() => {
+    if (mode === 'free' && on && prepared && wantFreePlay.current) {
+      wantFreePlay.current = false
+      void playFree(0)
+    }
+  }, [mode, on, prepared, playFree])
+
   useEffect(() => {
     if (mode !== 'free') return
     const id = window.setInterval(() => {
       const L = latest.current
-      if (!L.on || !L.current || !player.isPlaying) return
-      if (player.position() >= L.current.song.duration + 0.5) {
+      if (!L.on || !L.currentSong || !player.isPlaying) return
+      if (player.position() >= L.currentSong.duration + 0.5) {
         if (L.loop) void playFree(0)
         else {
           player.stop()
@@ -361,6 +474,7 @@ export default function App() {
       else player.pause()
       scheduledSlot.current = null
       setOn(false)
+      setBusy(false)
       return
     }
     await player.unlock()
@@ -372,19 +486,37 @@ export default function App() {
       setOn(true)
     } else {
       setOn(true)
+      if (!prepared) {
+        wantFreePlay.current = true
+        return
+      }
       const pos = player.position()
-      void playFree(current && pos >= current.song.duration ? 0 : pos)
+      void playFree(currentSong && pos >= currentSong.duration ? 0 : pos)
     }
   }
 
-  const chooseFree = (track: Track | null) => {
-    if (!track) return
+  const changeGenre = (id: string) => {
+    if (id === theme.id) return
+    if (mode === 'radio') {
+      player.stop()
+      scheduledSlot.current = null
+      setSlot(null)
+      if (on) setBusy(true)
+    }
+    setScaleChoice('genre')
+    setThemeId(id)
+  }
+
+  const chooseFree = (entry: Entry | null) => {
+    if (!entry) return
     player.stop()
     scheduledSlot.current = null
-    setOn(false)
     setMode('free')
-    setFreeTrack(track)
+    setFreeEntry(entry)
     setMessage('')
+    setBusy(false)
+    if (on) wantFreePlay.current = true
+    ensureSong(entry)
   }
 
   const backToRadio = () => {
@@ -398,14 +530,23 @@ export default function App() {
   const onUpload = async (file: File | undefined) => {
     if (!file) return
     try {
-      const title = file.name.replace(/(\.midi?)+$/i, '')
-      const song = parseMidi(await file.arrayBuffer(), title)
-      if (song.tracks.length === 0) throw new Error('That file has no notes.')
-      const track: Track = { id: `upload:${Date.now()}`, title, song, radio: false }
-      setUploads((u) => [...u, track])
-      chooseFree(track)
+      const title = file.name.replace(/(\.(midi?|mxl|musicxml|xml|abc))+$/i, '')
+      const song = await songFromBuffer(await file.arrayBuffer(), file.name)
+      const entry: Entry = {
+        id: `upload:${Date.now()}`,
+        title,
+        composer: 'Your file',
+        group: 'Your files',
+        url: '',
+        duration: song.duration,
+        genres: [],
+        keepScale: false,
+      }
+      setSongs((s) => ({ ...s, [entry.id]: { ...song, name: title } }))
+      setUploads((u) => [...u, entry])
+      chooseFree(entry)
     } catch (e) {
-      setMessage(e instanceof Error ? e.message : 'Could not read that MIDI file.')
+      setMessage(e instanceof Error ? e.message : 'Could not read that file.')
     }
   }
 
@@ -420,15 +561,23 @@ export default function App() {
 
   const slotStart = slot?.startMs ?? null
   const songPosition = useCallback((): number | null => {
-    if (mode === 'radio') return slotStart === null ? null : (clock.now() - slotStart) / 1000
+    if (mode === 'radio') return slotStart === null ? null : ((clock.now() - slotStart) / 1000) * stationTempo
     return player.position()
-  }, [mode, slotStart, clock, player])
+  }, [mode, slotStart, clock, player, stationTempo])
 
-  const heardPosition = useCallback(
-    () => (latest.current.on ? songPosition() : null),
-    [songPosition],
-  )
+  const heardPosition = useCallback(() => (latest.current.on ? songPosition() : null), [songPosition])
   const rollPosition = useCallback(() => songPosition() ?? 0, [songPosition])
+
+  const duration = currentSong?.duration ?? current?.duration ?? 0
+  const loadingSong = !!current && !currentSong && !failed[current.id]
+  const showLoader = loadingSong || (busy && on)
+  const getProgress = useCallback(() => {
+    if (latest.current.current && !latest.current.currentSong) return null
+    const pos = songPosition()
+    const d = latest.current.currentSong?.duration ?? 0
+    return pos === null || d <= 0 ? 0 : pos / d
+  }, [songPosition])
+  const progressGetter = useCallback(() => (showLoader ? null : getProgress()), [showLoader, getProgress])
 
   const palette = [theme.colors.accent, theme.colors.accent2, theme.colors.ink, theme.colors.muted]
   const rollTracks = useMemo<RollTrack[]>(
@@ -442,22 +591,37 @@ export default function App() {
     [prepared, theme],
   )
 
-  const next = mode === 'radio' && slot ? radioTracks[slot.nextIndex] : null
+  const next = mode === 'radio' && slot ? playlist[slot.nextIndex] : null
   const label = mode === 'radio' ? (on ? 'Stop' : 'Tune in') : on ? 'Pause' : 'Play'
-  const allTracks = [...library, ...uploads]
+  const allEntries = [...entries, ...uploads]
+  const groups = [...new Set(allEntries.map((e) => e.group))]
+  const failure = current ? failed[current.id] : undefined
 
   // ---- Render -------------------------------------------------------------
 
   return (
     <main className="page">
       <header className="masthead">
-        <D20 />
-        <h1>DnD Radio</h1>
+        <div className="brand">
+          <D20 />
+          <h1>DnD Radio</h1>
+        </div>
+        <label className="genre">
+          <span className="sr-only">Genre</span>
+          <select value={theme.id} onChange={(e) => changeGenre(e.target.value)} aria-label="Genre">
+            {THEMES.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name}
+              </option>
+            ))}
+          </select>
+        </label>
         <span className={`status ${on ? 'on' : ''}`}>
           <span className="dot" />
           {mode === 'radio' ? (on ? 'Live' : 'Off air') : 'Free play'}
         </span>
       </header>
+      <p className="tagline">{theme.tagline}</p>
 
       <section className="stage">
         <Visualizer
@@ -465,18 +629,37 @@ export default function App() {
           motif={theme.motif}
           colors={theme.colors}
           getPosition={heardPosition}
+          energyRef={energyRef}
         />
         <div className="now">
-          <p className="eyebrow">{theme.name}</p>
+          <p className="eyebrow">{mode === 'radio' ? `${theme.name} station` : 'Free play'}</p>
           <h2 className="title">{current?.title ?? 'Tuning…'}</h2>
-          <p className="next">{next ? `Up next · ${next.title}` : ' '}</p>
-          <Progress getPosition={songPosition} duration={current?.song.duration ?? 0} />
+          <p className="next">
+            {current ? current.composer : ' '}
+            {next ? ` · Up next: ${next.title}` : ''}
+          </p>
+          <div className="progress">
+            <WaveProgress
+              getProgress={progressGetter}
+              playing={on && !showLoader}
+              colors={theme.colors}
+              energyRef={energyRef}
+              label={showLoader ? 'Loading' : 'Song progress'}
+            />
+            <Clock getPosition={songPosition} duration={duration} />
+          </div>
         </div>
       </section>
 
       <div className="controls">
-        <button className="primary" onClick={() => void toggle()} disabled={!current || busy}>
-          {busy ? 'Tuning…' : label}
+        <button
+          className="primary"
+          onClick={() => void toggle()}
+          disabled={!current || (busy && !on)}
+          aria-busy={showLoader}
+        >
+          {showLoader && on ? <WaveRing color={theme.colors.bg} /> : null}
+          {showLoader && on ? 'Tuning' : label}
         </button>
         <label className="volume">
           <span className="dim">Volume</span>
@@ -490,26 +673,7 @@ export default function App() {
           />
         </label>
       </div>
-      {message && <p className="message">{message}</p>}
-
-      <section className="setting">
-        <h3 className="label">Setting</h3>
-        <div className="themes" role="radiogroup" aria-label="Setting">
-          {THEMES.map((t) => (
-            <button
-              key={t.id}
-              role="radio"
-              aria-checked={t.id === theme.id}
-              className={t.id === theme.id ? 'chip active' : 'chip'}
-              onClick={() => setThemeId(t.id)}
-            >
-              <span className="swatch" style={{ background: t.colors.accent }} />
-              {t.name}
-            </button>
-          ))}
-        </div>
-        <p className="hint">{theme.tagline}</p>
-      </section>
+      {(message || failure) && <p className="message">{failure ?? message}</p>}
 
       <details className="advanced">
         <summary>Advanced</summary>
@@ -522,34 +686,43 @@ export default function App() {
             </button>
             <button
               aria-pressed={mode === 'free'}
-              onClick={() => chooseFree(freeTrack ?? current ?? allTracks[0] ?? null)}
+              onClick={() => chooseFree(freeEntry ?? current ?? allEntries[0] ?? null)}
             >
               Free play
             </button>
           </div>
           <p className="hint">
             {mode === 'radio'
-              ? 'Everyone tuned in hears the same song at the same moment.'
-              : 'Only you hear this. Pick any song or upload your own.'}
+              ? `Everyone on the ${theme.name} station hears the same song at the same moment.`
+              : 'Only you hear this. Pick any song or upload your own (MIDI, MusicXML or ABC).'}
           </p>
           <div className="row">
             <select
-              value={mode === 'free' ? (freeTrack?.id ?? '') : ''}
-              onChange={(e) => chooseFree(allTracks.find((t) => t.id === e.target.value) ?? null)}
+              value={mode === 'free' ? (freeEntry?.id ?? '') : ''}
+              onChange={(e) => chooseFree(allEntries.find((x) => x.id === e.target.value) ?? null)}
               aria-label="Song"
             >
               {mode === 'radio' && <option value="">Pick a song…</option>}
-              {allTracks.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.title}
-                </option>
+              {groups.map((group) => (
+                <optgroup key={group} label={group}>
+                  {allEntries
+                    .filter((x) => x.group === group)
+                    .map((x) => (
+                      <option key={x.id} value={x.id}>
+                        {x.title}
+                        {x.composer && x.composer !== 'Traditional' && x.composer !== 'Your file'
+                          ? ` — ${x.composer}`
+                          : ''}
+                      </option>
+                    ))}
+                </optgroup>
               ))}
             </select>
             <label className="button">
-              Upload .mid
+              Upload
               <input
                 type="file"
-                accept=".mid,.midi,audio/midi"
+                accept={ACCEPTED_FILES}
                 hidden
                 onChange={(e) => {
                   void onUpload(e.target.files?.[0])
@@ -582,7 +755,10 @@ export default function App() {
         <section>
           <h3 className="label">Scale</h3>
           <div className="row">
-            <select value={noteSetId} onChange={(e) => setNoteSetId(e.target.value)} aria-label="Scale">
+            <select value={scaleChoice} onChange={(e) => setScaleChoice(e.target.value)} aria-label="Scale">
+              <option value="genre">
+                {theme.name} default ({getNoteSet(scaleFor(theme, current, 'genre')).name})
+              </option>
               {NOTE_SET_GROUPS.map((group) => (
                 <optgroup key={group} label={group}>
                   {NOTE_SETS.filter((s) => s.group === group).map((s) => (
@@ -597,7 +773,7 @@ export default function App() {
               value={settings.keyChoice}
               onChange={(e) => updateSettings({ keyChoice: e.target.value })}
               aria-label="Song key"
-              disabled={!current || noteSet.intervals === null}
+              disabled={!currentSong || noteSet.intervals === null}
             >
               <option value="auto">
                 Key: auto{prepared ? ` (${keyName(prepared.detectedKey)})` : ''}
@@ -614,13 +790,13 @@ export default function App() {
           <p className="hint">{noteSet.description}</p>
         </section>
 
-        {current && prepared && (
+        {currentSong && prepared && (
           <>
             <section>
               <h3 className="label">Notes</h3>
               <PianoRoll
                 tracks={rollTracks}
-                duration={current.song.duration}
+                duration={currentSong.duration}
                 getPosition={rollPosition}
                 onSeek={
                   mode === 'free'
@@ -649,7 +825,7 @@ export default function App() {
                       <span className="track-name">
                         {t.name}
                         {t.isPercussion && <span className="dim"> · drums</span>}
-                        {t.source === undefined && !t.isPercussion && t.notes.length > 1 && (
+                        {t.source === undefined && isPolyphonic(t) && (
                           <button className="link" onClick={() => toggleSplit(t.index)}>
                             Split voices
                           </button>
@@ -684,9 +860,7 @@ export default function App() {
                   )
                 })}
               </ul>
-              {mode === 'radio' && (
-                <p className="hint">Changes here last until the next song.</p>
-              )}
+              {mode === 'radio' && <p className="hint">Changes here last until the next song.</p>}
             </section>
           </>
         )}
@@ -694,12 +868,16 @@ export default function App() {
         <p className="sync dim">
           Clock: {clockStatus.source}
           {Number.isFinite(clockStatus.uncertaintyMs) ? ` ±${clockStatus.uncertaintyMs} ms` : ''} · Audio
-          latency {Math.round(player.latency() * 1000)} ms
+          latency {Math.round(player.latency() * 1000)} ms · {playlist.length} songs on this station
         </p>
       </details>
 
       <footer>
-        Traditional and public-domain songs. Instruments load the first time they’re used.
+        Traditional and public-domain music. Classics and fiddle tunes stream from the{' '}
+        <a href="https://github.com/cuthbertLab/music21" target="_blank" rel="noreferrer">
+          music21 corpus
+        </a>
+        . Instruments load the first time they’re used.
       </footer>
     </main>
   )

@@ -1,39 +1,91 @@
 [
   {
+    "composer": "Traditional",
     "title": "Greensleeves",
-    "file": "greensleeves.mid"
+    "file": "greensleeves.mid",
+    "genres": [
+      "medieval",
+      "court"
+    ],
+    "duration": 28.185
   },
   {
+    "composer": "Traditional",
     "title": "Drunken Sailor",
-    "file": "drunken-sailor.mid"
+    "file": "drunken-sailor.mid",
+    "genres": [
+      "tavern",
+      "tropical",
+      "kobold"
+    ],
+    "duration": 63.988
   },
   {
+    "composer": "Scott Joplin",
     "title": "The Entertainer",
-    "file": "the-entertainer.mid"
+    "file": "the-entertainer.mid",
+    "genres": [
+      "tavern",
+      "tropical",
+      "kobold"
+    ],
+    "duration": 25.638
   },
   {
+    "composer": "Stephen Foster",
     "title": "Oh! Susanna",
-    "file": "oh-susanna.mid"
+    "file": "oh-susanna.mid",
+    "genres": [
+      "tavern",
+      "kobold"
+    ],
+    "duration": 34.808
   },
   {
+    "composer": "Traditional",
     "title": "Amazing Grace",
-    "file": "amazing-grace.mid"
+    "file": "amazing-grace.mid",
+    "genres": [
+      "celtic",
+      "asian"
+    ],
+    "duration": 35.981
   },
   {
+    "composer": "Ludwig van Beethoven",
     "title": "Ode to Joy",
-    "file": "ode-to-joy.mid"
+    "file": "ode-to-joy.mid",
+    "genres": [
+      "court"
+    ],
+    "duration": 35.542
   },
   {
+    "composer": "Mildred & Patty Hill",
     "title": "Happy Birthday",
     "file": "happy-birthday.mid",
-    "radio": false
+    "genres": [],
+    "duration": 14.985
   },
   {
+    "composer": "Traditional",
     "title": "Auld Lang Syne",
-    "file": "auld-lang-syne.mid"
+    "file": "auld-lang-syne.mid",
+    "genres": [
+      "celtic",
+      "tavern",
+      "asian"
+    ],
+    "duration": 23.554
   },
   {
+    "composer": "Traditional",
     "title": "Sakura Sakura",
-    "file": "sakura.mid"
+    "file": "sakura.mid",
+    "genres": [
+      "asian"
+    ],
+    "keepScale": true,
+    "duration": 15.77
   }
 ]

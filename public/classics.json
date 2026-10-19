@@ -1,0 +1,671 @@
+{
+  "source": "music21 corpus",
+  "license": "Public-domain works. Some encodings are licensed for non-commercial use only; see the music21 corpus.",
+  "repo": "https://github.com/cuthbertLab/music21",
+  "base": "https://raw.githubusercontent.com/cuthbertLab/music21/1e68f5fc08970e8cee1e25627039dc0b64275367/music21/corpus/",
+  "pieces": [
+    {
+      "group": "Classics",
+      "path": "joplin/maple_leaf_rag.mxl",
+      "title": "Maple Leaf Rag",
+      "composer": "Scott Joplin",
+      "duration": 100.8,
+      "genres": [
+        "tavern",
+        "tropical",
+        "kobold"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "monteverdi/madrigal.3.1.mxl",
+      "title": "La giovinetta pianta",
+      "composer": "Claudio Monteverdi",
+      "duration": 204,
+      "genres": [
+        "court",
+        "medieval"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "bach/bwv66.6.mxl",
+      "title": "Chorale, BWV 66.6",
+      "composer": "J. S. Bach",
+      "duration": 22.5,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "liliuokalani/aloha_oe.mxl",
+      "title": "Aloha ʻOe",
+      "composer": "Liliʻuokalani",
+      "duration": 53.333,
+      "genres": [
+        "tropical",
+        "asian"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "trecento/PMFC_04-Cara mi donna.xml",
+      "title": "Cara mi donna",
+      "composer": "Francesco Landini",
+      "duration": 82.5,
+      "genres": [
+        "medieval"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "handel/rinaldo/Lascia_chio_pianga.mxl",
+      "title": "Lascia ch’io pianga",
+      "composer": "G. F. Handel",
+      "duration": 174,
+      "genres": [
+        "court",
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "leadSheet/fosterBrownHair.mxl",
+      "title": "Jeanie with the Light Brown Hair",
+      "composer": "Stephen Foster",
+      "duration": 86.25,
+      "genres": [
+        "tavern",
+        "asian"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "corelli/opus3no1/1grave.xml",
+      "title": "Sonata da chiesa Op. 3 No. 1: Grave",
+      "composer": "Arcangelo Corelli",
+      "duration": 76,
+      "genres": [
+        "dungeon",
+        "court"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "trecento/PMFC_06_8-In Verde Prato.xml",
+      "title": "In verde prato",
+      "composer": "Italian Trecento",
+      "duration": 82.909,
+      "genres": [
+        "medieval"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "schubert/Lindenbaum.xml",
+      "title": "Der Lindenbaum",
+      "composer": "Franz Schubert",
+      "duration": 153.75,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "bach/bwv1.6.mxl",
+      "title": "Wie schön leuchtet der Morgenstern",
+      "composer": "J. S. Bach",
+      "duration": 63.158,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "lusitano/allor_che_ignuda.mxl",
+      "title": "Allor che ignuda",
+      "composer": "Vicente Lusitano",
+      "duration": 93,
+      "genres": [
+        "medieval",
+        "court"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "schumann_clara/polonaise_op1n1.mxl",
+      "title": "Polonaise Op. 1 No. 1",
+      "composer": "Clara Schumann",
+      "duration": 74.687,
+      "genres": [
+        "court"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "mozart/k545/movement1_exposition.mxl",
+      "title": "Sonata K. 545 (opening)",
+      "composer": "W. A. Mozart",
+      "duration": 21.364,
+      "genres": [
+        "court"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "schumann_robert/dichterliebe_no2.xml",
+      "title": "Aus meinen Tränen sprießen",
+      "composer": "Robert Schumann",
+      "duration": 40.5,
+      "genres": [
+        "court",
+        "asian"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "cpebach/h186.mxl",
+      "title": "Sonata H. 186: Poco adagio",
+      "composer": "C. P. E. Bach",
+      "duration": 63.5,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "bach/bwv10.7.mxl",
+      "title": "Chorale, BWV 10.7",
+      "composer": "J. S. Bach",
+      "duration": 55,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "haydn/opus74no1/movement2.mxl",
+      "title": "String Quartet Op. 74 No. 1: Andantino",
+      "composer": "Joseph Haydn",
+      "duration": 162.5,
+      "genres": [
+        "court"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "beach/prayer_of_a_tired_child.musicxml",
+      "title": "Prayer of a Tired Child",
+      "composer": "Amy Beach",
+      "duration": 62,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "ciconia/quod_jactatur.xml",
+      "title": "Quod jactatur",
+      "composer": "Johannes Ciconia",
+      "duration": 35,
+      "genres": [
+        "medieval",
+        "asian"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "beethoven/opus18no1/movement2.mxl",
+      "title": "String Quartet Op. 18 No. 1: Adagio",
+      "composer": "Ludwig van Beethoven",
+      "duration": 307.969,
+      "genres": [
+        "dungeon"
+      ]
+    },
+    {
+      "group": "Classics",
+      "path": "mozart/k458/movement1.mxl",
+      "title": "“Hunt” Quartet K. 458: Allegro",
+      "composer": "W. A. Mozart",
+      "duration": 420.75,
+      "genres": [
+        "court"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/IrishWashWomanJig.abc",
+      "title": "The Irish Washerwoman",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic",
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/GarryOwenJig.abc",
+      "title": "Garryowen",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/HasteToTheWeddingJig.abc",
+      "title": "Haste to the Wedding",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic",
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/LarkInTheMorningJig.abc",
+      "title": "The Lark in the Morning",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic",
+        "asian"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SwallowTailJig.abc",
+      "title": "The Swallowtail Jig",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/RoryOMoreJig.abc",
+      "title": "Rory O’More",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/StPatricksDayInTheMorningJig.abc",
+      "title": "St. Patrick’s Day in the Morning",
+      "composer": "Traditional",
+      "duration": 55.769,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MasonsApronReel.abc",
+      "title": "The Mason’s Apron",
+      "composer": "Traditional",
+      "duration": 36,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/TullochgorumReel.abc",
+      "title": "Tullochgorum",
+      "composer": "Traditional",
+      "duration": 48.375,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MissMcCloudsReel.abc",
+      "title": "Miss McLeod’s Reel",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/FairyDanceReel.abc",
+      "title": "The Fairy Dance",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "celtic",
+        "asian"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/FlowersOfEdinburgReel.abc",
+      "title": "The Flowers of Edinburgh",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/DuncanDavidsonStrathspey.abc",
+      "title": "Duncan Davidson",
+      "composer": "Traditional",
+      "duration": 66.207,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MarquisOfHuntlysStrathspey.abc",
+      "title": "The Marquis of Huntly",
+      "composer": "Traditional",
+      "duration": 66.207,
+      "genres": [
+        "celtic",
+        "medieval"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/42dHighlandRegimentStrathspey.abc",
+      "title": "The 42nd Highland Regiment",
+      "composer": "Traditional",
+      "duration": 66.336,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/PipersLassReel.abc",
+      "title": "The Piper’s Lass",
+      "composer": "Traditional",
+      "duration": 48.375,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/CherishTheLadiesJig.abc",
+      "title": "Cherish the Ladies",
+      "composer": "Traditional",
+      "duration": 46.346,
+      "genres": [
+        "celtic"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/GreenSleevesJig.abc",
+      "title": "Greensleeves (jig)",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "celtic",
+        "medieval"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/BlackberryBlossomReel.abc",
+      "title": "Blackberry Blossom",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "celtic",
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SoldiersJoy.abc",
+      "title": "Soldier’s Joy",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/FishersHornpipe.abc",
+      "title": "Fisher’s Hornpipe",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "tavern",
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/DurangsHornpipe.abc",
+      "title": "Durang’s Hornpipe",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/ArkansasTravellerReel.abc",
+      "title": "Arkansas Traveller",
+      "composer": "Traditional",
+      "duration": 48.75,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/DevilsDreamReel.abc",
+      "title": "The Devil’s Dream",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tavern",
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SpeedThePloughReel.abc",
+      "title": "Speed the Plough",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/BottleOfBrandyJig.abc",
+      "title": "The Bottle of Brandy",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "tavern",
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/DropOfWhiskeySlipjig.abc",
+      "title": "A Drop of Whiskey",
+      "composer": "Traditional",
+      "duration": 57.6,
+      "genres": [
+        "tavern",
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/TeetotalersReel.abc",
+      "title": "The Teetotaler’s Reel",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/PaddyOnTheTurnpikeReel.abc",
+      "title": "Paddy on the Turnpike",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tavern"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SmashTheWindowsJig.abc",
+      "title": "Smash the Windows",
+      "composer": "Traditional",
+      "duration": 73.846,
+      "genres": [
+        "tavern",
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/LeatherTheWigJig.abc",
+      "title": "Leather the Wig",
+      "composer": "Traditional",
+      "duration": 55.769,
+      "genres": [
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/LiverpoolHornpipe.abc",
+      "title": "The Liverpool Hornpipe",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/StatenIslandHornpipe.abc",
+      "title": "Staten Island Hornpipe",
+      "composer": "Traditional",
+      "duration": 57.353,
+      "genres": [
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SailorsRansomReel.abc",
+      "title": "The Sailor’s Ransom",
+      "composer": "Traditional",
+      "duration": 48,
+      "genres": [
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MorpethHornpipe.abc",
+      "title": "Morpeth Hornpipe",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/RickettsHornpipe.abc",
+      "title": "Ricketts’ Hornpipe",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "tropical"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/FlyByNightLancashireClog.abc",
+      "title": "Fly-by-Night Clog",
+      "composer": "Traditional",
+      "duration": 42.353,
+      "genres": [
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/SkipRopeClog.abc",
+      "title": "Skip Rope Clog",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MoneyInAdvanceClog.abc",
+      "title": "Money in Advance",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/NightingaleClog.abc",
+      "title": "The Nightingale Clog",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "kobold"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/MinstrelsFancyClog.abc",
+      "title": "The Minstrel’s Fancy",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "kobold",
+        "medieval"
+      ]
+    },
+    {
+      "group": "Fiddle tunes",
+      "path": "ryansMammoth/BlueStockingClog.abc",
+      "title": "Blue Stocking Clog",
+      "composer": "Traditional",
+      "duration": 56.471,
+      "genres": [
+        "kobold"
+      ]
+    }
+  ]
+}

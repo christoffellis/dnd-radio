@@ -8,6 +8,8 @@ interface Props {
   colors: ThemeColors
   /** Song position in seconds, or null when nothing is playing. */
   getPosition: () => number | null
+  /** Receives the current musical energy (0..1.5) every frame. */
+  energyRef?: { current: number }
 }
 
 interface Onset {
@@ -61,7 +63,7 @@ function seekIndex(onsets: Onset[], time: number): number {
  * Ambient animation that reacts to the notes being heard. Each theme has its
  * own motif; every note onset spawns particles at a position set by pitch.
  */
-export default function Visualizer({ tracks, motif, colors, getPosition }: Props) {
+export default function Visualizer({ tracks, motif, colors, getPosition, energyRef }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const onsets = useMemo<Onset[]>(() => {
@@ -71,8 +73,8 @@ export default function Visualizer({ tracks, motif, colors, getPosition }: Props
   }, [tracks])
 
   // Keep the latest props in refs so the animation loop never restarts.
-  const live = useRef({ onsets, motif, colors, getPosition })
-  live.current = { onsets, motif, colors, getPosition }
+  const live = useRef({ onsets, motif, colors, getPosition, energyRef })
+  live.current = { onsets, motif, colors, getPosition, energyRef }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -168,6 +170,25 @@ export default function Visualizer({ tracks, motif, colors, getPosition }: Props
           p.life = ambient ? rand(6, 10) : rand(1.2, 2)
           p.spin = ambient ? 0 : 1 // 1 = expanding ring
           break
+        case 'skitter':
+          if (ambient) {
+            // A pair of eyes blinking in the dark.
+            p.x = rand(width * 0.05, width * 0.95)
+            p.y = rand(height * 0.15, height * 0.7)
+            p.size = rand(1.6, 2.6)
+            p.life = rand(1.8, 3.2)
+            p.spin = 2 // marks "eyes"
+            p.color = Math.random() < 0.6 ? c.accent : c.accent2
+          } else {
+            // A little critter-spark that hops along the floor.
+            p.y = height - 6
+            p.vx = rand(-90, 90)
+            p.vy = rand(-170, -80) * (0.8 + strength * 0.5)
+            p.size = rand(1.6, 3)
+            p.life = rand(1.6, 2.6)
+            p.color = Math.random() < 0.65 ? c.accent : c.accent2
+          }
+          break
         case 'sparkles':
           p.x = x + rand(-30, 30)
           p.y = rand(height * 0.1, height * 0.85)
@@ -234,6 +255,35 @@ export default function Visualizer({ tracks, motif, colors, getPosition }: Props
           }
           break
         }
+        case 'skitter': {
+          if (p.spin === 2) {
+            // Eyes: fade in, blink once or twice, fade out.
+            const blink = Math.abs(Math.sin(p.age * 3.1 + p.angle)) < 0.12 ? 0.15 : 1
+            const a = Math.sin(Math.PI * k) * blink
+            g.fillStyle = rgba(p.color, a * 0.9)
+            for (const dx of [-p.size * 2.2, p.size * 2.2]) {
+              g.beginPath()
+              g.ellipse(p.x + dx, p.y, p.size, p.size * blink, 0, 0, Math.PI * 2)
+              g.fill()
+            }
+            g.fillStyle = rgba(p.color, a * 0.12)
+            g.beginPath()
+            g.arc(p.x, p.y, p.size * 7, 0, Math.PI * 2)
+            g.fill()
+          } else {
+            // Squash and stretch with speed.
+            const stretch = Math.min(1.8, 1 + Math.abs(p.vy) / 260)
+            g.fillStyle = rgba(p.color, fade * 0.95)
+            g.beginPath()
+            g.ellipse(p.x, p.y, p.size / stretch, p.size * stretch, 0, 0, Math.PI * 2)
+            g.fill()
+            g.fillStyle = rgba(p.color, fade * 0.15)
+            g.beginPath()
+            g.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2)
+            g.fill()
+          }
+          break
+        }
         case 'sparkles': {
           const s = p.size * Math.sin(Math.PI * k)
           g.fillStyle = rgba(p.color, 0.9 * Math.sin(Math.PI * k))
@@ -279,10 +329,11 @@ export default function Visualizer({ tracks, motif, colors, getPosition }: Props
       // A little ambient life even in silence.
       ambientTimer -= dt
       if (ambientTimer <= 0) {
-        ambientTimer = m === 'fog' ? 1.4 : p === null ? 0.9 : 0.5
+        ambientTimer = m === 'fog' ? 1.4 : m === 'skitter' ? 1.6 : p === null ? 0.9 : 0.5
         spawn(rand(0, width), 0.3, true)
       }
       energy *= Math.pow(0.35, dt)
+      if (live.current.energyRef) live.current.energyRef.current = energy
 
       g.clearRect(0, 0, width, height)
 
@@ -314,6 +365,14 @@ export default function Visualizer({ tracks, motif, colors, getPosition }: Props
           continue
         }
         const wobble = q.motif === 'embers' || q.motif === 'bubbles' ? Math.sin(q.age * 4 + q.angle) * 10 : 0
+        if (q.motif === 'skitter' && q.spin !== 2) {
+          q.vy += 520 * dt
+          if (q.y > height - 4 && q.vy > 0) {
+            q.y = height - 4
+            q.vy *= -0.55
+            q.vx *= 0.85
+          }
+        }
         q.x += (q.vx + wobble) * dt
         q.y += q.vy * dt
         q.angle += q.spin * dt
