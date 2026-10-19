@@ -63,7 +63,9 @@ export class Player {
     if (!promise) {
       const ctx = this.ensureContext()
       promise = (async () => {
-        const sf = new Soundfont(ctx, { instrument: gm })
+        // FluidR3_GM is ~1 MB per instrument; the MusyngKite default is ~8 MB.
+        const options = { instrument: gm, kit: 'FluidR3_GM' } as { instrument: string }
+        const sf = new Soundfont(ctx, options)
         try {
           await sf.load
           sf.output.setVolume(this.volume)
@@ -79,6 +81,11 @@ export class Player {
       promise.catch(() => this.cache.delete(gm))
     }
     return promise
+  }
+
+  /** True when the instrument has already been requested (loaded or loading). */
+  isCached(gm: string): boolean {
+    return this.cache.has(gm)
   }
 
   /** Preload instruments so playback starts without a gap. */

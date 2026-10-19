@@ -137,10 +137,17 @@ export default function App() {
   const startPlayback = useCallback(
     async (from: number) => {
       setBusy(true)
-      setMessage('')
+      const tracks = playTracksRef.current
+      const pending = [...new Set(tracks.map((t) => t.gm))].filter((g) => !player.isCached(g))
+      const downloading =
+        pending.length > 0
+          ? `Downloading ${pending.map(instrumentName).join(', ')}. This only happens the first time.`
+          : ''
+      setMessage(downloading)
       try {
-        await player.play(playTracksRef.current, { tempo: tempoRef.current, from })
+        await player.play(tracks, { tempo: tempoRef.current, from })
         setPlaying(player.isPlaying)
+        setMessage((m) => (m === downloading ? '' : m))
       } catch (e) {
         setPlaying(false)
         setMessage(e instanceof Error ? e.message : 'Playback failed.')
