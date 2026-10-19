@@ -1,7 +1,7 @@
 import type { Song, TrackData } from './types.ts'
 
 /**
- * Instruments come from General MIDI soundfonts via smplr. `gm` is the
+ * Instruments come from General MIDI soundfonts (see voice.ts). `gm` is the
  * soundfont instrument name (snake_case), loaded from a CDN on first use.
  */
 export interface Instrument {

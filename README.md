@@ -127,9 +127,8 @@ bar, the triad from the tune's own scale that best fits the melody.
     change.
   - Other scales (pentatonics, Hirajoshi, whole tone...) snap each note to the
     nearest scale tone.
-- **Playback** (`src/music/engine.ts`): soundfont instruments via `smplr`,
-  scheduled on the Web Audio clock. Changing sets, tempo or instruments while
-  playing re-schedules from the current position.
+- **Playback** (`src/music/engine.ts`): see Voices above. Changing the genre, scale,
+  tempo or instruments while playing re-joins from the current position.
 
 ## Adding sets
 
