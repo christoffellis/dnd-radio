@@ -3,7 +3,8 @@ import assert from 'node:assert/strict'
 import { remapPitch, remapNotes } from './remap.ts'
 import { detectKey } from './key.ts'
 import { NOTE_SETS } from './noteSets.ts'
-import { INSTRUMENT_SETS, assignVoices } from './instruments.ts'
+import { INSTRUMENTS, INSTRUMENT_SETS, assignVoices } from './instruments.ts'
+import { drumPitch, mapDrumNotes } from './drums.ts'
 import { classifyLanes, defaultSplit, applySplit, isPolyphonic, splitTrack } from './split.ts'
 import type { NoteEvent, Song, TrackData } from './types.ts'
 
@@ -102,23 +103,6 @@ test('key detection finds C major and A minor', () => {
   assert.deepEqual(detectKey(aMinor), { tonic: 9, mode: 'minor' })
 })
 
-test('voice assignment: highest track leads, lowest gets the bass voice', () => {
-  const set = INSTRUMENT_SETS[0]
-  const s = song([track(0, [48, 50]), track(1, [72, 74]), track(2, [60, 62])])
-  const a = assignVoices(s, set)
-  assert.equal(a.get(1), set.voices[0])
-  assert.equal(a.get(2), set.voices[1])
-  assert.equal(a.get(0), set.voices[set.voices.length - 1])
-})
-
-test('voice assignment: single track gets the lead, drums are muted', () => {
-  const set = INSTRUMENT_SETS[1]
-  const s = song([track(0, [60, 62]), track(1, [36, 38], true)])
-  const a = assignVoices(s, set)
-  assert.equal(a.get(0), set.voices[0])
-  assert.equal(a.get(1), null)
-})
-
 // ---- voice splitting ------------------------------------------------------
 
 function ev(midi: number, time: number, duration = 0.5): NoteEvent {
@@ -188,13 +172,101 @@ test('files with several pitched tracks are not auto-split', () => {
   assert.equal(defaultSplit(song([piano(0), piano(1), piano(2)])).size, 0)
 })
 
-test('split voices get lead, middle and bass instruments from a set', () => {
+
+// ---- instrument assignment ------------------------------------------------
+
+function roleOf(setIndex: number, gm: string | null | undefined) {
+  return INSTRUMENT_SETS[setIndex].voices.find((x) => x.gm === gm)?.role
+}
+
+test('every voice and percussion instrument in every set is in the library', () => {
+  const known = new Set(INSTRUMENTS.map((i) => i.gm))
+  for (const set of INSTRUMENT_SETS) {
+    assert.ok(known.has(set.percussion), `${set.id} percussion ${set.percussion}`)
+    for (const voice of set.voices) assert.ok(known.has(voice.gm), `${set.id}: ${voice.gm}`)
+    const roles = new Set(set.voices.map((x) => x.role))
+    for (const r of ['lead', 'harmony', 'pad', 'accent', 'bass']) {
+      assert.ok(roles.has(r as never), `${set.id} has no ${r} voice`)
+    }
+    assert.equal(new Set(set.voices.map((x) => x.gm)).size, set.voices.length, `${set.id} duplicates`)
+  }
+})
+
+test('there is a Port Nyanzaru set', () => {
+  assert.ok(INSTRUMENT_SETS.some((s) => s.id === 'nyanzaru'))
+})
+
+test('highest track leads, lowest gets a bass voice, middle gets harmony', () => {
+  const s = song([track(0, [48, 50]), track(1, [72, 74]), track(2, [60, 62])])
+  INSTRUMENT_SETS.forEach((_, si) => {
+    const a = assignVoices(s, INSTRUMENT_SETS[si])
+    assert.equal(roleOf(si, a.get(1)), 'lead')
+    assert.equal(roleOf(si, a.get(2)), 'harmony')
+    assert.equal(roleOf(si, a.get(0)), 'bass')
+  })
+})
+
+test('single track gets a lead; drums go to the percussion instrument', () => {
+  const set = INSTRUMENT_SETS[1]
+  const s = song([track(0, [60, 62]), track(1, [36, 38], true)])
+  const a = assignVoices(s, set)
+  assert.equal(roleOf(1, a.get(0)), 'lead')
+  assert.equal(a.get(1), set.percussion)
+})
+
+test('a rich file gets distinct instruments, with choir as a pad', () => {
+  // Mirrors a real 6-track file: drums, two e-pianos, whistle, choir, alto sax.
+  const t = (index: number, midis: number[], program: number, isPercussion = false): TrackData => ({
+    ...track(index, midis, isPercussion),
+    program,
+  })
+  const s = song([
+    t(0, [36, 38, 42], 0, true),
+    t(1, [48, 50, 52], 4), // electric piano, low
+    t(2, [84, 86, 88], 78), // whistle, high
+    t(3, [60, 62, 64], 4), // electric piano, mid
+    t(4, [67, 69, 71], 52), // choir aahs
+    t(5, [55, 57, 59], 65), // alto sax
+  ])
+  INSTRUMENT_SETS.forEach((set, si) => {
+    const a = assignVoices(s, set)
+    const pitched = [1, 2, 3, 4, 5].map((i) => a.get(i)!)
+    assert.equal(new Set(pitched).size, 5, `${set.id} reused an instrument: ${pitched}`)
+    assert.equal(roleOf(si, a.get(2)), 'lead')
+    assert.equal(roleOf(si, a.get(1)), 'bass')
+    assert.equal(roleOf(si, a.get(4)), 'pad')
+    assert.equal(a.get(0), set.percussion)
+  })
+})
+
+test('more tracks than voices still assigns everything', () => {
+  const tracks = Array.from({ length: 16 }, (_, i) => track(i, [40 + i * 3, 42 + i * 3]))
+  const a = assignVoices(song(tracks), INSTRUMENT_SETS[0])
+  assert.equal(a.size, 16)
+  assert.ok([...a.values()].every((x) => typeof x === 'string'))
+})
+
+test('split voices map to lead, harmony and bass roles', () => {
   const t: TrackData = { index: 0, name: 'Piano', channel: 0, isPercussion: false, notes: pianoNotes() }
   const parts = splitTrack(t)
-  const set = INSTRUMENT_SETS[0]
-  const a = assignVoices(song(parts), set)
-  const byLane = Object.fromEntries(parts.map((p) => [p.lane, a.get(p.index)]))
-  assert.equal(byLane.melody, set.voices[0])
-  assert.equal(byLane.harmony, set.voices[1])
-  assert.equal(byLane.bass, set.voices[set.voices.length - 1])
+  const a = assignVoices(song(parts), INSTRUMENT_SETS[0])
+  const byLane = Object.fromEntries(parts.map((p) => [p.lane, roleOf(0, a.get(p.index))]))
+  assert.deepEqual(byLane, { melody: 'lead', harmony: 'harmony', bass: 'bass' })
+})
+
+// ---- drums ----------------------------------------------------------------
+
+test('drums keep kick, toms and snare and drop hats and cymbals', () => {
+  assert.equal(drumPitch(36), 36)
+  assert.equal(drumPitch(38), 50)
+  assert.notEqual(drumPitch(45), null)
+  assert.equal(drumPitch(42), null) // closed hat
+  assert.equal(drumPitch(49), null) // crash
+  const mapped = mapDrumNotes([
+    { midi: 36, time: 0, duration: 0.05, velocity: 1 },
+    { midi: 42, time: 0.25, duration: 0.05, velocity: 1 },
+    { midi: 38, time: 0.5, duration: 0.05, velocity: 1 },
+  ])
+  assert.deepEqual(mapped.map((n) => n.midi), [36, 50])
+  assert.ok(mapped.every((n) => n.duration >= 0.25))
 })

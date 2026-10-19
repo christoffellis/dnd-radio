@@ -21,6 +21,7 @@ export function parseMidi(data: ArrayBuffer, fallbackName: string): Song {
       name: t.name?.trim() || t.instrument?.name || `Track ${i + 1}`,
       channel: t.channel,
       isPercussion: t.instrument?.percussion ?? t.channel === 9,
+      program: t.instrument?.number,
       notes,
     })
   })

@@ -8,6 +8,7 @@ import {
   getInstrumentSet,
   instrumentName,
 } from './music/instruments.ts'
+import { mapDrumNotes } from './music/drums.ts'
 import { detectKey, keyName } from './music/key.ts'
 import { parseMidi } from './music/midi.ts'
 import { NOTE_SETS, NOTE_SET_GROUPS, getNoteSet } from './music/noteSets.ts'
@@ -116,7 +117,7 @@ export default function App() {
     const out: PlayTrack[] = []
     for (const t of remapped) {
       const gm = assignments.get(t.index)
-      if (gm) out.push({ gm, notes: t.notes })
+      if (gm) out.push({ gm, notes: t.isPercussion ? mapDrumNotes(t.notes) : t.notes })
     }
     return out
   }, [remapped, assignments])

@@ -13,6 +13,8 @@ export interface TrackData {
   name: string
   channel: number
   isPercussion: boolean
+  /** General MIDI program number (0-127) from the file, when known. */
+  program?: number
   notes: NoteEvent[]
   /** Set when this track is one voice split out of another track. */
   source?: number

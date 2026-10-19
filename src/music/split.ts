@@ -98,6 +98,7 @@ export function splitTrack(track: TrackData): TrackData[] {
       name: `${track.name} · ${LANE_LABEL[lane]}`,
       channel: track.channel,
       isPercussion: false,
+      program: track.program,
       notes,
       source: track.index,
       lane,

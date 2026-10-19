@@ -28,10 +28,14 @@ so it works under `https://<user>.github.io/dnd-radio/`.
 
 - **Songs**: `.mid` files, uploaded or from `public/midi` (listed in
   `public/midi/index.json`). Parsed with `@tonejs/midi` into a plain model.
-- **Instrument sets** (`src/music/instruments.ts`): an ordered list of voices
-  `[lead, second, third, ..., bass]`. The highest track gets the lead, the
-  lowest gets the bass voice, the rest fill in between. Each track can still be
-  overridden individually. Drum tracks are muted by default.
+- **Instrument sets** (`src/music/instruments.ts`): each set is a palette of
+  ~10 voices with roles (lead, harmony, pad, accent, bass) plus a percussion
+  instrument. Tracks are matched to roles by register (top line = lead, lowest =
+  bass), by split lane, and by the track's original General MIDI instrument
+  (choir, strings and organs become pads; bells and mallets become accents).
+  Instruments aren't reused until the palette runs out. Drums are mapped onto
+  the set's percussion instrument (kick, toms and snare only). Any track can be
+  overridden individually.
 - **Voice splitting** (`src/music/split.ts`): many MIDIs (piano arrangements
   especially) put everything in one track. Polyphonic tracks are split into
   melody / harmony / bass by what is sounding at each note's start: the top
