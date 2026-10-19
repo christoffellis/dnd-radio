@@ -52,7 +52,9 @@ export function fetchSong(url: string, title: string, tune?: number): Promise<So
   let p = cache.get(key)
   if (!p) {
     p = (async () => {
-      const res = await fetch(url)
+      // Our own files can change between deploys; the pinned corpus URLs never do.
+      const sameOrigin = !/^https?:/i.test(url) || url.startsWith(location.origin)
+      const res = await fetch(url, sameOrigin ? { cache: 'no-cache' } : undefined)
       if (!res.ok) throw new Error(`Couldn’t load “${title}” (${res.status}).`)
       const song = await songFromBuffer(await res.arrayBuffer(), url.split('/').pop() ?? title, tune)
       return { ...song, name: title }

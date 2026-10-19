@@ -41,9 +41,9 @@ so it works under `https://<user>.github.io/dnd-radio/`.
   falls back to the page's own `Date` header (about ±0.5 s), then to the device
   clock. Advanced shows which one is in use and its margin.
 - **Scheduling** (`src/music/engine.ts`): notes are scheduled on the Web Audio
-  clock, mapped to real time with `getOutputTimestamp()` (which includes the
-  speaker latency), and the start position is decided only after the song and
-  its instruments have loaded. The next song is fetched and scheduled ahead so
+  clock, just in time (2 s ahead), mapped to real time with
+  `getOutputTimestamp()` (which includes the speaker latency), and the start
+  position is decided only after the song and its instruments have loaded. The next song is fetched and scheduled ahead so
   transitions land on the boundary. Changing the scale or instruments re-joins
   the live position.
 
@@ -95,6 +95,13 @@ bar, the triad from the tune's own scale that best fits the melody.
   performance. Fiddle tunes without a tempo mark are paced by their running
   note value, so a reel plays at the same speed whether it's written in 2/4 or
   4/4.
+- **Voices** (`src/music/voice.ts`): our own sampler over the FluidR3 General
+  MIDI soundfonts. Each note gets an attack shaped for its instrument family
+  (bowed and sung notes swell, plucked notes snap), tone that follows velocity
+  and opens up during the attack, a few cents of pitch drift, delayed vibrato
+  on long notes, sample looping for sustained notes, and a curved release that
+  varies note to note and lengthens at phrase ends. Everything plays through a
+  room reverb sized per genre (a small tavern, a cavernous dungeon).
 - **Loaders** (`src/components/Wave.tsx`): Material-3-style wavy progress and
   loading indicators; the wave's height follows the music and its head sheds
   sparkles.

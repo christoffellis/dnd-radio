@@ -141,6 +141,7 @@ export default function App() {
   // ---- Catalog ------------------------------------------------------------
 
   const [entries, setEntries] = useState<Entry[]>([])
+  const [catalogLoaded, setCatalogLoaded] = useState(false)
   const [uploads, setUploads] = useState<Entry[]>([])
   const [songs, setSongs] = useState<Record<string, Song>>({})
   const [failed, setFailed] = useState<Record<string, string>>({})
@@ -233,6 +234,10 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
+    player.setRoom(theme.room)
+  }, [player, theme])
+
+  useEffect(() => {
     player.setVolume(volume)
     save('volume', volume)
   }, [player, volume])
@@ -249,7 +254,9 @@ export default function App() {
     ;(async () => {
       const list: Entry[] = []
       try {
-        const stock = (await (await fetch(`${base}midi/index.json`)).json()) as StockSong[]
+        // Always revalidate the catalogs: a stale list would put this listener on a
+        // different schedule from everyone else (and miss new stations).
+        const stock = (await (await fetch(`${base}midi/index.json`, { cache: 'no-cache' })).json()) as StockSong[]
         for (const s of stock) {
           list.push({
             id: `stock:${s.file}`,
@@ -262,7 +269,7 @@ export default function App() {
             keepScale: !!s.keepScale,
           })
         }
-        const classics = (await (await fetch(`${base}classics.json`)).json()) as Classics
+        const classics = (await (await fetch(`${base}classics.json`, { cache: 'no-cache' })).json()) as Classics
         for (const p of classics.pieces) {
           list.push({
             id: `m21:${p.path}${p.tune ? `#${p.tune}` : ''}`,
@@ -279,7 +286,10 @@ export default function App() {
       } catch {
         if (!cancelled) setMessage('Could not load the station’s song list.')
       }
-      if (!cancelled) setEntries(list)
+      if (!cancelled) {
+        setEntries(list)
+        setCatalogLoaded(true)
+      }
     })()
     return () => {
       cancelled = true
@@ -633,7 +643,9 @@ export default function App() {
         />
         <div className="now">
           <p className="eyebrow">{mode === 'radio' ? `${theme.name} station` : 'Free play'}</p>
-          <h2 className="title">{current?.title ?? 'Tuning…'}</h2>
+          <h2 className="title">
+            {current?.title ?? (catalogLoaded && mode === 'radio' && playlist.length === 0 ? 'Silence…' : 'Tuning…')}
+          </h2>
           <p className="next">
             {current ? current.composer : ' '}
             {next ? ` · Up next: ${next.title}` : ''}
@@ -674,6 +686,11 @@ export default function App() {
         </label>
       </div>
       {(message || failure) && <p className="message">{failure ?? message}</p>}
+      {catalogLoaded && mode === 'radio' && playlist.length === 0 && (
+        <p className="message">
+          No songs on the {theme.name} station yet. Try reloading the page, or pick another genre.
+        </p>
+      )}
 
       <details className="advanced">
         <summary>Advanced</summary>

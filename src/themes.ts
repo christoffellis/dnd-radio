@@ -27,6 +27,8 @@ export interface Theme {
   scale?: string
   /** Playback speed of the whole station. */
   tempo?: number
+  /** The space the music plays in: reverb length (s) and wet level. */
+  room: { seconds: number; wet: number }
 }
 
 export const THEMES: Theme[] = [
@@ -36,6 +38,7 @@ export const THEMES: Theme[] = [
     set: 'medieval',
     tagline: 'Candlelit halls and old roads.',
     motif: 'motes',
+    room: { seconds: 2.2, wet: 0.24 },
     colors: {
       bg: '#14110d',
       surface: '#1d1813',
@@ -52,6 +55,7 @@ export const THEMES: Theme[] = [
     set: 'tavern',
     tagline: 'Hearth smoke, spilled ale, a fiddler who won’t stop.',
     motif: 'embers',
+    room: { seconds: 1.1, wet: 0.16 },
     colors: {
       bg: '#1a110a',
       surface: '#241810',
@@ -68,6 +72,7 @@ export const THEMES: Theme[] = [
     set: 'celtic',
     tagline: 'Mist, moss and far green hills.',
     motif: 'leaves',
+    room: { seconds: 1.7, wet: 0.2 },
     colors: {
       bg: '#0e1511',
       surface: '#15201a',
@@ -85,6 +90,7 @@ export const THEMES: Theme[] = [
     tagline: 'Lanterns, cedar and quiet courtyards.',
     motif: 'petals',
     scale: 'yo',
+    room: { seconds: 2.0, wet: 0.24 },
     colors: {
       bg: '#141212',
       surface: '#1d1a19',
@@ -101,6 +107,7 @@ export const THEMES: Theme[] = [
     set: 'tropical',
     tagline: 'Harbour heat, jungle drums and spice.',
     motif: 'bubbles',
+    room: { seconds: 0.9, wet: 0.14 },
     colors: {
       bg: '#08191b',
       surface: '#0f2427',
@@ -118,6 +125,7 @@ export const THEMES: Theme[] = [
     tagline: 'Torchlight, damp stone, something breathing.',
     motif: 'fog',
     scale: 'harmonic-minor',
+    room: { seconds: 3.8, wet: 0.34 },
     colors: {
       bg: '#0b0a0f',
       surface: '#131119',
@@ -134,6 +142,7 @@ export const THEMES: Theme[] = [
     set: 'court',
     tagline: 'Banners, marble and polite knives.',
     motif: 'sparkles',
+    room: { seconds: 2.6, wet: 0.26 },
     colors: {
       bg: '#0f0f1a',
       surface: '#171726',
@@ -151,6 +160,7 @@ export const THEMES: Theme[] = [
     tagline: 'Sandstone, torchlit tombs and a long, slow river.',
     motif: 'sand',
     scale: 'hijaz',
+    room: { seconds: 3.0, wet: 0.3 },
     colors: {
       bg: '#0d1120',
       surface: '#151a2d',
@@ -169,6 +179,7 @@ export const THEMES: Theme[] = [
     motif: 'skitter',
     scale: 'harmonic-minor',
     tempo: 1.3,
+    room: { seconds: 0.7, wet: 0.12 },
     colors: {
       bg: '#11130b',
       surface: '#1a1d10',

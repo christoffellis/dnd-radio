@@ -7,14 +7,13 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "node --test src/music/music.test.ts src/music/musicxml.test.ts src/music/abc.test.ts src/music/humanize.test.ts src/radio/radio.test.ts",
+    "test": "node --test src/music/music.test.ts src/music/musicxml.test.ts src/music/abc.test.ts src/music/humanize.test.ts src/music/voice.test.ts src/radio/radio.test.ts",
     "gen:midi": "node scripts/generate-demo-midi.mjs"
   },
   "dependencies": {
     "@tonejs/midi": "^2.0.28",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "smplr": "^0.16.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

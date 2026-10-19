@@ -1,6 +1,6 @@
-import { Soundfont } from 'smplr'
 import { FALLBACK_GM } from './instruments.ts'
 import type { NoteEvent } from './types.ts'
+import { loadInstrument, playVoice, type LoadedInstrument } from './voice.ts'
 
 export interface PlayTrack {
   gm: string
@@ -8,7 +8,7 @@ export interface PlayTrack {
 }
 
 export interface PlayOptions {
-  /** Playback speed multiplier (the radio always uses 1). */
+  /** Playback speed multiplier (stations may run faster, e.g. Kobold). */
   tempo: number
   /**
    * Song position (seconds) to start from. Either a number, or a function
@@ -21,23 +21,61 @@ export interface PlayOptions {
   layer?: boolean
 }
 
+export interface Room {
+  /** Reverb tail length, seconds. */
+  seconds: number
+  /** Wet level, 0..1. */
+  wet: number
+}
+
 /** Lead time between deciding to start and the first note, seconds. */
 const LEAD = 0.15
+/** Notes are turned into audio nodes only this far ahead, seconds. */
+const LOOKAHEAD = 2
+const PUMP_MS = 200
+
+interface Pending {
+  inst: LoadedInstrument
+  gm: string
+  /** Context time the note starts. */
+  at: number
+  note: NoteEvent
+  into: number
+  duration: number
+  restAfter: number
+  slurred: boolean
+}
+
+interface Session {
+  pending: Pending[]
+  cursor: number
+}
+
+/** Optional test hook: called for every note scheduled. */
+type Probe = (e: { gm: string; midi: number; heardAtPerf: number }) => void
 
 /**
- * Schedules songs on the Web Audio clock using soundfont instruments.
- * Instruments are loaded once and cached.
+ * Plays songs on the Web Audio clock with our own sampler voices (see
+ * voice.ts), through a small room reverb. Notes are scheduled just in time
+ * (a couple of seconds ahead), which keeps long pieces light.
  */
 export class Player {
   private ctx: AudioContext | null = null
-  private cache = new Map<string, Promise<Soundfont>>()
-  private active = new Set<Soundfont>()
+  private master: GainNode | null = null
+  private bus: GainNode | null = null
+  private wet: GainNode | null = null
+  private convolver: ConvolverNode | null = null
+  private cache = new Map<string, Promise<LoadedInstrument>>()
+  private sessions: Session[] = []
+  private voices: { stop: (at: number) => void; until: number }[] = []
+  private pump: number | null = null
   private playing = false
   private startedAt = 0
   private fromSec = 0
   private tempo = 1
   private token = 0
   private volume = 90 // 0..127
+  private room: Room = { seconds: 1.8, wet: 0.22 }
 
   /** Called when an instrument could not be loaded and a fallback was used. */
   onWarn: (message: string) => void = () => {}
@@ -58,9 +96,22 @@ export class Player {
 
   setVolume(volume: number): void {
     this.volume = volume
-    this.cache.forEach((p) => {
-      p.then((sf) => sf.output.setVolume(volume)).catch(() => {})
-    })
+    if (this.master && this.ctx) {
+      this.master.gain.setTargetAtTime(this.gainFor(volume), this.ctx.currentTime, 0.05)
+    }
+  }
+
+  private gainFor(volume: number): number {
+    return Math.pow(volume / 127, 2) * 1.4
+  }
+
+  /** Size of the room the music plays in. */
+  setRoom(room: Room): void {
+    const changed = room.seconds !== this.room.seconds
+    this.room = room
+    if (!this.ctx || !this.wet) return
+    this.wet.gain.setTargetAtTime(room.wet, this.ctx.currentTime, 0.2)
+    if (changed && this.convolver) this.convolver.buffer = this.impulse(room.seconds)
   }
 
   /** Total output latency of the audio device, seconds. */
@@ -86,23 +137,62 @@ export class Player {
   }
 
   private ensureContext(): AudioContext {
-    if (!this.ctx) this.ctx = new AudioContext({ latencyHint: 'playback' })
+    if (!this.ctx) {
+      const ctx = new AudioContext({ latencyHint: 'playback' })
+      this.ctx = ctx
+      // instruments -> bus -> (dry + room) -> master -> gentle compressor -> out
+      this.bus = ctx.createGain()
+      this.master = ctx.createGain()
+      this.master.gain.value = this.gainFor(this.volume)
+      this.convolver = ctx.createConvolver()
+      this.convolver.buffer = this.impulse(this.room.seconds)
+      this.wet = ctx.createGain()
+      this.wet.gain.value = this.room.wet
+      const compressor = ctx.createDynamicsCompressor()
+      compressor.threshold.value = -14
+      compressor.knee.value = 12
+      compressor.ratio.value = 3
+      compressor.attack.value = 0.01
+      compressor.release.value = 0.25
+      this.bus.connect(this.master)
+      this.bus.connect(this.convolver).connect(this.wet).connect(this.master)
+      this.master.connect(compressor).connect(ctx.destination)
+    }
     return this.ctx
   }
 
-  private loadInstrument(gm: string): Promise<Soundfont> {
+  /** A synthetic room: decaying stereo noise, darker towards the tail. */
+  private impulse(seconds: number): AudioBuffer {
+    const ctx = this.ctx!
+    const rate = ctx.sampleRate
+    const length = Math.max(1, Math.floor(rate * seconds))
+    const buffer = ctx.createBuffer(2, length, rate)
+    let seed = 1234567
+    const rand = () => {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff
+      return seed / 0x7fffffff
+    }
+    for (let ch = 0; ch < 2; ch++) {
+      const data = buffer.getChannelData(ch)
+      let lp = 0
+      for (let i = 0; i < length; i++) {
+        const k = i / length
+        const noise = rand() * 2 - 1
+        const smooth = 0.2 + 0.75 * k // the tail loses its highs
+        lp = lp + (noise - lp) * (1 - smooth)
+        data[i] = lp * Math.pow(1 - k, 3) * (i < rate * 0.008 ? i / (rate * 0.008) : 1)
+      }
+    }
+    return buffer
+  }
+
+  private loadInstrument(gm: string): Promise<LoadedInstrument> {
     let promise = this.cache.get(gm)
     if (!promise) {
       const ctx = this.ensureContext()
       promise = (async () => {
-        // FluidR3_GM is ~1 MB per instrument; the MusyngKite default is ~8 MB.
-        // loadLoopData lets sustained notes hold instead of stopping when the sample runs out.
-        const options = { instrument: gm, kit: 'FluidR3_GM', loadLoopData: true } as { instrument: string }
-        const sf = new Soundfont(ctx, options)
         try {
-          await sf.load
-          sf.output.setVolume(this.volume)
-          return sf
+          return await loadInstrument(ctx, gm)
         } catch {
           if (gm === FALLBACK_GM) throw new Error('Could not load any instruments (offline?)')
           this.onWarn(`Could not load "${gm}", using piano instead.`)
@@ -149,27 +239,88 @@ export class Player {
     const heardAtPerf = this.heardAt(t0)
     const from = typeof options.from === 'function' ? options.from(heardAtPerf) : options.from
 
+    const pending: Pending[] = []
     tracks.forEach((track, i) => {
-      const sf = instruments[i]
-      for (const n of track.notes) {
+      const inst = instruments[i]
+      const notes = [...track.notes].sort((a, b) => a.time - b.time)
+      notes.forEach((n, k) => {
         const end = n.time + n.duration
-        if (end <= from + 0.05) continue
-        // Notes already sounding when we join start now with what's left.
+        if (end <= from + 0.05) return
         const start = Math.max(n.time, from)
-        sf.start({
-          note: n.midi,
-          velocity: Math.round(Math.min(1, Math.max(0.05, n.velocity)) * 127),
-          time: t0 + (start - from) / tempo,
-          duration: Math.max(0.05, (end - start) / tempo),
+        // Phrasing context: is there a rest after this note? Was it slurred into?
+        let next = Infinity
+        for (let j = k + 1; j < notes.length; j++) {
+          if (notes[j].time > n.time + 0.002) {
+            next = notes[j].time
+            break
+          }
+        }
+        let prevEnd = -Infinity
+        for (let j = k - 1; j >= 0; j--) {
+          if (notes[j].time < n.time - 0.002) {
+            prevEnd = notes[j].time + notes[j].duration
+            break
+          }
+        }
+        pending.push({
+          inst,
+          gm: track.gm,
+          at: t0 + (start - from) / tempo,
+          note: n,
+          into: (start - n.time) / tempo,
+          duration: (end - start) / tempo,
+          restAfter: (next - end) / tempo,
+          slurred: Math.abs(prevEnd - n.time) < 0.03,
         })
-      }
+      })
     })
+    pending.sort((a, b) => a.at - b.at)
+    this.sessions.push({ pending, cursor: 0 })
+    this.schedule()
+    this.startPump()
 
-    for (const sf of instruments) this.active.add(sf)
     this.tempo = tempo
     this.startedAt = t0
     this.fromSec = from
     this.playing = true
+  }
+
+  private startPump(): void {
+    if (this.pump !== null) return
+    this.pump = window.setInterval(() => this.schedule(), PUMP_MS)
+  }
+
+  /** Turn notes that are about to play into voices. */
+  private schedule(): void {
+    const ctx = this.ctx
+    if (!ctx || !this.bus) return
+    const horizon = ctx.currentTime + LOOKAHEAD
+    const probe = (globalThis as { __radioProbe?: Probe }).__radioProbe
+    for (const s of this.sessions) {
+      while (s.cursor < s.pending.length && s.pending[s.cursor].at < horizon) {
+        const p = s.pending[s.cursor++]
+        const stop = playVoice(
+          ctx,
+          p.inst,
+          {
+            midi: p.note.midi,
+            velocity: p.note.velocity,
+            time: p.at,
+            duration: p.duration,
+            into: p.into,
+            restAfter: p.restAfter,
+            slurred: p.slurred,
+            songTime: p.note.time,
+          },
+          this.bus,
+        )
+        this.voices.push({ stop, until: p.at + p.duration + 2 })
+        probe?.({ gm: p.gm, midi: p.note.midi, heardAtPerf: this.heardAt(p.at) })
+      }
+    }
+    this.sessions = this.sessions.filter((s) => s.cursor < s.pending.length)
+    const now = ctx.currentTime
+    this.voices = this.voices.filter((v) => v.until > now)
   }
 
   pause(): void {
@@ -187,7 +338,9 @@ export class Player {
   }
 
   private silence(): void {
-    for (const sf of this.active) sf.stop()
-    this.active.clear()
+    const now = this.ctx?.currentTime ?? 0
+    for (const v of this.voices) v.stop(now)
+    this.voices = []
+    this.sessions = []
   }
 }
