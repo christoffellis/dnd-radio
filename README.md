@@ -17,6 +17,13 @@ npm run build       # type-check + production build
 npm run gen:midi    # regenerate the demo MIDI files in public/midi
 ```
 
+## Deploy
+
+Pushing to `main` builds and deploys to GitHub Pages via
+`.github/workflows/deploy.yml` (it runs the tests first). In the repo settings,
+set **Pages → Source** to **GitHub Actions**. The build uses a relative base,
+so it works under `https://<user>.github.io/dnd-radio/`.
+
 ## How it works
 
 - **Songs**: `.mid` files, uploaded or from `public/midi` (listed in
