@@ -8,21 +8,30 @@ export interface PlayTrack {
 }
 
 export interface PlayOptions {
-  /** Playback speed multiplier. */
+  /** Playback speed multiplier (the radio always uses 1). */
   tempo: number
-  /** Start offset in song seconds. */
-  from: number
+  /**
+   * Song position (seconds) to start from. Either a number, or a function
+   * that gets the performance.now() time at which the first scheduled sound
+   * will actually reach the listener's ears, and returns the song position
+   * that should be heard at that moment. Negative values start in the future.
+   */
+  from: number | ((heardAtPerfMs: number) => number)
+  /** Keep whatever is already playing instead of silencing it first. */
+  layer?: boolean
 }
 
+/** Lead time between deciding to start and the first note, seconds. */
+const LEAD = 0.15
+
 /**
- * Schedules a song on the Web Audio clock using soundfont instruments.
- * Instruments are loaded once and cached. Changing anything while playing is
- * done by calling play() again from the current position.
+ * Schedules songs on the Web Audio clock using soundfont instruments.
+ * Instruments are loaded once and cached.
  */
 export class Player {
   private ctx: AudioContext | null = null
   private cache = new Map<string, Promise<Soundfont>>()
-  private active: Soundfont[] = []
+  private active = new Set<Soundfont>()
   private playing = false
   private startedAt = 0
   private fromSec = 0
@@ -37,6 +46,7 @@ export class Player {
     return this.playing
   }
 
+  /** Song position of the most recent play() at this moment, seconds. */
   position(): number {
     if (!this.playing || !this.ctx) return this.fromSec
     return this.fromSec + (this.ctx.currentTime - this.startedAt) * this.tempo
@@ -53,8 +63,15 @@ export class Player {
     })
   }
 
+  /** Total output latency of the audio device, seconds. */
+  latency(): number {
+    const ctx = this.ctx
+    if (!ctx) return 0
+    return (ctx.outputLatency || 0) + (ctx.baseLatency || 0)
+  }
+
   private ensureContext(): AudioContext {
-    if (!this.ctx) this.ctx = new AudioContext()
+    if (!this.ctx) this.ctx = new AudioContext({ latencyHint: 'playback' })
     return this.ctx
   }
 
@@ -83,45 +100,59 @@ export class Player {
     return promise
   }
 
-  /** True when the instrument has already been requested (loaded or loading). */
   isCached(gm: string): boolean {
     return this.cache.has(gm)
   }
 
-  /** Preload instruments so playback starts without a gap. */
+  /** Start loading instruments ahead of time (e.g. for the next song). */
   async preload(gms: string[]): Promise<void> {
     await Promise.all([...new Set(gms)].map((g) => this.loadInstrument(g)))
+  }
+
+  /** Must be called from a user gesture before the first play. */
+  async unlock(): Promise<void> {
+    await this.ensureContext().resume()
   }
 
   async play(tracks: PlayTrack[], options: PlayOptions): Promise<void> {
     const ctx = this.ensureContext()
     const token = ++this.token
-    this.silence()
-    this.playing = false
-    this.fromSec = options.from
+    if (!options.layer) {
+      this.silence()
+      this.playing = false
+    }
 
     await ctx.resume()
     const instruments = await Promise.all(tracks.map((t) => this.loadInstrument(t.gm)))
     if (token !== this.token) return // superseded by a newer play/pause/stop
 
     const tempo = Math.max(0.1, options.tempo)
-    const t0 = ctx.currentTime + 0.1
+    // Decide the start position only now that everything is loaded, so a slow
+    // download doesn't put this listener behind everyone else.
+    const t0 = ctx.currentTime + LEAD
+    const heardAtPerf = performance.now() + (LEAD + this.latency()) * 1000
+    const from = typeof options.from === 'function' ? options.from(heardAtPerf) : options.from
+
     tracks.forEach((track, i) => {
       const sf = instruments[i]
       for (const n of track.notes) {
-        if (n.time < options.from) continue
+        const end = n.time + n.duration
+        if (end <= from + 0.05) continue
+        // Notes already sounding when we join start now with what's left.
+        const start = Math.max(n.time, from)
         sf.start({
           note: n.midi,
           velocity: Math.round(Math.min(1, Math.max(0.05, n.velocity)) * 127),
-          time: t0 + (n.time - options.from) / tempo,
-          duration: Math.max(0.05, n.duration / tempo),
+          time: t0 + (start - from) / tempo,
+          duration: Math.max(0.05, (end - start) / tempo),
         })
       }
     })
 
-    this.active = [...new Set(instruments)]
+    for (const sf of instruments) this.active.add(sf)
     this.tempo = tempo
     this.startedAt = t0
+    this.fromSec = from
     this.playing = true
   }
 
@@ -141,6 +172,6 @@ export class Player {
 
   private silence(): void {
     for (const sf of this.active) sf.stop()
-    this.active = []
+    this.active.clear()
   }
 }

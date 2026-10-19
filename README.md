@@ -1,8 +1,9 @@
 # DnD Radio
 
-Play MIDI files with instrument and scale sets tuned for tabletop sessions.
-Load a song, pick a setting (tavern, Celtic, East Asian, dungeon...) and the
-song is re-voiced and re-scaled to match.
+A synced background-music radio for tabletop sessions. Pick a setting
+(Medieval, Tavern, Celtic, East Asian, Tropical, Dungeon, Royal court) and the
+station's songs are re-voiced for it, with colours and an animation to match.
+Everyone tuned in hears the same song at the same moment.
 
 ## Run
 
@@ -24,10 +25,46 @@ Pushing to `main` builds and deploys to GitHub Pages via
 set **Pages → Source** to **GitHub Actions**. The build uses a relative base,
 so it works under `https://<user>.github.io/dnd-radio/`.
 
+## The radio
+
+- **Playlist**: the stock songs in `public/midi/index.json` (entries with
+  `"radio": false` stay out of rotation) loop forever from a fixed start,
+  `EPOCH_MS` in `src/radio/schedule.ts`, with a 2 s gap between songs. Anyone
+  who knows the UTC time can work out what's playing and how far in, so no
+  server is needed.
+- **Clock** (`src/radio/clock.ts`): device clocks are often seconds off, so the
+  page asks `time.akamai.com` for the time a few times and keeps the fastest
+  answer (NTP-style), then runs on `performance.now()`. If that's blocked it
+  falls back to the page's own `Date` header (about ±0.5 s), then to the device
+  clock.
+- **Scheduling** (`src/music/engine.ts`): notes are scheduled on the Web Audio
+  clock, compensating for the device's output latency, and the start position
+  is decided only after instruments have loaded. The next song is scheduled 3 s
+  ahead so transitions land on the boundary. Changing the setting, scale or
+  instruments re-joins the live position.
+
+In a headless-browser test, two listeners whose device clocks disagreed by
+11.5 s, joining 3.5 s apart, heard the same notes within 4 ms (median) and
+27 ms (worst).
+
+Changing the playlist (adding, removing or reordering radio songs) shifts the
+schedule for everyone, which is fine as long as everyone loads the same build.
+
+## Stock songs
+
+All traditional or public domain, transcribed in `scripts/generate-demo-midi.mjs`:
+Greensleeves, Drunken Sailor, The Entertainer (Joplin), Oh! Susanna (Foster),
+Amazing Grace, Ode to Joy (Beethoven), Auld Lang Syne, Sakura Sakura, and Happy
+Birthday (free play only). Modern pop songs are under copyright, so they aren't
+bundled; you can still play your own `.mid` files under Advanced → Upload.
+
 ## How it works
 
-- **Songs**: `.mid` files, uploaded or from `public/midi` (listed in
-  `public/midi/index.json`). Parsed with `@tonejs/midi` into a plain model.
+- **Settings** (`src/themes.ts`): each setting picks an instrument set, a
+  colour palette and an animation motif (candle motes, hearth embers, leaves,
+  petals, bubbles, fog, sparkles) that reacts to every note as it's heard.
+- **Songs**: `.mid` files, stock or uploaded (Advanced). Parsed with
+  `@tonejs/midi` into a plain model.
 - **Instrument sets** (`src/music/instruments.ts`): each set is a palette of
   ~10 voices with roles (lead, harmony, pad, accent, bass) plus a percussion
   instrument. Tracks are matched to roles by register (top line = lead, lowest =

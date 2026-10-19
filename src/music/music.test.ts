@@ -192,8 +192,8 @@ test('every voice and percussion instrument in every set is in the library', () 
   }
 })
 
-test('there is a Port Nyanzaru set', () => {
-  assert.ok(INSTRUMENT_SETS.some((s) => s.id === 'nyanzaru'))
+test('there is a Tropical set', () => {
+  assert.ok(INSTRUMENT_SETS.some((s) => s.id === 'tropical'))
 })
 
 test('highest track leads, lowest gets a bass voice, middle gets harmony', () => {

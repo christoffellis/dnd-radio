@@ -11,13 +11,22 @@ interface Props {
   tracks: RollTrack[]
   duration: number
   getPosition: () => number
-  onSeek: (seconds: number) => void
+  onSeek?: (seconds: number) => void
+  gridColor: string
+  playheadColor: string
 }
 
 const HEIGHT = 180
 
 /** Minimal piano roll: static notes layer + a moving playhead. */
-export default function PianoRoll({ tracks, duration, getPosition, onSeek }: Props) {
+export default function PianoRoll({
+  tracks,
+  duration,
+  getPosition,
+  onSeek,
+  gridColor,
+  playheadColor,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const layerRef = useRef<HTMLCanvasElement | null>(null)
   const sizeRef = useRef({ w: 0, h: HEIGHT, dpr: 1 })
@@ -60,7 +69,7 @@ export default function PianoRoll({ tracks, duration, getPosition, onSeek }: Pro
       const pxPerSec = w / Math.max(duration, 1)
 
       // Faint octave lines at every C.
-      g.strokeStyle = 'rgba(184, 150, 90, 0.12)'
+      g.strokeStyle = gridColor
       g.lineWidth = 1
       for (let m = lo; m <= hi; m++) {
         if (m % 12 === 0) {
@@ -88,7 +97,7 @@ export default function PianoRoll({ tracks, duration, getPosition, onSeek }: Pro
     const observer = new ResizeObserver(draw)
     observer.observe(canvas)
     return () => observer.disconnect()
-  }, [tracks, duration])
+  }, [tracks, duration, gridColor])
 
   // Playhead animation loop.
   useEffect(() => {
@@ -104,25 +113,26 @@ export default function PianoRoll({ tracks, duration, getPosition, onSeek }: Pro
         g.drawImage(layer, 0, 0)
         g.scale(dpr, dpr)
         const x = (Math.min(getPosition(), duration) / Math.max(duration, 1)) * w
-        g.fillStyle = '#e8dcc2'
+        g.fillStyle = playheadColor
         g.fillRect(x, 0, 1.5, h)
       }
       frame = requestAnimationFrame(tick)
     }
     frame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame)
-  }, [getPosition, duration])
+  }, [getPosition, duration, playheadColor])
 
   return (
     <canvas
       ref={canvasRef}
-      className="roll"
+      className={onSeek ? 'roll seekable' : 'roll'}
       style={{ height: HEIGHT }}
       onClick={(e) => {
+        if (!onSeek) return
         const rect = e.currentTarget.getBoundingClientRect()
         onSeek(((e.clientX - rect.left) / rect.width) * duration)
       }}
-      aria-label="Piano roll. Click to seek."
+      aria-label={onSeek ? 'Piano roll. Click to seek.' : 'Piano roll'}
     />
   )
 }

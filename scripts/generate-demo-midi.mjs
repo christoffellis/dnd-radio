@@ -208,11 +208,181 @@ writeSong({
   progression: [chord(AmS, 4), chord(AmS, 4), chord(AmS, 4), chord(Dm, 4), chord(ES, 4)],
 })
 
+// ---------------------------------------------------------------------------
+// Public-domain popular songs. Compact notation:
+//   melody:      "E4:1 C5:2 r:2"  (note:units, r = rest)
+//   progression: "C:8 G:8 r:2"    (chord:units, r = rest)
+// Chords sit in octave 3 with the bass in octave 2, under the melody.
+
+const CHORDS = {
+  C: ['C2', ['C3', 'E3', 'G3']],
+  D: ['D2', ['D3', 'F#3', 'A3']],
+  Dm: ['D2', ['D3', 'F3', 'A3']],
+  F: ['F2', ['F3', 'A3', 'C4']],
+  G: ['G2', ['G3', 'B3', 'D4']],
+  A7: ['A2', ['A3', 'C#4', 'G4']],
+}
+
+function mel(text) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((tok) => {
+      const [note, units] = tok.split(':')
+      return [note === 'r' ? null : note, Number(units)]
+    })
+}
+
+function prog(text) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((tok) => {
+      const [name, units] = tok.split(':')
+      if (name === 'r') return [null, Number(units)]
+      const c = CHORDS[name]
+      if (!c) throw new Error(`unknown chord ${name}`)
+      return [c[0], c[1], Number(units)]
+    })
+}
+
+// Drunken Sailor (traditional sea shanty). D dorian, 4/4, unit = eighth.
+const sailorVerse = `
+  A4:2 A4:1 A4:1 A4:2 A4:1 A4:1   A4:2 D4:2 F4:2 A4:2
+  G4:2 G4:1 G4:1 G4:2 G4:1 G4:1   G4:2 C4:2 E4:2 G4:2
+  A4:2 A4:1 A4:1 A4:2 A4:1 A4:1   A4:2 B4:2 C5:2 D5:2
+  C5:2 A4:2 G4:2 E4:2             D4:4 D4:4`
+const sailorChorus = `
+  A4:4 A4:4   A4:2 D4:2 F4:2 A4:2
+  G4:4 G4:4   G4:2 C4:2 E4:2 G4:2
+  A4:4 A4:4   A4:2 B4:2 C5:2 D5:2
+  C5:2 A4:2 G4:2 E4:2   D4:4 D4:4`
+const sailorChords = 'Dm:8 Dm:8 C:8 C:8 Dm:8 Dm:8 C:8 Dm:8'
+
+writeSong({
+  file: 'drunken-sailor.mid',
+  title: 'Drunken Sailor',
+  bpm: 120,
+  unit: PPQ / 2,
+  melody: mel(sailorVerse + sailorChorus + sailorVerse + sailorChorus),
+  progression: prog([sailorChords, sailorChords, sailorChords, sailorChords].join(' ')),
+})
+
+// Oh! Susanna (Stephen Foster, 1848). C major, 4/4, unit = eighth.
+writeSong({
+  file: 'oh-susanna.mid',
+  title: 'Oh! Susanna',
+  bpm: 112,
+  unit: PPQ / 2,
+  melody: mel(`
+    C5:1 D5:1
+    E5:2 G5:2 G5:3 A5:1   G5:2 E5:2 C5:3 D5:1   E5:2 E5:2 D5:2 C5:2   D5:6 C5:1 D5:1
+    E5:2 G5:2 G5:3 A5:1   G5:2 E5:2 C5:3 D5:1   E5:2 E5:2 D5:2 D5:2   C5:8
+    F5:4 F5:4             A5:2 A5:4 A5:2        G5:2 G5:2 E5:2 C5:2   D5:6 C5:1 D5:1
+    E5:2 G5:2 G5:3 A5:1   G5:2 E5:2 C5:3 D5:1   E5:2 E5:2 D5:2 D5:2   C5:8`),
+  progression: prog(`
+    r:2
+    C:8 C:8 C:8 G:8
+    C:8 C:8 G:8 C:8
+    F:8 F:8 C:8 G:8
+    C:8 C:8 G:8 C:8`),
+})
+
+// The Entertainer (Scott Joplin, 1902), A strain. C major, 2/4, unit = 16th.
+writeSong({
+  file: 'the-entertainer.mid',
+  title: 'The Entertainer',
+  bpm: 76,
+  unit: PPQ / 4,
+  melody: mel(`
+    D4:1 D#4:1
+    E4:1 C5:2 E4:1 C5:2 E4:1 C5:5 C5:1 D5:1 D#5:1 E5:1
+    C5:1 D5:1 E5:2 B4:1 D5:2 C5:5 r:2 D4:1 D#4:1
+    E4:1 C5:2 E4:1 C5:2 E4:1 C5:5 A4:1 G4:1 F#4:1 A4:1
+    C5:1 E5:2 D5:1 C5:1 A4:1 D5:6 r:2 D4:1 D#4:1
+    E4:1 C5:2 E4:1 C5:2 E4:1 C5:5 C5:1 D5:1 D#5:1 E5:1
+    C5:1 D5:1 E5:2 B4:1 D5:2 C5:4
+    C5:1 D5:1 E5:1 C5:1 D5:1 E5:3
+    C5:1 D5:1 C5:1 E5:1 C5:1 D5:1 E5:3
+    C5:1 D5:1 C5:1 E5:1 C5:1 D5:1 E5:2 B4:1 D5:2 C5:6 r:3`),
+  progression: prog(`
+    r:2
+    C:8 C:8 G:8 C:8
+    C:8 D:8 D:8 G:8
+    C:8 C:8 G:8 C:8
+    C:8 C:8 G:8 C:8`),
+})
+
+// Amazing Grace (traditional hymn tune "New Britain"). G major, 3/4, unit = eighth.
+writeSong({
+  file: 'amazing-grace.mid',
+  title: 'Amazing Grace',
+  bpm: 80,
+  unit: PPQ / 2,
+  melody: mel(`
+    D4:2
+    G4:4 B4:1 G4:1   B4:4 A4:2   G4:4 E4:2   D4:4 D4:2
+    G4:4 B4:1 G4:1   B4:4 A4:2   D5:6        D5:4 B4:2
+    D5:4 B4:1 G4:1   B4:4 A4:2   G4:4 E4:2   D4:4 D4:2
+    G4:4 B4:1 G4:1   B4:4 A4:2   G4:6        G4:4`),
+  progression: prog(`
+    r:2
+    G:6 G:6 C:6 G:6
+    G:6 G:6 D:6 D:6
+    G:6 G:6 C:6 G:6
+    G:6 D:6 G:6 G:4`),
+})
+
+// Ode to Joy (Beethoven, Symphony No. 9). D major, 4/4, unit = eighth.
+writeSong({
+  file: 'ode-to-joy.mid',
+  title: 'Ode to Joy',
+  bpm: 108,
+  unit: PPQ / 2,
+  melody: mel(`
+    F#5:2 F#5:2 G5:2 A5:2   A5:2 G5:2 F#5:2 E5:2   D5:2 D5:2 E5:2 F#5:2   F#5:3 E5:1 E5:4
+    F#5:2 F#5:2 G5:2 A5:2   A5:2 G5:2 F#5:2 E5:2   D5:2 D5:2 E5:2 F#5:2   E5:3 D5:1 D5:4
+    E5:2 E5:2 F#5:2 D5:2    E5:2 F#5:1 G5:1 F#5:2 D5:2
+    E5:2 F#5:1 G5:1 F#5:2 E5:2   D5:2 E5:2 A4:4
+    F#5:2 F#5:2 G5:2 A5:2   A5:2 G5:2 F#5:2 E5:2   D5:2 D5:2 E5:2 F#5:2   E5:3 D5:1 D5:4`),
+  progression: prog(`
+    D:8 A7:8 D:8 A7:8
+    D:8 A7:8 D:8 A7:4 D:4
+    A7:8 D:8 A7:8 D:4 A7:4
+    D:8 A7:8 D:8 A7:4 D:4`),
+})
+
+// Happy Birthday to You (Mildred & Patty Hill). C major, 3/4, unit = 16th.
+writeSong({
+  file: 'happy-birthday.mid',
+  title: 'Happy Birthday',
+  bpm: 100,
+  unit: PPQ / 4,
+  melody: mel(`
+    G4:3 G4:1
+    A4:4 G4:4 C5:4   B4:8 G4:3 G4:1
+    A4:4 G4:4 D5:4   C5:8 G4:3 G4:1
+    G5:4 E5:4 C5:4   B4:4 A4:4 F5:3 F5:1
+    E5:4 C5:4 D5:4   C5:12`),
+  progression: prog(`
+    r:4
+    C:12 G:12
+    G:12 C:12
+    C:12 F:12
+    C:8 G:4 C:12`),
+})
+
 writeFileSync(
   join(OUT, 'index.json'),
   JSON.stringify(
     [
       { title: 'Greensleeves', file: 'greensleeves.mid' },
+      { title: 'Drunken Sailor', file: 'drunken-sailor.mid' },
+      { title: 'The Entertainer', file: 'the-entertainer.mid' },
+      { title: 'Oh! Susanna', file: 'oh-susanna.mid' },
+      { title: 'Amazing Grace', file: 'amazing-grace.mid' },
+      { title: 'Ode to Joy', file: 'ode-to-joy.mid' },
+      { title: 'Happy Birthday', file: 'happy-birthday.mid', radio: false },
       { title: 'Auld Lang Syne', file: 'auld-lang-syne.mid' },
       { title: 'Sakura Sakura', file: 'sakura.mid' },
     ],

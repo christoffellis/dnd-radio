@@ -4,6 +4,31 @@
     "file": "greensleeves.mid"
   },
   {
+    "title": "Drunken Sailor",
+    "file": "drunken-sailor.mid"
+  },
+  {
+    "title": "The Entertainer",
+    "file": "the-entertainer.mid"
+  },
+  {
+    "title": "Oh! Susanna",
+    "file": "oh-susanna.mid"
+  },
+  {
+    "title": "Amazing Grace",
+    "file": "amazing-grace.mid"
+  },
+  {
+    "title": "Ode to Joy",
+    "file": "ode-to-joy.mid"
+  },
+  {
+    "title": "Happy Birthday",
+    "file": "happy-birthday.mid",
+    "radio": false
+  },
+  {
     "title": "Auld Lang Syne",
     "file": "auld-lang-syne.mid"
   },

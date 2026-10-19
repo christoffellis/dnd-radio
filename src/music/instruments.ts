@@ -165,8 +165,8 @@ export const INSTRUMENT_SETS: InstrumentSet[] = [
     percussion: 'taiko_drum',
   },
   {
-    id: 'nyanzaru',
-    name: 'Port Nyanzaru',
+    id: 'tropical',
+    name: 'Tropical',
     description: 'Tropical harbour: pan flute, marimba, steel drums and kalimba.',
     voices: [
       v('pan_flute', 'lead'),
