@@ -3,7 +3,7 @@
  * the page, and the animation that reacts to the music.
  */
 
-export type Motif = 'motes' | 'embers' | 'leaves' | 'petals' | 'bubbles' | 'fog' | 'sparkles' | 'skitter'
+export type Motif = 'motes' | 'embers' | 'leaves' | 'petals' | 'bubbles' | 'fog' | 'sparkles' | 'skitter' | 'sand'
 
 export interface ThemeColors {
   bg: string
@@ -142,6 +142,23 @@ export const THEMES: Theme[] = [
       line: '#2d2c42',
       accent: '#d8b45a',
       accent2: '#b0324a',
+    },
+  },
+  {
+    id: 'egyptian',
+    name: 'Egyptian',
+    set: 'egyptian',
+    tagline: 'Sandstone, torchlit tombs and a long, slow river.',
+    motif: 'sand',
+    scale: 'hijaz',
+    colors: {
+      bg: '#0d1120',
+      surface: '#151a2d',
+      ink: '#f3e7c8',
+      muted: '#a79d82',
+      line: '#2b3251',
+      accent: '#e2b24c',
+      accent2: '#3fa7a0',
     },
   },
   {

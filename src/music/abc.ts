@@ -29,19 +29,25 @@ const FIFTHS: Record<string, number> = {
   Cb: -7, Gb: -6, Db: -5, Ab: -4, Eb: -3, Bb: -2, F: -1, C: 0, G: 1, D: 2, A: 3, E: 4, B: 5, 'F#': 6, 'C#': 7,
 }
 
-/** Quarter notes per minute when a tune has no Q: field, by tune type. */
-const DEFAULT_TEMPO: [RegExp, number][] = [
-  [/slip ?jig/i, 150],
-  [/jig/i, 156],
-  [/reel/i, 160],
-  [/hornpipe|clog/i, 136],
-  [/strathspey/i, 116],
-  [/fling/i, 132],
-  [/polka/i, 150],
-  [/march|quickstep/i, 112],
-  [/waltz/i, 150],
-  [/air|lament|slow/i, 76],
+/**
+ * Seconds per note when a tune has no Q: field, by tune type. Tempo is set from
+ * how many notes the tune packs into its bars, not from how it's written, so a
+ * reel notated in 2/4 with sixteenths plays at the same pace as one in 4/4
+ * with eighths. These are relaxed, "background at the table" session tempos.
+ */
+const NOTE_SECONDS: [RegExp, number][] = [
+  [/slip ?jig/i, 0.17],
+  [/jig/i, 0.17],
+  [/reel/i, 0.15],
+  [/hornpipe|clog/i, 0.17],
+  [/strathspey/i, 0.19],
+  [/fling/i, 0.17],
+  [/polka/i, 0.17],
+  [/march|quickstep/i, 0.2],
+  [/waltz/i, 0.3],
+  [/air|lament|slow/i, 0.45],
 ]
+const DEFAULT_NOTE_SECONDS = 0.2
 
 export interface AbcKey {
   tonic: number
@@ -99,6 +105,8 @@ function fraction(s: string | undefined, fallback: number): number {
 interface Item {
   midis: number[] // empty = rest
   len: number // in whole notes
+  /** Length as written, before broken rhythm (> <) reshapes it. */
+  base?: number
   tie: boolean
   bar?: boolean // marks a bar line
 }
@@ -148,10 +156,8 @@ export function parseAbc(source: string, fallbackName: string, tuneNumber?: numb
     if (q) qpm = Number(q[2]) * fraction(q[1] ?? '1/4', 1 / 4) * 4
     else if (/^\s*\d+\s*$/.test(header.Q)) qpm = Number(header.Q) * unit * 4
   }
-  if (!qpm) {
-    const kind = `${header.R ?? ''} ${header.T ?? ''}`
-    qpm = DEFAULT_TEMPO.find(([re]) => re.test(kind))?.[1] ?? 120
-  }
+  const kind = `${header.R ?? ''} ${header.T ?? ''}`
+  const noteSeconds = NOTE_SECONDS.find(([re]) => re.test(kind))?.[1] ?? DEFAULT_NOTE_SECONDS
 
   // ---- Tokenise the body into items -----------------------------------------
   const body = lines
@@ -175,6 +181,7 @@ export function parseAbc(source: string, fallbackName: string, tuneNumber?: numb
       item.len *= tuplet.factor
       if (--tuplet.left <= 0) tuplet = null
     }
+    item.base = item.len
     if (broken !== 1 && !item.bar) {
       item.len *= broken
       broken = 1
@@ -339,6 +346,25 @@ export function parseAbc(source: string, fallbackName: string, tuneNumber?: numb
   void sectionStart
 
   // ---- Items -> timed notes --------------------------------------------------
+  // No Q: field? Pace the tune by its running notes: the most common written
+  // note length (dotted pairs like B>G count as two eighths).
+  if (!qpm) {
+    const counts = new Map<number, number>()
+    for (const it of out) {
+      if (it.bar || it.midis.length === 0) continue
+      const key = Math.round((it.base ?? it.len) * 4096) / 4096
+      counts.set(key, (counts.get(key) ?? 0) + 1)
+    }
+    let running = 1 / 8
+    let best = -1
+    for (const [len, n] of counts) {
+      if (n > best || (n === best && len > running)) {
+        best = n
+        running = len
+      }
+    }
+    qpm = (240 * running) / noteSeconds
+  }
   const secPerWhole = (60 / qpm) * 4
   const notes: NoteEvent[] = []
   const bars: number[] = [0]

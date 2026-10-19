@@ -96,7 +96,8 @@ export class Player {
       const ctx = this.ensureContext()
       promise = (async () => {
         // FluidR3_GM is ~1 MB per instrument; the MusyngKite default is ~8 MB.
-        const options = { instrument: gm, kit: 'FluidR3_GM' } as { instrument: string }
+        // loadLoopData lets sustained notes hold instead of stopping when the sample runs out.
+        const options = { instrument: gm, kit: 'FluidR3_GM', loadLoopData: true } as { instrument: string }
         const sf = new Soundfont(ctx, options)
         try {
           await sf.load

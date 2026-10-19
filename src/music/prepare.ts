@@ -1,5 +1,6 @@
 import type { PlayTrack } from './engine.ts'
 import { mapDrumNotes } from './drums.ts'
+import { humanize } from './humanize.ts'
 import { assignVoices, getInstrumentSet } from './instruments.ts'
 import { detectKey } from './key.ts'
 import { getNoteSet } from './noteSets.ts'
@@ -50,10 +51,20 @@ export function prepare(raw: Song, options: PrepareOptions): PreparedSong {
     notes: t.isPercussion ? t.notes : remapNotes(t.notes, key, noteSet.intervals),
   }))
 
+  // Drums onto the set's percussion instrument, then a played-not-typed pass.
+  const performed = humanize(
+    tracks.map((t) => (t.isPercussion ? { ...t, notes: mapDrumNotes(t.notes) } : t)),
+    {
+      seed: raw.name,
+      bars: song.bars,
+      duration: song.duration,
+      instrument: (t) => assignments.get(t.index) ?? null,
+    },
+  )
   const playTracks: PlayTrack[] = []
-  for (const t of tracks) {
+  for (const t of performed) {
     const gm = assignments.get(t.index)
-    if (gm) playTracks.push({ gm, notes: t.isPercussion ? mapDrumNotes(t.notes) : t.notes })
+    if (gm) playTracks.push({ gm, notes: t.notes })
   }
 
   return { song, detectedKey, key, assignments, defaults, tracks, playTracks }

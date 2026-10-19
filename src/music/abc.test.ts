@@ -71,12 +71,15 @@ test('abc: short tunes play through again to fill time; bars are recorded', () =
   assert.deepEqual(song.bars?.slice(0, 4), [0, 1, 2, 3])
 })
 
-test('abc: default tempo comes from the tune type', () => {
+test('abc: default tempo comes from note density, whatever the notation', () => {
   const jig = parseAbc('X:1\nT:A Jig\nR:jig\nM:6/8\nL:1/8\nK:D\nDEF GAB|\n', 'x')
-  const reel = parseAbc('X:1\nT:A Reel\nR:reel\nM:4/4\nL:1/8\nK:D\nDEFG ABcd|\n', 'x')
-  const eighth = (s: typeof jig) => s.tracks[0].notes[0].duration
-  assert.ok(Math.abs(eighth(jig) - 30 / 156) < 1e-9)
-  assert.ok(Math.abs(eighth(reel) - 30 / 160) < 1e-9)
+  const reel44 = parseAbc('X:1\nT:A Reel\nR:reel\nM:4/4\nL:1/8\nK:D\nDEFG ABcd|\n', 'x')
+  const reel24 = parseAbc('X:1\nT:A Reel\nR:reel\nM:2/4\nL:1/16\nK:D\nDEFG ABcd|\n', 'x')
+  const first = (s: typeof jig) => s.tracks[0].notes[0].duration
+  assert.ok(Math.abs(first(jig) - 0.17) < 1e-9)
+  assert.ok(Math.abs(first(reel44) - 0.15) < 1e-9)
+  // Same music written in 2/4 with sixteenths plays at the same speed.
+  assert.ok(Math.abs(first(reel24) - first(reel44)) < 1e-9)
 })
 
 test('abc: picks a tune by X: in a multi-tune file', () => {

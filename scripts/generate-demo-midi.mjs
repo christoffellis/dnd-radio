@@ -387,8 +387,8 @@ writeSong({
 // Which genre stations (see src/themes.ts) play each song. [] = free play only.
 // keepScale: the song already belongs to that genre, so skip its default scale.
 const SONGS = [
-  { title: 'Greensleeves', file: 'greensleeves.mid', genres: ['medieval', 'court'] },
-  { title: 'Drunken Sailor', file: 'drunken-sailor.mid', genres: ['tavern', 'tropical', 'kobold'] },
+  { title: 'Greensleeves', file: 'greensleeves.mid', genres: ['medieval', 'court', 'egyptian'] },
+  { title: 'Drunken Sailor', file: 'drunken-sailor.mid', genres: ['tavern', 'tropical', 'kobold', 'egyptian'] },
   { title: 'The Entertainer', composer: 'Scott Joplin', file: 'the-entertainer.mid', genres: ['tavern', 'tropical', 'kobold'] },
   { title: 'Oh! Susanna', composer: 'Stephen Foster', file: 'oh-susanna.mid', genres: ['tavern', 'kobold'] },
   { title: 'Amazing Grace', file: 'amazing-grace.mid', genres: ['celtic', 'asian'] },

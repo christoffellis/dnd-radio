@@ -55,7 +55,8 @@
       "composer": "Francesco Landini",
       "duration": 82.5,
       "genres": [
-        "medieval"
+        "medieval",
+        "egyptian"
       ]
     },
     {
@@ -66,7 +67,8 @@
       "duration": 174,
       "genres": [
         "court",
-        "dungeon"
+        "dungeon",
+        "egyptian"
       ]
     },
     {
@@ -98,7 +100,8 @@
       "composer": "Italian Trecento",
       "duration": 82.909,
       "genres": [
-        "medieval"
+        "medieval",
+        "egyptian"
       ]
     },
     {
@@ -129,7 +132,8 @@
       "duration": 93,
       "genres": [
         "medieval",
-        "court"
+        "court",
+        "egyptian"
       ]
     },
     {
@@ -211,7 +215,8 @@
       "duration": 35,
       "genres": [
         "medieval",
-        "asian"
+        "asian",
+        "egyptian"
       ]
     },
     {
@@ -239,7 +244,7 @@
       "path": "ryansMammoth/IrishWashWomanJig.abc",
       "title": "The Irish Washerwoman",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic",
         "tavern"
@@ -250,7 +255,7 @@
       "path": "ryansMammoth/GarryOwenJig.abc",
       "title": "Garryowen",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic"
       ]
@@ -260,7 +265,7 @@
       "path": "ryansMammoth/HasteToTheWeddingJig.abc",
       "title": "Haste to the Wedding",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic",
         "tavern"
@@ -271,10 +276,11 @@
       "path": "ryansMammoth/LarkInTheMorningJig.abc",
       "title": "The Lark in the Morning",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic",
-        "asian"
+        "asian",
+        "egyptian"
       ]
     },
     {
@@ -282,9 +288,10 @@
       "path": "ryansMammoth/SwallowTailJig.abc",
       "title": "The Swallowtail Jig",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
-        "celtic"
+        "celtic",
+        "egyptian"
       ]
     },
     {
@@ -292,7 +299,7 @@
       "path": "ryansMammoth/RoryOMoreJig.abc",
       "title": "Rory O’More",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic"
       ]
@@ -302,7 +309,7 @@
       "path": "ryansMammoth/StPatricksDayInTheMorningJig.abc",
       "title": "St. Patrick’s Day in the Morning",
       "composer": "Traditional",
-      "duration": 55.769,
+      "duration": 49.3,
       "genres": [
         "celtic"
       ]
@@ -312,9 +319,10 @@
       "path": "ryansMammoth/MasonsApronReel.abc",
       "title": "The Mason’s Apron",
       "composer": "Traditional",
-      "duration": 36,
+      "duration": 57.6,
       "genres": [
-        "celtic"
+        "celtic",
+        "egyptian"
       ]
     },
     {
@@ -322,7 +330,7 @@
       "path": "ryansMammoth/TullochgorumReel.abc",
       "title": "Tullochgorum",
       "composer": "Traditional",
-      "duration": 48.375,
+      "duration": 58.05,
       "genres": [
         "celtic"
       ]
@@ -332,7 +340,7 @@
       "path": "ryansMammoth/MissMcCloudsReel.abc",
       "title": "Miss McLeod’s Reel",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "celtic"
       ]
@@ -342,7 +350,7 @@
       "path": "ryansMammoth/FairyDanceReel.abc",
       "title": "The Fairy Dance",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "celtic",
         "asian"
@@ -353,7 +361,7 @@
       "path": "ryansMammoth/FlowersOfEdinburgReel.abc",
       "title": "The Flowers of Edinburgh",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "celtic"
       ]
@@ -363,7 +371,7 @@
       "path": "ryansMammoth/DuncanDavidsonStrathspey.abc",
       "title": "Duncan Davidson",
       "composer": "Traditional",
-      "duration": 66.207,
+      "duration": 48.64,
       "genres": [
         "celtic"
       ]
@@ -373,10 +381,11 @@
       "path": "ryansMammoth/MarquisOfHuntlysStrathspey.abc",
       "title": "The Marquis of Huntly",
       "composer": "Traditional",
-      "duration": 66.207,
+      "duration": 48.64,
       "genres": [
         "celtic",
-        "medieval"
+        "medieval",
+        "egyptian"
       ]
     },
     {
@@ -384,9 +393,10 @@
       "path": "ryansMammoth/42dHighlandRegimentStrathspey.abc",
       "title": "The 42nd Highland Regiment",
       "composer": "Traditional",
-      "duration": 66.336,
+      "duration": 48.735,
       "genres": [
-        "celtic"
+        "celtic",
+        "egyptian"
       ]
     },
     {
@@ -394,7 +404,7 @@
       "path": "ryansMammoth/PipersLassReel.abc",
       "title": "The Piper’s Lass",
       "composer": "Traditional",
-      "duration": 48.375,
+      "duration": 77.4,
       "genres": [
         "celtic"
       ]
@@ -404,7 +414,7 @@
       "path": "ryansMammoth/CherishTheLadiesJig.abc",
       "title": "Cherish the Ladies",
       "composer": "Traditional",
-      "duration": 46.346,
+      "duration": 40.97,
       "genres": [
         "celtic"
       ]
@@ -414,7 +424,7 @@
       "path": "ryansMammoth/GreenSleevesJig.abc",
       "title": "Greensleeves (jig)",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "celtic",
         "medieval"
@@ -425,7 +435,7 @@
       "path": "ryansMammoth/BlackberryBlossomReel.abc",
       "title": "Blackberry Blossom",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "celtic",
         "tavern"
@@ -436,7 +446,7 @@
       "path": "ryansMammoth/SoldiersJoy.abc",
       "title": "Soldier’s Joy",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "tavern"
       ]
@@ -446,7 +456,7 @@
       "path": "ryansMammoth/FishersHornpipe.abc",
       "title": "Fisher’s Hornpipe",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "tavern",
         "tropical"
@@ -457,7 +467,7 @@
       "path": "ryansMammoth/DurangsHornpipe.abc",
       "title": "Durang’s Hornpipe",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "tavern"
       ]
@@ -467,7 +477,7 @@
       "path": "ryansMammoth/ArkansasTravellerReel.abc",
       "title": "Arkansas Traveller",
       "composer": "Traditional",
-      "duration": 48.75,
+      "duration": 78,
       "genres": [
         "tavern"
       ]
@@ -477,7 +487,7 @@
       "path": "ryansMammoth/DevilsDreamReel.abc",
       "title": "The Devil’s Dream",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "tavern",
         "kobold"
@@ -488,7 +498,7 @@
       "path": "ryansMammoth/SpeedThePloughReel.abc",
       "title": "Speed the Plough",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "tavern"
       ]
@@ -498,7 +508,7 @@
       "path": "ryansMammoth/BottleOfBrandyJig.abc",
       "title": "The Bottle of Brandy",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "tavern",
         "kobold"
@@ -509,7 +519,7 @@
       "path": "ryansMammoth/DropOfWhiskeySlipjig.abc",
       "title": "A Drop of Whiskey",
       "composer": "Traditional",
-      "duration": 57.6,
+      "duration": 48.96,
       "genres": [
         "tavern",
         "kobold"
@@ -520,7 +530,7 @@
       "path": "ryansMammoth/TeetotalersReel.abc",
       "title": "The Teetotaler’s Reel",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "tavern"
       ]
@@ -530,9 +540,10 @@
       "path": "ryansMammoth/PaddyOnTheTurnpikeReel.abc",
       "title": "Paddy on the Turnpike",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
-        "tavern"
+        "tavern",
+        "egyptian"
       ]
     },
     {
@@ -540,7 +551,7 @@
       "path": "ryansMammoth/SmashTheWindowsJig.abc",
       "title": "Smash the Windows",
       "composer": "Traditional",
-      "duration": 73.846,
+      "duration": 65.28,
       "genres": [
         "tavern",
         "kobold"
@@ -551,7 +562,7 @@
       "path": "ryansMammoth/LeatherTheWigJig.abc",
       "title": "Leather the Wig",
       "composer": "Traditional",
-      "duration": 55.769,
+      "duration": 49.3,
       "genres": [
         "kobold"
       ]
@@ -561,7 +572,7 @@
       "path": "ryansMammoth/LiverpoolHornpipe.abc",
       "title": "The Liverpool Hornpipe",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "tropical"
       ]
@@ -571,7 +582,7 @@
       "path": "ryansMammoth/StatenIslandHornpipe.abc",
       "title": "Staten Island Hornpipe",
       "composer": "Traditional",
-      "duration": 57.353,
+      "duration": 44.2,
       "genres": [
         "tropical"
       ]
@@ -581,7 +592,7 @@
       "path": "ryansMammoth/SailorsRansomReel.abc",
       "title": "The Sailor’s Ransom",
       "composer": "Traditional",
-      "duration": 48,
+      "duration": 76.8,
       "genres": [
         "tropical"
       ]
@@ -591,7 +602,7 @@
       "path": "ryansMammoth/MorpethHornpipe.abc",
       "title": "Morpeth Hornpipe",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "tropical"
       ]
@@ -601,7 +612,7 @@
       "path": "ryansMammoth/RickettsHornpipe.abc",
       "title": "Ricketts’ Hornpipe",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "tropical"
       ]
@@ -611,7 +622,7 @@
       "path": "ryansMammoth/FlyByNightLancashireClog.abc",
       "title": "Fly-by-Night Clog",
       "composer": "Traditional",
-      "duration": 42.353,
+      "duration": 65.28,
       "genres": [
         "kobold"
       ]
@@ -621,7 +632,7 @@
       "path": "ryansMammoth/SkipRopeClog.abc",
       "title": "Skip Rope Clog",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "kobold"
       ]
@@ -631,9 +642,10 @@
       "path": "ryansMammoth/MoneyInAdvanceClog.abc",
       "title": "Money in Advance",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
-        "kobold"
+        "kobold",
+        "egyptian"
       ]
     },
     {
@@ -641,7 +653,7 @@
       "path": "ryansMammoth/NightingaleClog.abc",
       "title": "The Nightingale Clog",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "kobold"
       ]
@@ -651,7 +663,7 @@
       "path": "ryansMammoth/MinstrelsFancyClog.abc",
       "title": "The Minstrel’s Fancy",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "kobold",
         "medieval"
@@ -662,7 +674,7 @@
       "path": "ryansMammoth/BlueStockingClog.abc",
       "title": "Blue Stocking Clog",
       "composer": "Traditional",
-      "duration": 56.471,
+      "duration": 43.52,
       "genres": [
         "kobold"
       ]

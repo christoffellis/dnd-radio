@@ -6,7 +6,7 @@
 export interface NoteSet {
   id: string
   name: string
-  group: 'Original' | 'Fantasy' | 'Celtic' | 'Asian' | 'Dark'
+  group: 'Original' | 'Fantasy' | 'Celtic' | 'Asian' | 'Desert' | 'Dark'
   description: string
   intervals: number[] | null
 }
@@ -96,6 +96,15 @@ export const NOTE_SETS: NoteSet[] = [
     intervals: [0, 2, 5, 7, 9],
   },
 
+  // Desert
+  {
+    id: 'hijaz',
+    name: 'Hijaz',
+    group: 'Desert',
+    description: 'Flat second, bright third: the sound of the souk and the tomb.',
+    intervals: [0, 1, 4, 5, 7, 8, 10],
+  },
+
   // Dark
   {
     id: 'phrygian',
@@ -120,7 +129,7 @@ export const NOTE_SETS: NoteSet[] = [
   },
 ]
 
-export const NOTE_SET_GROUPS = ['Original', 'Fantasy', 'Celtic', 'Asian', 'Dark'] as const
+export const NOTE_SET_GROUPS = ['Original', 'Fantasy', 'Celtic', 'Asian', 'Desert', 'Dark'] as const
 
 export function getNoteSet(id: string): NoteSet {
   return NOTE_SETS.find((s) => s.id === id) ?? NOTE_SETS[0]

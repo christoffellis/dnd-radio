@@ -22,6 +22,7 @@ export const INSTRUMENTS: Instrument[] = [
   { gm: 'english_horn', name: 'English horn' },
   { gm: 'bassoon', name: 'Bassoon' },
   { gm: 'bagpipe', name: 'Bagpipes' },
+  { gm: 'shanai', name: 'Shanai (mizmar)' },
   { gm: 'shakuhachi', name: 'Shakuhachi' },
   { gm: 'orchestral_harp', name: 'Harp' },
   { gm: 'acoustic_guitar_nylon', name: 'Lute (nylon guitar)' },
@@ -241,6 +242,25 @@ export const INSTRUMENT_SETS: InstrumentSet[] = [
       v('contrabass', 'bass'),
     ],
     percussion: 'woodblock',
+  },
+  {
+    id: 'egyptian',
+    name: 'Egyptian',
+    description: 'Ney flute and mizmar over qanun, oud and harp, with a frame drum.',
+    voices: [
+      v('shakuhachi', 'lead'), // breathy, end-blown: the closest to a ney
+      v('shanai', 'lead'), // double reed: mizmar
+      v('koto', 'harmony'), // plucked zither: qanun
+      v('acoustic_guitar_nylon', 'harmony'), // oud
+      v('orchestral_harp', 'harmony'),
+      v('string_ensemble_1', 'pad'),
+      v('choir_aahs', 'pad'),
+      v('tinkle_bell', 'accent'), // finger cymbals
+      v('kalimba', 'accent'),
+      v('contrabass', 'bass'),
+      v('cello', 'bass'),
+    ],
+    percussion: 'melodic_tom',
   },
 ]
 

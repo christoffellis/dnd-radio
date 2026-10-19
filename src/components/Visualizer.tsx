@@ -33,7 +33,7 @@ interface Particle {
   color: string
 }
 
-const MAX_PARTICLES = 260
+const MAX_PARTICLES = 320
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16)
@@ -189,6 +189,26 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
             p.color = Math.random() < 0.65 ? c.accent : c.accent2
           }
           break
+        case 'sand':
+          if (ambient) {
+            // Grains carried on the desert wind.
+            p.x = rand(-20, width * 0.6)
+            p.y = rand(height * 0.35, height * 0.97)
+            p.vx = rand(35, 85)
+            p.vy = rand(-5, 5)
+            p.size = rand(0.6, 1.4)
+            p.life = rand(4, 7)
+            p.color = Math.random() < 0.8 ? c.accent : c.ink
+          } else {
+            // A glint of gold.
+            p.x = x + rand(-20, 20)
+            p.y = rand(height * 0.15, height * 0.75)
+            p.size = rand(3.5, 7) * (0.7 + strength * 0.6)
+            p.life = rand(0.8, 1.4)
+            p.spin = 1
+            p.color = Math.random() < 0.7 ? c.accent : c.accent2
+          }
+          break
         case 'sparkles':
           p.x = x + rand(-30, 30)
           p.y = rand(height * 0.1, height * 0.85)
@@ -284,6 +304,31 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
           }
           break
         }
+        case 'sand': {
+          if (p.spin === 1) {
+            const s = p.size * Math.sin(Math.PI * k)
+            g.fillStyle = rgba(p.color, 0.18 * Math.sin(Math.PI * k))
+            g.beginPath()
+            g.arc(p.x, p.y, s * 2.2, 0, Math.PI * 2)
+            g.fill()
+            g.fillStyle = rgba(p.color, 0.95 * Math.sin(Math.PI * k))
+            g.beginPath()
+            g.moveTo(p.x, p.y - s * 1.6)
+            g.quadraticCurveTo(p.x, p.y, p.x + s * 0.5, p.y)
+            g.quadraticCurveTo(p.x, p.y, p.x, p.y + s * 1.6)
+            g.quadraticCurveTo(p.x, p.y, p.x - s * 0.5, p.y)
+            g.quadraticCurveTo(p.x, p.y, p.x, p.y - s * 1.6)
+            g.fill()
+          } else {
+            g.strokeStyle = rgba(p.color, fade * 0.55)
+            g.lineWidth = p.size
+            g.beginPath()
+            g.moveTo(p.x, p.y)
+            g.lineTo(p.x - p.vx * 0.05, p.y - p.vy * 0.05)
+            g.stroke()
+          }
+          break
+        }
         case 'sparkles': {
           const s = p.size * Math.sin(Math.PI * k)
           g.fillStyle = rgba(p.color, 0.9 * Math.sin(Math.PI * k))
@@ -329,7 +374,8 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
       // A little ambient life even in silence.
       ambientTimer -= dt
       if (ambientTimer <= 0) {
-        ambientTimer = m === 'fog' ? 1.4 : m === 'skitter' ? 1.6 : p === null ? 0.9 : 0.5
+        ambientTimer =
+          m === 'fog' ? 1.4 : m === 'skitter' ? 1.6 : m === 'sand' ? 0.06 : p === null ? 0.9 : 0.5
         spawn(rand(0, width), 0.3, true)
       }
       energy *= Math.pow(0.35, dt)
@@ -343,6 +389,31 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
       glow.addColorStop(1, rgba(c.accent, 0))
       g.fillStyle = glow
       g.fillRect(0, 0, width, height)
+
+      if (m === 'sand') {
+        // Pyramids on the horizon.
+        g.fillStyle = rgba(c.line, 0.55)
+        const base = height - 2
+        for (const [cx, w] of [
+          [width * 0.78, 150],
+          [width * 0.9, 95],
+          [width * 0.66, 70],
+        ] as const) {
+          g.beginPath()
+          g.moveTo(cx - w / 2, base)
+          g.lineTo(cx, base - w * 0.62)
+          g.lineTo(cx + w / 2, base)
+          g.closePath()
+          g.fill()
+        }
+        g.fillStyle = rgba(c.accent, 0.06 + energy * 0.05)
+        g.beginPath()
+        g.moveTo(width * 0.78, base - 150 * 0.62)
+        g.lineTo(width * 0.78 + 75, base)
+        g.lineTo(width * 0.78 + 20, base)
+        g.closePath()
+        g.fill()
+      }
 
       if (m === 'bubbles') {
         // Gentle swell along the bottom.
@@ -365,6 +436,9 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
           continue
         }
         const wobble = q.motif === 'embers' || q.motif === 'bubbles' ? Math.sin(q.age * 4 + q.angle) * 10 : 0
+        if (q.motif === 'sand' && q.spin === 0) {
+          q.vy += Math.sin(q.age * 2.2 + q.angle) * 10 * dt
+        }
         if (q.motif === 'skitter' && q.spin !== 2) {
           q.vy += 520 * dt
           if (q.y > height - 4 && q.vy > 0) {

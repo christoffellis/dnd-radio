@@ -1,7 +1,8 @@
 # DnD Radio
 
 A synced background-music radio for tabletop sessions. Pick a genre station
-(Medieval, Tavern, Celtic, East Asian, Tropical, Dungeon, Royal court, Kobold):
+(Medieval, Tavern, Celtic, East Asian, Tropical, Dungeon, Royal court,
+Egyptian, Kobold):
 each has its own playlist, instruments, scale, colours and an animation that
 reacts to the music. Everyone tuned in to a station hears the same song at the
 same moment.
@@ -84,9 +85,16 @@ bar, the triad from the tune's own scale that best fits the melody.
 
 - **Genres** (`src/themes.ts`): each picks an instrument set, a colour
   palette, an animation motif (candle motes, hearth embers, leaves, petals,
-  bubbles, fog, sparkles, skittering kobolds) that reacts to every note as it's
-  heard, and optionally a default scale (East Asian: Yo; Dungeon and Kobold:
-  harmonic minor) and speed (Kobold: 1.3×).
+  bubbles, fog, sparkles, skittering kobolds, desert sand) that reacts to every
+  note as it's heard, and optionally a default scale (East Asian: Yo; Egyptian:
+  Hijaz; Dungeon and Kobold: harmonic minor) and speed (Kobold: 1.3×).
+- **Humanising** (`src/music/humanize.ts`): sequenced notes are given beat
+  accents, phrase swells, a few milliseconds of timing looseness, strummed
+  chords, slightly detached fast passages, room for repeated notes and ringing
+  plucked strings. It's seeded per song, so every listener hears the same
+  performance. Fiddle tunes without a tempo mark are paced by their running
+  note value, so a reel plays at the same speed whether it's written in 2/4 or
+  4/4.
 - **Loaders** (`src/components/Wave.tsx`): Material-3-style wavy progress and
   loading indicators; the wave's height follows the music and its head sheds
   sparkles.
