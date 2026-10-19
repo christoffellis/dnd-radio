@@ -12,6 +12,7 @@ import { detectKey, keyName } from './music/key.ts'
 import { parseMidi } from './music/midi.ts'
 import { NOTE_SETS, NOTE_SET_GROUPS, getNoteSet } from './music/noteSets.ts'
 import { remapNotes } from './music/remap.ts'
+import { applySplit, defaultSplit } from './music/split.ts'
 import type { Key, Mode, Song } from './music/types.ts'
 
 interface LibraryEntry {
@@ -65,7 +66,10 @@ export default function App() {
   const [player] = useState(() => new Player())
 
   const [library, setLibrary] = useState<LibraryEntry[]>([])
-  const [song, setSong] = useState<Song | null>(null)
+  const [rawSong, setRawSong] = useState<Song | null>(null)
+  // Indices of source tracks that are split into melody / harmony / bass.
+  const [split, setSplit] = useState<Set<number>>(() => new Set())
+  const song = useMemo(() => (rawSong ? applySplit(rawSong, split) : null), [rawSong, split])
   const [libraryChoice, setLibraryChoice] = useState('')
 
   const [instrumentSetId, setInstrumentSetId] = useState(INSTRUMENT_SETS[0].id)
@@ -221,7 +225,8 @@ export default function App() {
         setPlaying(false)
         setOverrides({})
         setKeyChoice('auto')
-        setSong(parsed)
+        setRawSong(parsed)
+        setSplit(defaultSplit(parsed))
         setMessage('')
       } catch (e) {
         setMessage(e instanceof Error ? e.message : 'Could not read that MIDI file.')
@@ -263,6 +268,15 @@ export default function App() {
     if (!file) return
     setLibraryChoice('')
     openSong(await file.arrayBuffer(), file.name.replace(/\.midi?$/i, ''))
+  }
+
+  const toggleSplit = (sourceIndex: number) => {
+    setSplit((prev) => {
+      const next = new Set(prev)
+      if (next.has(sourceIndex)) next.delete(sourceIndex)
+      else next.add(sourceIndex)
+      return next
+    })
   }
 
   // ---- Render -------------------------------------------------------------
@@ -434,6 +448,24 @@ export default function App() {
                   <span className="track-name">
                     {t.name}
                     {t.isPercussion && <span className="dim"> · drums</span>}
+                    {t.source === undefined && !t.isPercussion && t.notes.length > 1 && (
+                      <button
+                        className="link"
+                        onClick={() => toggleSplit(t.index)}
+                        title="Separate melody, harmony and bass into their own tracks"
+                      >
+                        Split voices
+                      </button>
+                    )}
+                    {t.source !== undefined && song.tracks[i - 1]?.source !== t.source && (
+                      <button
+                        className="link"
+                        onClick={() => toggleSplit(t.source as number)}
+                        title="Merge the voices back into one track"
+                      >
+                        Merge
+                      </button>
+                    )}
                   </span>
                   <select
                     value={override}

@@ -4,7 +4,8 @@ import { remapPitch, remapNotes } from './remap.ts'
 import { detectKey } from './key.ts'
 import { NOTE_SETS } from './noteSets.ts'
 import { INSTRUMENT_SETS, assignVoices } from './instruments.ts'
-import type { Song, TrackData } from './types.ts'
+import { classifyLanes, defaultSplit, applySplit, isPolyphonic, splitTrack } from './split.ts'
+import type { NoteEvent, Song, TrackData } from './types.ts'
 
 const C_MAJOR = { tonic: 0, mode: 'major' as const }
 const A_MINOR = { tonic: 9, mode: 'minor' as const }
@@ -116,4 +117,84 @@ test('voice assignment: single track gets the lead, drums are muted', () => {
   const a = assignVoices(s, set)
   assert.equal(a.get(0), set.voices[0])
   assert.equal(a.get(1), null)
+})
+
+// ---- voice splitting ------------------------------------------------------
+
+function ev(midi: number, time: number, duration = 0.5): NoteEvent {
+  return { midi, time, duration, velocity: 0.8 }
+}
+
+/** A tiny piano arrangement: bass note + chord (with melody on top) each beat. */
+function pianoNotes(): NoteEvent[] {
+  const notes: NoteEvent[] = []
+  for (let beat = 0; beat < 8; beat++) {
+    const t = beat * 0.5
+    notes.push(ev(40, t)) // bass
+    notes.push(ev(55, t)) // inner
+    notes.push(ev(60, t)) // inner
+    notes.push(ev(72 + (beat % 3), t)) // melody
+  }
+  return notes
+}
+
+test('classifyLanes finds bass, harmony and melody in a piano texture', () => {
+  const notes = pianoNotes()
+  const lanes = classifyLanes(notes)
+  notes.forEach((n, i) => {
+    if (n.midi === 40) assert.equal(lanes[i], 'bass')
+    else if (n.midi === 55 || n.midi === 60) assert.equal(lanes[i], 'harmony')
+    else assert.equal(lanes[i], 'melody')
+  })
+})
+
+test('classifyLanes: a held bass note does not hide the melody above it', () => {
+  const notes = [ev(40, 0, 4), ev(72, 0.5), ev(74, 1), ev(72, 1.5)]
+  const lanes = classifyLanes(notes)
+  assert.deepEqual(lanes, ['bass', 'melody', 'melody', 'melody'])
+})
+
+test('classifyLanes: lone notes go by register around the median', () => {
+  const notes = [ev(36, 0), ev(38, 1), ev(40, 2), ev(80, 3), ev(82, 4), ev(84, 5)]
+  const lanes = classifyLanes(notes)
+  assert.deepEqual(lanes, ['bass', 'bass', 'bass', 'melody', 'melody', 'melody'])
+})
+
+test('single melodic line is not treated as polyphonic', () => {
+  const line = Array.from({ length: 16 }, (_, i) => ev(60 + (i % 5), i * 0.5, 0.4))
+  const t: TrackData = { index: 0, name: 'Lead', channel: 0, isPercussion: false, notes: line }
+  assert.equal(isPolyphonic(t), false)
+  assert.equal(defaultSplit(song([t])).size, 0)
+})
+
+test('piano track is polyphonic and auto-splits into three voices', () => {
+  const t: TrackData = { index: 0, name: 'Piano', channel: 0, isPercussion: false, notes: pianoNotes() }
+  assert.equal(isPolyphonic(t), true)
+  const s = song([t])
+  const split = defaultSplit(s)
+  assert.deepEqual([...split], [0])
+
+  const out = applySplit(s, split)
+  assert.deepEqual(out.tracks.map((x) => x.lane), ['melody', 'harmony', 'bass'])
+  assert.equal(new Set(out.tracks.map((x) => x.index)).size, 3)
+  assert.equal(out.tracks.reduce((n, x) => n + x.notes.length, 0), t.notes.length)
+  assert.ok(out.tracks.every((x) => x.source === 0))
+})
+
+test('files with several pitched tracks are not auto-split', () => {
+  const piano = (index: number): TrackData => ({
+    index, name: `P${index}`, channel: index, isPercussion: false, notes: pianoNotes(),
+  })
+  assert.equal(defaultSplit(song([piano(0), piano(1), piano(2)])).size, 0)
+})
+
+test('split voices get lead, middle and bass instruments from a set', () => {
+  const t: TrackData = { index: 0, name: 'Piano', channel: 0, isPercussion: false, notes: pianoNotes() }
+  const parts = splitTrack(t)
+  const set = INSTRUMENT_SETS[0]
+  const a = assignVoices(song(parts), set)
+  const byLane = Object.fromEntries(parts.map((p) => [p.lane, a.get(p.index)]))
+  assert.equal(byLane.melody, set.voices[0])
+  assert.equal(byLane.harmony, set.voices[1])
+  assert.equal(byLane.bass, set.voices[set.voices.length - 1])
 })

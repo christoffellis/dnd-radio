@@ -6,12 +6,17 @@ export interface NoteEvent {
   velocity: number
 }
 
+export type Lane = 'melody' | 'harmony' | 'bass'
+
 export interface TrackData {
   index: number
   name: string
   channel: number
   isPercussion: boolean
   notes: NoteEvent[]
+  /** Set when this track is one voice split out of another track. */
+  source?: number
+  lane?: Lane
 }
 
 export interface Song {

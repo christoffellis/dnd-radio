@@ -32,6 +32,12 @@ so it works under `https://<user>.github.io/dnd-radio/`.
   `[lead, second, third, ..., bass]`. The highest track gets the lead, the
   lowest gets the bass voice, the rest fill in between. Each track can still be
   overridden individually. Drum tracks are muted by default.
+- **Voice splitting** (`src/music/split.ts`): many MIDIs (piano arrangements
+  especially) put everything in one track. Polyphonic tracks are split into
+  melody / harmony / bass by what is sounding at each note's start: the top
+  note is melody, the lowest is bass, inner notes are harmony. This happens
+  automatically for files with one or two pitched tracks, and any track can be
+  split or merged by hand in the Tracks list.
 - **Note sets** (`src/music/noteSets.ts`): target scales. Every note is
   remapped into the chosen scale, relative to the song's key (auto-detected,
   or picked by hand).

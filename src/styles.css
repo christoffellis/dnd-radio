@@ -241,6 +241,17 @@ input[type='checkbox'] {
   white-space: nowrap;
 }
 
+button.link {
+  background: none;
+  border: none;
+  min-height: 0;
+  padding: 0 0 0 10px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 footer {
   margin-top: 36px;
   color: var(--muted);
