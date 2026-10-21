@@ -120,16 +120,25 @@ function Clock({ getPosition, duration }: { getPosition: () => number | null; du
   )
 }
 
-function D20() {
+/** The mark: a campfire under a crescent moon. */
+function Campfire() {
   return (
-    <svg className="d20" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-      <path
-        d="M12 2 21 7v10l-9 5-9-5V7z M12 2 3 17h18z M3 7l9 5 9-5 M12 12v10"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-      />
+    <svg
+      className="mark"
+      viewBox="0 0 24 24"
+      width="26"
+      height="26"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 21.2 19 18.4M5 18.4l14 2.8" />
+      <path d="M12 17.6c-2.6-1.2-3-3.6-.6-6.8.1 1.9 1.6 2.3 2.6 1.4.6 2.2-.3 4.6-2 5.4z" />
+      <path d="M18.2 2.6a3.7 3.7 0 1 0 3 5.8 2.9 2.9 0 1 1-3-5.8z" />
+      <path d="M6 4.2v2.6M4.7 5.5h2.6" />
     </svg>
   )
 }
@@ -646,8 +655,8 @@ export default function App() {
     <main className="page">
       <header className="masthead">
         <div className="brand">
-          <D20 />
-          <h1>DnD Radio</h1>
+          <Campfire />
+          <h1>Long Rest Radio</h1>
         </div>
         <label className="genre">
           <span className="sr-only">Genre</span>

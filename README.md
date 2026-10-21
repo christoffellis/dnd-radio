@@ -1,4 +1,4 @@
-# DnD Radio
+# Long Rest Radio
 
 A synced background-music radio for tabletop sessions. Pick a genre station
 (Medieval, Tavern, Celtic, East Asian, Tropical, Dungeon, Royal court,

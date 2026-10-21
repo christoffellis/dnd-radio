@@ -501,6 +501,13 @@ footer a {
     flex-wrap: wrap;
     gap: 12px;
   }
+  h1 {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+  }
+  .brand {
+    gap: 8px;
+  }
   .status {
     margin-left: auto;
   }
