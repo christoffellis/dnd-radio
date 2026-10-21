@@ -270,3 +270,22 @@ test('drums keep kick, toms and snare and drop hats and cymbals', () => {
   assert.deepEqual(mapped.map((n) => n.midi), [36, 50])
   assert.ok(mapped.every((n) => n.duration >= 0.25))
 })
+
+test('original set: tracks play their own GM program; unnamed tracks and drums use the base set', async () => {
+  const { assignOriginal, getInstrumentSet } = await import('./instruments.ts')
+  const { gmFamily } = await import('./gm.ts')
+  const mk = (index: number, program: number | undefined, pitch: number, isPercussion = false) => ({
+    index, name: `t${index}`, channel: isPercussion ? 9 : index, isPercussion, program,
+    notes: [{ midi: pitch, time: 0, duration: 1, velocity: 0.8 }],
+  })
+  const song = { name: 's', duration: 1, tracks: [mk(0, 30, 64), mk(1, 33, 40), mk(2, undefined, 72), mk(3, 0, 38, true)] }
+  const medieval = getInstrumentSet('medieval')
+  const a = assignOriginal(song, medieval)
+  assert.equal(a.get(0), 'distortion_guitar')
+  assert.equal(a.get(1), 'electric_bass_finger')
+  assert.ok(medieval.voices.some((v) => v.gm === a.get(2)), String(a.get(2)))
+  assert.equal(a.get(3), medieval.percussion)
+  assert.equal(gmFamily('distortion_guitar'), 'organ')
+  assert.equal(gmFamily('pad_2_warm'), 'voice')
+  assert.equal(gmFamily('electric_bass_finger'), 'pluck')
+})

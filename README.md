@@ -87,6 +87,10 @@ same build.
   a sub-folder named after a genre, `--genre`, or a guess from the instruments
   and tempo (`src/library/classify.ts`). Re-running skips songs already added.
   To move a song, edit its `genres` in `public/modern.json`.
+- **Instruments** (Advanced): any station can swap its band for one of the
+  classic sets, or for **Original**, which plays each track on the General MIDI
+  instrument its file names (tracks that name none, and drums, keep the
+  station's sound). The choice is remembered per station.
 - **Your files**: Advanced → Upload takes MIDI, MusicXML (`.musicxml`, `.xml`,
   compressed `.mxl`) and ABC. They play only for you (free play).
 

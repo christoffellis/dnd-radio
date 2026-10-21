@@ -1,7 +1,7 @@
 import type { PlayTrack } from './engine.ts'
 import { mapDrumNotes } from './drums.ts'
 import { humanize } from './humanize.ts'
-import { assignVoices, getInstrumentSet } from './instruments.ts'
+import { ORIGINAL_SET_ID, assignOriginal, assignVoices, getInstrumentSet } from './instruments.ts'
 import { detectKey } from './key.ts'
 import { getNoteSet } from './noteSets.ts'
 import { remapNotes } from './remap.ts'
@@ -10,6 +10,8 @@ import type { Key, Song, TrackData } from './types.ts'
 
 export interface PrepareOptions {
   setId: string
+  /** With setId 'original': the set for tracks whose file names no instrument (and drums). */
+  baseSetId?: string
   noteSetId: string
   /** null = use the detected key. */
   key: Key | null
@@ -40,7 +42,10 @@ export function prepare(raw: Song, options: PrepareOptions): PreparedSong {
   const key = options.key ?? detectedKey
   const noteSet = getNoteSet(options.noteSetId)
 
-  const defaults = assignVoices(song, getInstrumentSet(options.setId))
+  const defaults =
+    options.setId === ORIGINAL_SET_ID
+      ? assignOriginal(song, getInstrumentSet(options.baseSetId ?? 'medieval'))
+      : assignVoices(song, getInstrumentSet(options.setId))
   const assignments = new Map(defaults)
   for (const [index, choice] of Object.entries(options.overrides)) {
     assignments.set(Number(index), choice === 'mute' ? null : choice)

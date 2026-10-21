@@ -12,7 +12,9 @@
  *  - looping of sustained samples so long notes hold.
  */
 
-export type Family = 'bowed' | 'wind' | 'reed' | 'brass' | 'voice' | 'organ' | 'pluck' | 'struck' | 'perc'
+import { gmFamily, type GmFamily } from './gm.ts'
+
+export type Family = GmFamily
 
 const FAMILIES: Record<string, Family> = {
   violin: 'bowed',
@@ -72,7 +74,7 @@ const FAMILIES: Record<string, Family> = {
 }
 
 export function familyOf(gm: string): Family {
-  return FAMILIES[gm] ?? 'struck'
+  return FAMILIES[gm] ?? gmFamily(gm) ?? 'struck'
 }
 
 interface Shape {

@@ -1,3 +1,4 @@
+import { gmProgramName, prettyGm } from './gm.ts'
 import type { Song, TrackData } from './types.ts'
 
 /**
@@ -69,7 +70,7 @@ export const INSTRUMENTS: Instrument[] = [
 export const FALLBACK_GM = 'acoustic_grand_piano'
 
 export function instrumentName(gm: string): string {
-  return INSTRUMENTS.find((i) => i.gm === gm)?.name ?? gm
+  return INSTRUMENTS.find((i) => i.gm === gm)?.name ?? prettyGm(gm)
 }
 
 /**
@@ -281,6 +282,20 @@ export const INSTRUMENT_SETS: InstrumentSet[] = [
     percussion: 'melodic_tom',
   },
 ]
+
+/**
+ * Not a set of voices: plays each track on the General MIDI program its file
+ * names. Tracks that don't name one (ABC, most MusicXML) and drums use `base`.
+ */
+export const ORIGINAL_SET_ID = 'original'
+
+export function assignOriginal(song: Song, base: InstrumentSet): Map<number, string | null> {
+  const result = assignVoices(song, base)
+  for (const t of song.tracks) {
+    if (t.notes.length > 0 && !t.isPercussion && t.program !== undefined) result.set(t.index, gmProgramName(t.program))
+  }
+  return result
+}
 
 export function getInstrumentSet(id: string): InstrumentSet {
   return INSTRUMENT_SETS.find((s) => s.id === id) ?? INSTRUMENT_SETS[0]

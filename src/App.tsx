@@ -3,7 +3,7 @@ import PianoRoll, { type RollTrack } from './components/PianoRoll.tsx'
 import Visualizer from './components/Visualizer.tsx'
 import { WaveProgress, WaveRing } from './components/Wave.tsx'
 import { Player } from './music/engine.ts'
-import { INSTRUMENTS, instrumentName } from './music/instruments.ts'
+import { INSTRUMENTS, INSTRUMENT_SETS, ORIGINAL_SET_ID, getInstrumentSet, instrumentName } from './music/instruments.ts'
 import { keyName } from './music/key.ts'
 import { ACCEPTED_FILES, fetchSong, songFromBuffer } from './music/load.ts'
 import { NOTE_SETS, NOTE_SET_GROUPS, getNoteSet } from './music/noteSets.ts'
@@ -48,6 +48,9 @@ interface SongSettings {
   split: Set<number> | null
   keyChoice: string
 }
+
+/** The instrument sets offered in Advanced: the original genre bands, not the Modern one. */
+const CLASSIC_SETS = INSTRUMENT_SETS.filter((s) => s.id !== 'minstrels')
 
 /** How far ahead the radio schedules the next song, ms. */
 const LOOKAHEAD_MS = 3000
@@ -152,6 +155,18 @@ export default function App() {
   const theme = getTheme(themeId)
   const stationTempo = theme.tempo ?? 1
   const [scaleChoice, setScaleChoice] = useState('genre')
+  // Instrument set per station: the station's own band unless the listener picked a classic set.
+  const [setChoices, setSetChoices] = useState<Record<string, string>>(() => load('sets', {}))
+  const chosenSet = setChoices[theme.id]
+  const setId =
+    chosenSet && (chosenSet === ORIGINAL_SET_ID || CLASSIC_SETS.some((s) => s.id === chosenSet)) ? chosenSet : theme.set
+  const chooseSet = (id: string) => {
+    const next = { ...setChoices }
+    if (id === 'genre') delete next[theme.id]
+    else next[theme.id] = id
+    setSetChoices(next)
+    save('sets', next)
+  }
   const [volume, setVolume] = useState<number>(() => load('volume', 90))
 
   const [mode, setMode] = useState<'radio' | 'free'>('radio')
@@ -202,24 +217,26 @@ export default function App() {
   const prepared = useMemo<PreparedSong | null>(() => {
     if (!currentSong) return null
     return prepare(currentSong, {
-      setId: theme.set,
+      setId,
+      baseSetId: theme.set,
       noteSetId,
       key: parseKeyChoice(settings.keyChoice),
       overrides: settings.overrides,
       split,
     })
-  }, [currentSong, theme.set, noteSetId, settings.keyChoice, settings.overrides, split])
+  }, [currentSong, setId, theme.set, noteSetId, settings.keyChoice, settings.overrides, split])
 
   const prepareDefault = useCallback(
     (entry: Entry, song: Song) =>
       prepare(song, {
-        setId: theme.set,
+        setId,
+        baseSetId: theme.set,
         noteSetId: scaleFor(theme, entry, scaleChoice),
         key: null,
         overrides: {},
         split: defaultSplit(song),
       }),
-    [theme, scaleChoice],
+    [theme, setId, scaleChoice],
   )
 
   // Latest values for timers and async callbacks.
@@ -424,7 +441,7 @@ export default function App() {
   // Settings changed mid-song: re-join the live position with the new sound.
   // (A song merely finishing its download is not a change, so it's not in here.)
   const settingsSig = [
-    theme.set,
+    setId,
     noteSetId,
     settings.keyChoice,
     JSON.stringify(settings.overrides),
@@ -795,6 +812,31 @@ export default function App() {
         </section>
 
         <section>
+          <h3 className="label">Instruments</h3>
+          <div className="row">
+            <select value={chosenSet && setId === chosenSet ? setId : 'genre'} onChange={(e) => chooseSet(e.target.value)} aria-label="Instrument set">
+              <option value="genre">
+                {theme.name} default ({getInstrumentSet(theme.set).name})
+              </option>
+              <option value={ORIGINAL_SET_ID}>Original (the file’s own instruments)</option>
+              <optgroup label="Classic sets">
+                {CLASSIC_SETS.filter((s) => s.id !== theme.set).map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </optgroup>
+            </select>
+          </div>
+          <p className="hint">
+            {setId === ORIGINAL_SET_ID
+              ? `Each track plays on the instrument its MIDI file names; tracks that name none, and the drums, keep the ${getInstrumentSet(theme.set).name} sound.`
+              : getInstrumentSet(setId).description}{' '}
+            Remembered for this station.
+          </p>
+        </section>
+
+        <section>
           <h3 className="label">Scale</h3>
           <div className="row">
             <select value={scaleChoice} onChange={(e) => setScaleChoice(e.target.value)} aria-label="Scale">
@@ -889,7 +931,7 @@ export default function App() {
                         aria-label={`Instrument for ${t.name}`}
                       >
                         <option value="default">
-                          {theme.name}: {defaultGm ? instrumentName(defaultGm) : 'Muted'}
+                          Default: {defaultGm ? instrumentName(defaultGm) : 'Muted'}
                         </option>
                         <option value="mute">Muted</option>
                         {INSTRUMENTS.map((inst) => (

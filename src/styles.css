@@ -22,6 +22,7 @@
 html,
 body {
   margin: 0;
+  overflow-x: clip; /* the full-bleed stage is 100vw, which counts the scrollbar */
   background: var(--bg);
   transition: background-color var(--fade);
 }
@@ -522,6 +523,83 @@ footer a {
   }
   .tracks li select {
     grid-column: 1 / -1;
+  }
+}
+
+/* Desktop: a wider column, and the stage runs the full width of the window,
+   taller, with its edges dissolving into the page instead of ruled lines. */
+@media (min-width: 900px) {
+  :root {
+    --column: 1120px;
+    --gutter: 40px;
+    /* Where the page's content column starts, measured from the window edge. */
+    --inset: max(var(--gutter), calc((100vw - var(--column)) / 2 + var(--gutter)));
+  }
+  .page {
+    max-width: var(--column);
+    padding: 36px var(--gutter) 72px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  .genre {
+    flex-basis: 260px;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .stage {
+    margin: 28px calc(50% - 50vw) 32px;
+    height: clamp(440px, 60vh, 700px);
+    border: 0;
+  }
+  /* Soft fades top and bottom so the animation melts into the page. */
+  .stage::before,
+  .stage::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 22%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .stage::before {
+    top: 0;
+    background: linear-gradient(var(--bg), transparent);
+  }
+  .stage::after {
+    bottom: 0;
+    height: 55%;
+    background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 70%, transparent) 70%, var(--bg));
+  }
+  .now {
+    z-index: 2;
+    padding: 0 var(--inset) 40px;
+  }
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.32em;
+  }
+  .title {
+    margin: 10px 0 6px;
+    font-size: clamp(2.8rem, 4.4vw, 4.4rem);
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+  }
+  .next {
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+  .wave {
+    height: 28px;
+  }
+  .time {
+    font-size: 0.95rem;
+  }
+  .volume {
+    flex: 0 1 380px;
+    margin-left: auto;
   }
 }
 

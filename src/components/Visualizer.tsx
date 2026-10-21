@@ -34,6 +34,8 @@ interface Particle {
 }
 
 const MAX_PARTICLES = 320
+/** The stage width the particle counts were tuned for; wider stages get proportionally more. */
+const BASE_WIDTH = 760
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16)
@@ -105,8 +107,11 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
 
+    /** How much wider than the tuned stage we are (1 on phones and narrow windows). */
+    const density = () => Math.max(1, width / BASE_WIDTH)
+
     const spawn = (x: number, strength: number, ambient: boolean) => {
-      if (reduced || particles.length >= MAX_PARTICLES) return
+      if (reduced || particles.length >= MAX_PARTICLES * density()) return
       const { motif: m, colors: c } = live.current
       const pick = Math.random() < 0.7 ? c.accent : c.accent2
       const p: Particle = {
@@ -362,9 +367,14 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
             const o = list[cursor++]
             if (o.time <= lastPos) continue
             energy = Math.min(1.5, energy + 0.06 + o.velocity * 0.08)
-            if (spawned++ < 10) {
+            const d = density()
+            if (spawned++ < 10 * d) {
               const x = width * (0.08 + 0.84 * Math.min(1, Math.max(0, (o.midi - 36) / 60)))
               spawn(x + rand(-12, 12), o.velocity, false)
+              // On wide stages, echo the note nearby so the field stays as full as on a laptop.
+              for (let extra = Math.floor(d - 1 + Math.random()); extra > 0; extra--) {
+                spawn(x + rand(-width * 0.07, width * 0.07), o.velocity * 0.8, false)
+              }
             }
           }
         }
@@ -375,7 +385,7 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
       ambientTimer -= dt
       if (ambientTimer <= 0) {
         ambientTimer =
-          m === 'fog' ? 1.4 : m === 'skitter' ? 1.6 : m === 'sand' ? 0.06 : p === null ? 0.9 : 0.5
+          (m === 'fog' ? 1.4 : m === 'skitter' ? 1.6 : m === 'sand' ? 0.06 : p === null ? 0.9 : 0.5) / density()
         spawn(rand(0, width), 0.3, true)
       }
       energy *= Math.pow(0.35, dt)
@@ -384,20 +394,27 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
       g.clearRect(0, 0, width, height)
 
       // Glow that breathes with the music.
-      const glow = g.createRadialGradient(width / 2, height * 1.1, 0, width / 2, height * 1.1, height * 1.4)
+      // Stretched sideways on wide stages, so it reads as a horizon rather than a spotlight.
+      const stretch = Math.max(1, width / (height * 2))
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, height * 1.4)
       glow.addColorStop(0, rgba(c.accent, 0.1 + energy * 0.12))
       glow.addColorStop(1, rgba(c.accent, 0))
+      g.save()
+      g.translate(width / 2, height * 1.1)
+      g.scale(stretch, 1)
       g.fillStyle = glow
-      g.fillRect(0, 0, width, height)
+      g.fillRect(-width / 2 / stretch, -height * 1.1, width / stretch, height)
+      g.restore()
 
       if (m === 'sand') {
         // Pyramids on the horizon.
         g.fillStyle = rgba(c.line, 0.55)
         const base = height - 2
+        const k = Math.max(1, height / 300) // taller stages get bigger pyramids
         for (const [cx, w] of [
-          [width * 0.78, 150],
-          [width * 0.9, 95],
-          [width * 0.66, 70],
+          [width * 0.78, 150 * k],
+          [width * 0.9, 95 * k],
+          [width * 0.66, 70 * k],
         ] as const) {
           g.beginPath()
           g.moveTo(cx - w / 2, base)
@@ -408,9 +425,9 @@ export default function Visualizer({ tracks, motif, colors, getPosition, energyR
         }
         g.fillStyle = rgba(c.accent, 0.06 + energy * 0.05)
         g.beginPath()
-        g.moveTo(width * 0.78, base - 150 * 0.62)
-        g.lineTo(width * 0.78 + 75, base)
-        g.lineTo(width * 0.78 + 20, base)
+        g.moveTo(width * 0.78, base - 150 * k * 0.62)
+        g.lineTo(width * 0.78 + 75 * k, base)
+        g.lineTo(width * 0.78 + 20 * k, base)
         g.closePath()
         g.fill()
       }
