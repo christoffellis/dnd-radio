@@ -262,6 +262,24 @@ export const INSTRUMENT_SETS: InstrumentSet[] = [
     ],
     percussion: 'melodic_tom',
   },
+  {
+    id: 'minstrels',
+    name: 'Minstrels',
+    description: 'The medieval band, with a tabor for the beat: modern hits played in the great hall.',
+    voices: [
+      v('recorder', 'lead'),
+      v('oboe', 'lead'),
+      v('orchestral_harp', 'harmony'),
+      v('acoustic_guitar_nylon', 'harmony'),
+      v('harpsichord', 'harmony'),
+      v('string_ensemble_1', 'pad'),
+      v('choir_aahs', 'pad'),
+      v('celesta', 'accent'),
+      v('cello', 'bass'),
+      v('contrabass', 'bass'),
+    ],
+    percussion: 'melodic_tom',
+  },
 ]
 
 export function getInstrumentSet(id: string): InstrumentSet {

@@ -71,9 +71,24 @@ same build.
   works are public domain; some encodings are licensed for non-commercial use
   only. To add pieces, edit `PIECES` in the script and run it against a corpus
   checkout (instructions at the top of the file).
+- **Modern stations** (`public/midi/modern/`, listed in `public/modern.json`):
+  378 pop, rock, punk, electronic, hip-hop, film & TV, game and piano songs from
+  the *Top MIDI Tracks Pack*, played by the Minstrels set (recorder, oboe, harp,
+  lute, cello, tabor), so they sound like a medieval band covering them. They
+  sit under "Modern" in the genre menu. These are copyrighted songs, included
+  with the owner's permission; check before reusing them elsewhere. To add more:
+
+  ```sh
+  node scripts/add-modern.mjs <pack.zip | folder> [--genre=pop|rock|punk|electronic|hiphop|film|games|piano] [--map=scripts/modern-pack.json]
+  ```
+
+  With `--map`, the curated list (content hash → title, artist, station)
+  decides and anything not in it is skipped. Without it, the station comes from
+  a sub-folder named after a genre, `--genre`, or a guess from the instruments
+  and tempo (`src/library/classify.ts`). Re-running skips songs already added.
+  To move a song, edit its `genres` in `public/modern.json`.
 - **Your files**: Advanced → Upload takes MIDI, MusicXML (`.musicxml`, `.xml`,
-  compressed `.mxl`) and ABC. They play only for you (free play). Modern pop is
-  under copyright, so it isn't bundled.
+  compressed `.mxl`) and ABC. They play only for you (free play).
 
 Formats are parsed without extra dependencies: `src/music/musicxml.ts` (with a
 tiny XML parser and a `.mxl` unzip built on `DecompressionStream`) and

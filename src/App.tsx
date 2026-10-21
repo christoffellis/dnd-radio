@@ -269,6 +269,22 @@ export default function App() {
             keepScale: !!s.keepScale,
           })
         }
+        // Modern songs are optional: the list may not exist yet.
+        const modern = await fetch(`${base}modern.json`, { cache: 'no-cache' })
+          .then((r) => (r.ok ? (r.json() as Promise<StockSong[]>) : []))
+          .catch(() => [] as StockSong[])
+        for (const s of modern) {
+          list.push({
+            id: `modern:${s.file}`,
+            title: s.title,
+            composer: s.composer ?? 'Unknown artist',
+            group: 'Modern',
+            url: `${base}midi/${s.file}`,
+            duration: s.duration,
+            genres: s.genres,
+            keepScale: false,
+          })
+        }
         const classics = (await (await fetch(`${base}classics.json`, { cache: 'no-cache' })).json()) as Classics
         for (const p of classics.pieces) {
           list.push({
@@ -619,11 +635,20 @@ export default function App() {
         <label className="genre">
           <span className="sr-only">Genre</span>
           <select value={theme.id} onChange={(e) => changeGenre(e.target.value)} aria-label="Genre">
-            {THEMES.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
+            <optgroup label="Settings">
+              {THEMES.filter((t) => !t.group).map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.name}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Modern">
+              {THEMES.filter((t) => t.group === 'Modern').map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.name}
+                </option>
+              ))}
+            </optgroup>
           </select>
         </label>
         <span className={`status ${on ? 'on' : ''}`}>
@@ -890,7 +915,7 @@ export default function App() {
       </details>
 
       <footer>
-        Traditional and public-domain music. Classics and fiddle tunes stream from the{' '}
+        Traditional tunes, modern covers on medieval instruments, and classics and fiddle tunes streamed from the{' '}
         <a href="https://github.com/cuthbertLab/music21" target="_blank" rel="noreferrer">
           music21 corpus
         </a>

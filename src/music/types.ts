@@ -27,6 +27,8 @@ export interface Song {
   tracks: TrackData[]
   /** Bar start times in seconds, when the source format knows them. */
   bars?: number[]
+  /** Tempo marking, when the file has one. */
+  bpm?: number
   /** The song's own key and scale (e.g. from an ABC key signature). */
   keyHint?: { tonic: number; scale: number[] }
 }

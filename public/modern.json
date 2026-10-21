@@ -1,0 +1,3782 @@
+[
+  {
+    "title": "All I Want",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-all-i-want.mid",
+    "hash": "9d6e6bba132a6548",
+    "duration": 188.082,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "What Was I Made For?",
+    "composer": "Billie Eilish",
+    "file": "modern/billie-eilish-what-was-i-made-for.mid",
+    "hash": "237fe85dd7735a9d",
+    "duration": 203.868,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Sonatina Op. 36 No. 2",
+    "composer": "Muzio Clementi",
+    "file": "modern/muzio-clementi-sonatina-op-36-no-2.mid",
+    "hash": "194a86098141f3ee",
+    "duration": 118.521,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Game of Thrones (Main Theme)",
+    "composer": "Ramin Djawadi",
+    "file": "modern/ramin-djawadi-game-of-thrones-main-theme.mid",
+    "hash": "519fa624f5181602",
+    "duration": 169.198,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Startear (Sword Art Online)",
+    "composer": "Haruka Tomatsu",
+    "file": "modern/haruka-tomatsu-startear-sword-art-online.mid",
+    "hash": "1d14a8ccd300f4d6",
+    "duration": 90.485,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Prelude Of Light",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-prelude-of-light.mid",
+    "hash": "2c85eec07a5a84ab",
+    "duration": 21.899,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Nocturne Op. 9 No. 2",
+    "composer": "Frédéric Chopin",
+    "file": "modern/frederic-chopin-nocturne-op-9-no-2.mid",
+    "hash": "2c4adfd66324487a",
+    "duration": 240.637,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Lux Aeterna (Requiem for a Dream)",
+    "composer": "Clint Mansell",
+    "file": "modern/clint-mansell-lux-aeterna-requiem-for-a-dream.mid",
+    "hash": "7ad22c844cf7c00f",
+    "duration": 107.658,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Easy On Me",
+    "composer": "Adele",
+    "file": "modern/adele-easy-on-me.mid",
+    "hash": "58b2c5cdf88d5cbc",
+    "duration": 216.168,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Kokiri Forest",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-kokiri-forest.mid",
+    "hash": "28bf10abb37bb223",
+    "duration": 55.405,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "The Office Theme",
+    "composer": "Jay Ferguson",
+    "file": "modern/jay-ferguson-the-office-theme.mid",
+    "hash": "5245feb558eb3b51",
+    "duration": 48.57,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Titanium",
+    "composer": "David Guetta ft. Sia",
+    "file": "modern/david-guetta-ft-sia-titanium.mid",
+    "hash": "78c7b02ad38385c7",
+    "duration": 217.549,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Perfect",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-perfect.mid",
+    "hash": "d3c7addb1b300a0a",
+    "duration": 261.419,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "My Life Is Going On (La Casa de Papel)",
+    "composer": "Cecilia Krull",
+    "file": "modern/cecilia-krull-my-life-is-going-on-la-casa-de-papel.mid",
+    "hash": "304f864a22130801",
+    "duration": 210.611,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Ordinary",
+    "composer": "Alex Warren",
+    "file": "modern/alex-warren-ordinary.mid",
+    "hash": "9fac7f2261921be9",
+    "duration": 179.999,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "One Day",
+    "composer": "Unknown artist",
+    "file": "modern/one-day.mid",
+    "hash": "064de6a4ff9b8bd9",
+    "duration": 177.961,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Despacito",
+    "composer": "Luis Fonsi ft. Daddy Yankee",
+    "file": "modern/luis-fonsi-ft-daddy-yankee-despacito.mid",
+    "hash": "e3eca3de8dd1fd97",
+    "duration": 234.353,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Paradise",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-paradise.mid",
+    "hash": "fcdc28b034aa13f1",
+    "duration": 300.242,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Lego House",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-lego-house.mid",
+    "hash": "75c4914e7fad3cd1",
+    "duration": 182.848,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Comptine d’un autre été",
+    "composer": "Yann Tiersen",
+    "file": "modern/yann-tiersen-comptine-d-un-autre-ete.mid",
+    "hash": "c73933920858c7a3",
+    "duration": 232.5,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Someone You Loved",
+    "composer": "Lewis Capaldi",
+    "file": "modern/lewis-capaldi-someone-you-loved.mid",
+    "hash": "b2d487422708e053",
+    "duration": 177.423,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Market",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-market.mid",
+    "hash": "c25f54f7c6e2c0b6",
+    "duration": 39.672,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Canon in D",
+    "composer": "Johann Pachelbel",
+    "file": "modern/johann-pachelbel-canon-in-d.mid",
+    "hash": "815010432a8ba8a7",
+    "duration": 244.678,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Hold On",
+    "composer": "Chord Overstreet",
+    "file": "modern/chord-overstreet-hold-on.mid",
+    "hash": "d776f4e6c3d52807",
+    "duration": 191.799,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Imagine",
+    "composer": "John Lennon",
+    "file": "modern/john-lennon-imagine.mid",
+    "hash": "4d7312ce127624d0",
+    "duration": 191.826,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Wherever You Will Go",
+    "composer": "The Calling",
+    "file": "modern/the-calling-wherever-you-will-go.mid",
+    "hash": "74e2945b0c9cad4b",
+    "duration": 199.151,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "All of Me",
+    "composer": "John Legend",
+    "file": "modern/john-legend-all-of-me.mid",
+    "hash": "faed78faa4bf9cb6",
+    "duration": 289.099,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hyrule Field",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-hyrule-field.mid",
+    "hash": "4e0c2043ba4757b4",
+    "duration": 300.413,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Traitor",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-traitor.mid",
+    "hash": "7c4f0aff2309aab4",
+    "duration": 235.038,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Star Wars Main Theme",
+    "composer": "John Williams",
+    "file": "modern/john-williams-star-wars-main-theme.mid",
+    "hash": "17f1169e4f4eaa66",
+    "duration": 130.171,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "enough for you",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-enough-for-you.mid",
+    "hash": "af9eb2c99fbf17e2",
+    "duration": 195,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Shape Of My Heart",
+    "composer": "Sting",
+    "file": "modern/sting-shape-of-my-heart.mid",
+    "hash": "5dd25b9670661ae6",
+    "duration": 266.701,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Shape of You",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-shape-of-you.mid",
+    "hash": "939faf451cc8b7ca",
+    "duration": 236.146,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "What Falling in Love Feels Like",
+    "composer": "Jake25.17",
+    "file": "modern/jake25-17-what-falling-in-love-feels-like.mid",
+    "hash": "392a6c408fd40a68",
+    "duration": 146.993,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Save Your Tears",
+    "composer": "The Weeknd",
+    "file": "modern/the-weeknd-save-your-tears.mid",
+    "hash": "6c4e846f1db15bdd",
+    "duration": 202.919,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Every Breath You Take",
+    "composer": "The Police",
+    "file": "modern/the-police-every-breath-you-take.mid",
+    "hash": "2dfe62e8e0eb7403",
+    "duration": 229.73,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Blinding Lights",
+    "composer": "The Weeknd",
+    "file": "modern/the-weeknd-blinding-lights.mid",
+    "hash": "5a18fdae05c35021",
+    "duration": 182.731,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Minuet Of Forest",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-minuet-of-forest.mid",
+    "hash": "5e6f2d61adcd0a1c",
+    "duration": 20.321,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Hey There Delilah",
+    "composer": "Plain White T’s",
+    "file": "modern/plain-white-t-s-hey-there-delilah.mid",
+    "hash": "365c412604af39d6",
+    "duration": 216.364,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "I Need U",
+    "composer": "BTS",
+    "file": "modern/bts-i-need-u.mid",
+    "hash": "b49a3a229066f410",
+    "duration": 208.091,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Stairway to Heaven",
+    "composer": "Led Zeppelin",
+    "file": "modern/led-zeppelin-stairway-to-heaven.mid",
+    "hash": "a012d919912151ee",
+    "duration": 474.129,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Spiritual Stone",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-spiritual-stone.mid",
+    "hash": "8b50385b3a320f6d",
+    "duration": 21.753,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "I Knew You Were Trouble",
+    "composer": "Taylor Swift",
+    "file": "modern/taylor-swift-i-knew-you-were-trouble.mid",
+    "hash": "bdcc09369091d70e",
+    "duration": 220.092,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Treasure Chest",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-treasure-chest.mid",
+    "hash": "961742a03850eba7",
+    "duration": 18.527,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "La Câlin",
+    "composer": "Serhat Durmus",
+    "file": "modern/serhat-durmus-la-calin.mid",
+    "hash": "14e15a167e0b65bd",
+    "duration": 195.333,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Follow you",
+    "composer": "Imagine Dragons",
+    "file": "modern/imagine-dragons-follow-you.mid",
+    "hash": "d86a515850959042",
+    "duration": 172.8,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Master Sword",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-master-sword.mid",
+    "hash": "432a671b88e3bd3d",
+    "duration": 13.873,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Get you the moon",
+    "composer": "Kina",
+    "file": "modern/kina-get-you-the-moon.mid",
+    "hash": "777119808b51b809",
+    "duration": 180.721,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Zora’s Domain",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-zora-s-domain.mid",
+    "hash": "b7f55dbdc287191d",
+    "duration": 88.323,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "A Whole New World",
+    "composer": "Alan Menken",
+    "file": "modern/alan-menken-a-whole-new-world.mid",
+    "hash": "05ba3dee0c4e9a64",
+    "duration": 105.973,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Zelda’s Lullaby",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-zelda-s-lullaby.mid",
+    "hash": "124cd71c93a3ac76",
+    "duration": 77.339,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Sheik’s Theme",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-sheik-s-theme.mid",
+    "hash": "44e090f0b23947dc",
+    "duration": 28.219,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Voletarium Countdown",
+    "composer": "Europa-Park",
+    "file": "modern/europa-park-voletarium-countdown.mid",
+    "hash": "10fad2021ee79479",
+    "duration": 57.199,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Radioactive",
+    "composer": "Imagine Dragons",
+    "file": "modern/imagine-dragons-radioactive.mid",
+    "hash": "1893b28d7ac88c45",
+    "duration": 184.059,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Liebestraum No. 3",
+    "composer": "Franz Liszt",
+    "file": "modern/franz-liszt-liebestraum-no-3.mid",
+    "hash": "4a1ac0c4ee2d456a",
+    "duration": 230.29,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Someone Like You",
+    "composer": "Adele",
+    "file": "modern/adele-someone-like-you.mid",
+    "hash": "4e4402752d560ca6",
+    "duration": 288.176,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Nocturne Of Shadow",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-nocturne-of-shadow.mid",
+    "hash": "7a217118c1fe8389",
+    "duration": 24.278,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Serenade Of Water",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-serenade-of-water.mid",
+    "hash": "03565a132492ea86",
+    "duration": 23.077,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Spirit Temple",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-spirit-temple.mid",
+    "hash": "09f2b84bdc57c1ce",
+    "duration": 168.907,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Let Her Go",
+    "composer": "Passenger",
+    "file": "modern/passenger-let-her-go.mid",
+    "hash": "6c609e1f4d866c3f",
+    "duration": 261.244,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Windmill Hut",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-windmill-hut.mid",
+    "hash": "6b4dddff1516beef",
+    "duration": 23.664,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "How To Save a Life",
+    "composer": "The Fray",
+    "file": "modern/the-fray-how-to-save-a-life.mid",
+    "hash": "31bf0c71addaeffa",
+    "duration": 259.659,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Requiem Of Spirit",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-requiem-of-spirit.mid",
+    "hash": "d294baaa54470841",
+    "duration": 23.661,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Lithium",
+    "composer": "Evanescence",
+    "file": "modern/evanescence-lithium.mid",
+    "hash": "a6f684b84c09f7aa",
+    "duration": 219.564,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "The Imperial March",
+    "composer": "John Williams",
+    "file": "modern/john-williams-the-imperial-march.mid",
+    "hash": "f6baff52aed92405",
+    "duration": 148.747,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Wonderwall",
+    "composer": "Oasis",
+    "file": "modern/oasis-wonderwall.mid",
+    "hash": "7edd4a98410d3a30",
+    "duration": 72.156,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Kotake And Koume",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-kotake-and-koume.mid",
+    "hash": "17abc06047965fd9",
+    "duration": 49.767,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "1973",
+    "composer": "James Blunt",
+    "file": "modern/james-blunt-1973.mid",
+    "hash": "3bcd9ad9d5e0f209",
+    "duration": 263.9,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Flood Time",
+    "composer": "Eric Thiman",
+    "file": "modern/eric-thiman-flood-time.mid",
+    "hash": "64f831c5e9343f69",
+    "duration": 78.249,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Waltz No. 2",
+    "composer": "Dmitri Shostakovich",
+    "file": "modern/dmitri-shostakovich-waltz-no-2.mid",
+    "hash": "9b94f7e175ebd8f9",
+    "duration": 231.176,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "My Immortal",
+    "composer": "Evanescence",
+    "file": "modern/evanescence-my-immortal.mid",
+    "hash": "b0432d6935a49e68",
+    "duration": 264.369,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Nothing Else Matters",
+    "composer": "Metallica",
+    "file": "modern/metallica-nothing-else-matters.mid",
+    "hash": "3362f2228b562dab",
+    "duration": 91.501,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Opening Title",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-opening-title.mid",
+    "hash": "2dbef5bac7c23c35",
+    "duration": 77.186,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Cara Mia (Portal 2)",
+    "composer": "Mike Morasky",
+    "file": "modern/mike-morasky-cara-mia-portal-2.mid",
+    "hash": "b1dfa2fd6990f739",
+    "duration": 93.818,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "The Pink Panther Theme",
+    "composer": "Henry Mancini",
+    "file": "modern/henry-mancini-the-pink-panther-theme.mid",
+    "hash": "3001e3a116801861",
+    "duration": 61.043,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Falling",
+    "composer": "Trevor Daniel",
+    "file": "modern/trevor-daniel-falling.mid",
+    "hash": "dbebe98d2f38a800",
+    "duration": 153.653,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Fallen Down (Reprise)",
+    "composer": "Toby Fox",
+    "file": "modern/toby-fox-fallen-down-reprise.mid",
+    "hash": "a1188a7cbb547ccc",
+    "duration": 127.681,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Experience",
+    "composer": "Ludovico Einaudi",
+    "file": "modern/ludovico-einaudi-experience.mid",
+    "hash": "2ddc4c8e1faad221",
+    "duration": 294.666,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Happier Than Ever",
+    "composer": "Billie Eilish",
+    "file": "modern/billie-eilish-happier-than-ever.mid",
+    "hash": "5157a1edae983695",
+    "duration": 277.747,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Thunder",
+    "composer": "Jessie J",
+    "file": "modern/jessie-j-thunder.mid",
+    "hash": "54f50e8ceb8bd6de",
+    "duration": 77.789,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Shop",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-shop.mid",
+    "hash": "0a9a9d6f25a54986",
+    "duration": 60,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Clarity",
+    "composer": "Zedd ft. Foxes",
+    "file": "modern/zedd-ft-foxes-clarity.mid",
+    "hash": "70046331350e77d1",
+    "duration": 209.141,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "River Flows in You",
+    "composer": "Yiruma",
+    "file": "modern/yiruma-river-flows-in-you.mid",
+    "hash": "31cbdfa363323809",
+    "duration": 166.983,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Piano Concerto No. 1",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-piano-concerto-no-1.mid",
+    "hash": "09fe74d603ee226c",
+    "duration": 55.384,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Sign of the Times",
+    "composer": "Harry Styles",
+    "file": "modern/harry-styles-sign-of-the-times.mid",
+    "hash": "13e38076bc16f630",
+    "duration": 335.798,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Roar",
+    "composer": "Katy Perry",
+    "file": "modern/katy-perry-roar.mid",
+    "hash": "af54a97913c3f123",
+    "duration": 164.41,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Farewell, Hyrule King",
+    "composer": "Koji Kondo",
+    "file": "modern/koji-kondo-farewell-hyrule-king.mid",
+    "hash": "b4e64eceb5d2a40c",
+    "duration": 131.828,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Temple Of Time",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-temple-of-time.mid",
+    "hash": "97c8ba2383627dd7",
+    "duration": 53.25,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Gerudo Valley",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-gerudo-valley.mid",
+    "hash": "a2f84c101b18b3d5",
+    "duration": 87.645,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Take Me to Church",
+    "composer": "Hozier",
+    "file": "modern/hozier-take-me-to-church.mid",
+    "hash": "0e0f09849cefe421",
+    "duration": 232.818,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Faint",
+    "composer": "Linkin Park",
+    "file": "modern/linkin-park-faint.mid",
+    "hash": "219c5672961bc6ca",
+    "duration": 165.541,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Potion Shop",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-potion-shop.mid",
+    "hash": "d6fe78f465b78352",
+    "duration": 41.473,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Tears In Heaven",
+    "composer": "Eric Clapton",
+    "file": "modern/eric-clapton-tears-in-heaven.mid",
+    "hash": "cdd2bf659f501c2b",
+    "duration": 66.157,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Super Mario Bros. Theme",
+    "composer": "Koji Kondo",
+    "file": "modern/koji-kondo-super-mario-bros-theme.mid",
+    "hash": "c42b6dacaffc3b5f",
+    "duration": 113.283,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Hall of Fame",
+    "composer": "The Script ft. will.i.am",
+    "file": "modern/the-script-ft-will-i-am-hall-of-fame.mid",
+    "hash": "a57470d1ad0f6dee",
+    "duration": 186.667,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "The Seasons: April",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-april.mid",
+    "hash": "5e29f57f6ede5a56",
+    "duration": 126.634,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "1 Step Forward, 3 Steps Back",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-1-step-forward-3-steps-back.mid",
+    "hash": "068dc3128094d44e",
+    "duration": 177.143,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Good Riddance (Time of Your Life)",
+    "composer": "Green Day",
+    "file": "modern/green-day-good-riddance-time-of-your-life.mid",
+    "hash": "58bb906f35a4d4c1",
+    "duration": 53.529,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "Just Give Me a Reason",
+    "composer": "P!nk ft. Nate Ruess",
+    "file": "modern/p-nk-ft-nate-ruess-just-give-me-a-reason.mid",
+    "hash": "09d41759bbf7bb2d",
+    "duration": 241.899,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Bolero Of Fire",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-bolero-of-fire.mid",
+    "hash": "ff144aa517f0f763",
+    "duration": 22.222,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Still D.R.E.",
+    "composer": "Dr. Dre ft. Snoop Dogg",
+    "file": "modern/dr-dre-ft-snoop-dogg-still-d-r-e.mid",
+    "hash": "0952b74054249c2c",
+    "duration": 148.695,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "No Time to Die",
+    "composer": "Billie Eilish",
+    "file": "modern/billie-eilish-no-time-to-die.mid",
+    "hash": "a43e46d66e1f7193",
+    "duration": 234.832,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Only Time",
+    "composer": "Enya",
+    "file": "modern/enya-only-time.mid",
+    "hash": "90644762b1e22a66",
+    "duration": 209.348,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Vois sur ton chemin (Les Choristes)",
+    "composer": "Bruno Coulais",
+    "file": "modern/bruno-coulais-vois-sur-ton-chemin-les-choristes.mid",
+    "hash": "cc86b5b3413123fb",
+    "duration": 91.571,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Counting Stars",
+    "composer": "OneRepublic",
+    "file": "modern/onerepublic-counting-stars.mid",
+    "hash": "d40bf517d4a0d38f",
+    "duration": 76,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Midnight Stone",
+    "composer": "Keiko Matsui",
+    "file": "modern/keiko-matsui-midnight-stone.mid",
+    "hash": "6e6b6de4e0dc7d77",
+    "duration": 280.45,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "The Emptiness Machine",
+    "composer": "Linkin Park",
+    "file": "modern/linkin-park-the-emptiness-machine.mid",
+    "hash": "b690aed6e45e54fd",
+    "duration": 190.417,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Gurenge (Demon Slayer)",
+    "composer": "LiSA",
+    "file": "modern/lisa-gurenge-demon-slayer.mid",
+    "hash": "be96446152ab9819",
+    "duration": 231.104,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Deja Vu",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-deja-vu.mid",
+    "hash": "61e972c6d418a8db",
+    "duration": 228.552,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Payphone",
+    "composer": "Maroon 5",
+    "file": "modern/maroon-5-payphone.mid",
+    "hash": "fa17ca175490fc1c",
+    "duration": 187.198,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Les Adieux (2nd movement)",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-les-adieux-2nd-movement.mid",
+    "hash": "227bced92fbf1bae",
+    "duration": 173.543,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "7 Years",
+    "composer": "Lukas Graham",
+    "file": "modern/lukas-graham-7-years.mid",
+    "hash": "d12324b1f8abe988",
+    "duration": 331.182,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Seasons: June",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-june.mid",
+    "hash": "e4519638b609e0f4",
+    "duration": 232.54,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Bella Napoli",
+    "composer": "Roy Bianco & Die Abbrunzati Boys",
+    "file": "modern/roy-bianco-die-abbrunzati-boys-bella-napoli.mid",
+    "hash": "97ceda533059ad40",
+    "duration": 171.94,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hedwig’s Theme",
+    "composer": "John Williams",
+    "file": "modern/john-williams-hedwig-s-theme.mid",
+    "hash": "54994c9c137b474d",
+    "duration": 85.766,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Never Gonna Give You Up",
+    "composer": "Rick Astley",
+    "file": "modern/rick-astley-never-gonna-give-you-up.mid",
+    "hash": "d110ce57304432f9",
+    "duration": 201.525,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "White Walls",
+    "composer": "Macklemore",
+    "file": "modern/macklemore-white-walls.mid",
+    "hash": "65a1f91a66f376f0",
+    "duration": 72.35,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Kaepora Gaebora",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-kaepora-gaebora.mid",
+    "hash": "b004009795e25e72",
+    "duration": 53.703,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Unravel (Tokyo Ghoul)",
+    "composer": "TK",
+    "file": "modern/tk-unravel-tokyo-ghoul.mid",
+    "hash": "8c66d7442620156b",
+    "duration": 177.368,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Summertime Sadness",
+    "composer": "Lana Del Rey",
+    "file": "modern/lana-del-rey-summertime-sadness.mid",
+    "hash": "1698ee9a2a9acdab",
+    "duration": 243.799,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "drivers license",
+    "composer": "Olivia Rodrigo",
+    "file": "modern/olivia-rodrigo-drivers-license.mid",
+    "hash": "9193f6b474e0d2bd",
+    "duration": 231.498,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "ILL MIND OF HOPSIN 5",
+    "composer": "Hopsin",
+    "file": "modern/hopsin-ill-mind-of-hopsin-5.mid",
+    "hash": "1c5acf5a7eccabcf",
+    "duration": 82.8,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Gravity Falls Theme",
+    "composer": "Brad Breeck",
+    "file": "modern/brad-breeck-gravity-falls-theme.mid",
+    "hash": "d602fb7f07c94f5d",
+    "duration": 41.383,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "The Final Countdown",
+    "composer": "Europe",
+    "file": "modern/europe-the-final-countdown.mid",
+    "hash": "374e3e4f6ff902e7",
+    "duration": 285.702,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "In the End",
+    "composer": "Linkin Park",
+    "file": "modern/linkin-park-in-the-end.mid",
+    "hash": "a43ef8d67de152b7",
+    "duration": 203.744,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "You Are The Reason",
+    "composer": "Calum Scott",
+    "file": "modern/calum-scott-you-are-the-reason.mid",
+    "hash": "4eed4fa67843f07e",
+    "duration": 195.612,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Yesterday",
+    "composer": "The Beatles",
+    "file": "modern/the-beatles-yesterday.mid",
+    "hash": "d61908df3a9166c3",
+    "duration": 122.311,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Shallow",
+    "composer": "Lady Gaga & Bradley Cooper",
+    "file": "modern/lady-gaga-bradley-cooper-shallow.mid",
+    "hash": "0ab2d0a78010edc8",
+    "duration": 164,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hyrule Castle Courtyard",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-hyrule-castle-courtyard.mid",
+    "hash": "4732ac87f8a4c61f",
+    "duration": 22.5,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Ganondorf’s Theme",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-ganondorf-s-theme.mid",
+    "hash": "4d590cb07b1e82d2",
+    "duration": 37.895,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Somewhere Only We Know",
+    "composer": "Keane",
+    "file": "modern/keane-somewhere-only-we-know.mid",
+    "hash": "316d1dd080dbf1a5",
+    "duration": 228.557,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Black Heart",
+    "composer": "Stooshe",
+    "file": "modern/stooshe-black-heart.mid",
+    "hash": "d4727afebf7b5cf2",
+    "duration": 80.844,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Seasons: July",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-july.mid",
+    "hash": "0a556cb215027b5b",
+    "duration": 112.746,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "See You Again",
+    "composer": "Wiz Khalifa ft. Charlie Puth",
+    "file": "modern/wiz-khalifa-ft-charlie-puth-see-you-again.mid",
+    "hash": "441449883718cd75",
+    "duration": 224.23,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Lovely",
+    "composer": "Billie Eilish & Khalid",
+    "file": "modern/billie-eilish-khalid-lovely.mid",
+    "hash": "ebe26561692b49fe",
+    "duration": 194.007,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Stay",
+    "composer": "Rihanna",
+    "file": "modern/rihanna-stay.mid",
+    "hash": "1c8e7bd0c55af23f",
+    "duration": 167.203,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Good Time",
+    "composer": "Owl City feat. Carly Rae Jepsen",
+    "file": "modern/owl-city-feat-carly-rae-jepsen-good-time.mid",
+    "hash": "1b1d4868ffdf87ca",
+    "duration": 187.927,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Hotel California",
+    "composer": "Eagles",
+    "file": "modern/eagles-hotel-california.mid",
+    "hash": "318d17439bcd66e0",
+    "duration": 340.601,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Where Is My Mind?",
+    "composer": "Pixies",
+    "file": "modern/pixies-where-is-my-mind.mid",
+    "hash": "fb45ca4938b909a8",
+    "duration": 136.092,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Rocket Man",
+    "composer": "Elton John",
+    "file": "modern/elton-john-rocket-man.mid",
+    "hash": "aea544d84fa5b7c0",
+    "duration": 190.916,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Rap God",
+    "composer": "Eminem",
+    "file": "modern/eminem-rap-god.mid",
+    "hash": "7b85871c13d6e195",
+    "duration": 145.71,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Ice Ice Baby",
+    "composer": "Vanilla Ice",
+    "file": "modern/vanilla-ice-ice-ice-baby.mid",
+    "hash": "8a4d3b7221c941bd",
+    "duration": 68.484,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Fireflies",
+    "composer": "Owl City",
+    "file": "modern/owl-city-fireflies.mid",
+    "hash": "76ef464902e1f126",
+    "duration": 225.254,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Fairy Flying",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-fairy-flying.mid",
+    "hash": "223a6cf08918813f",
+    "duration": 16.048,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Nuvole Bianche",
+    "composer": "Ludovico Einaudi",
+    "file": "modern/ludovico-einaudi-nuvole-bianche.mid",
+    "hash": "4b56db8719d41c65",
+    "duration": 330.417,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Love Song",
+    "composer": "Sara Bareilles",
+    "file": "modern/sara-bareilles-love-song.mid",
+    "hash": "b0f797b42e0fb74d",
+    "duration": 255.806,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "idk",
+    "composer": "mak",
+    "file": "modern/mak-idk.mid",
+    "hash": "5eb03cd728d67bf3",
+    "duration": 242.18,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Snowman",
+    "composer": "Sia",
+    "file": "modern/sia-snowman.mid",
+    "hash": "ea80b5bcde4e7c46",
+    "duration": 160.956,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Set Fire to the Rain",
+    "composer": "Adele",
+    "file": "modern/adele-set-fire-to-the-rain.mid",
+    "hash": "3045c9385a13aecc",
+    "duration": 244.43,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Cerf-volant (Les Choristes)",
+    "composer": "Bruno Coulais",
+    "file": "modern/bruno-coulais-cerf-volant-les-choristes.mid",
+    "hash": "af42ab417e8a7278",
+    "duration": 46.312,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Let Me Love You (Until You Learn To Love Yourself)",
+    "composer": "Ne-Yo",
+    "file": "modern/ne-yo-let-me-love-you-until-you-learn-to-love-yourself.mid",
+    "hash": "695bf7cba5647337",
+    "duration": 222.488,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Golden Hour",
+    "composer": "JVKE",
+    "file": "modern/jvke-golden-hour.mid",
+    "hash": "f4dfd728a3867f5f",
+    "duration": 210.446,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Maybachs & Diamonds",
+    "composer": "Ryan Leslie",
+    "file": "modern/ryan-leslie-maybachs-diamonds.mid",
+    "hash": "2c87753e3d5f58c4",
+    "duration": 67.997,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Goron City",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-goron-city.mid",
+    "hash": "131238ee60f08de2",
+    "duration": 58.421,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Skyfall",
+    "composer": "Adele",
+    "file": "modern/adele-skyfall.mid",
+    "hash": "caebc40429fd7d53",
+    "duration": 304.501,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "We Can’t Stop",
+    "composer": "Miley Cyrus",
+    "file": "modern/miley-cyrus-we-can-t-stop.mid",
+    "hash": "75bac972a2dcd7f2",
+    "duration": 147.418,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Girls/Girls/Boys",
+    "composer": "Panic! at the Disco",
+    "file": "modern/panic-at-the-disco-girls-girls-boys.mid",
+    "hash": "e5480bf5e5aa6249",
+    "duration": 74.491,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "Happier",
+    "composer": "Marshmello ft. Bastille",
+    "file": "modern/marshmello-ft-bastille-happier.mid",
+    "hash": "7ded22a4475ab611",
+    "duration": 222.122,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "What a Wonderful World",
+    "composer": "Louis Armstrong",
+    "file": "modern/louis-armstrong-what-a-wonderful-world.mid",
+    "hash": "cfd776cff8243f6f",
+    "duration": 86.282,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Come and Get It",
+    "composer": "Selena Gomez",
+    "file": "modern/selena-gomez-come-and-get-it.mid",
+    "hash": "0419119638cfa412",
+    "duration": 218.38,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Les Adieux (1st movement)",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-les-adieux-1st-movement.mid",
+    "hash": "261153489e66d97b",
+    "duration": 341.95,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Monday",
+    "composer": "Ludovico Einaudi",
+    "file": "modern/ludovico-einaudi-monday.mid",
+    "hash": "da49de9eb030a278",
+    "duration": 349.118,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Somewhere Over the Rainbow",
+    "composer": "Israel Kamakawiwo’ole",
+    "file": "modern/israel-kamakawiwo-ole-somewhere-over-the-rainbow.mid",
+    "hash": "feb4e44d2f45c678",
+    "duration": 69.899,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Cheating",
+    "composer": "John Newman",
+    "file": "modern/john-newman-cheating.mid",
+    "hash": "c57bd743410a0eed",
+    "duration": 57.224,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "You Say",
+    "composer": "Lauren Daigle",
+    "file": "modern/lauren-daigle-you-say.mid",
+    "hash": "6811fdcf32c73053",
+    "duration": 265.782,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Fairy Fountain",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-fairy-fountain.mid",
+    "hash": "ebb115ab81ec141b",
+    "duration": 29.048,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Everybody Talks",
+    "composer": "Neon Trees",
+    "file": "modern/neon-trees-everybody-talks.mid",
+    "hash": "67368e1d6c204fa6",
+    "duration": 170.727,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Song of Storms",
+    "composer": "Koji Kondo",
+    "file": "modern/koji-kondo-song-of-storms.mid",
+    "hash": "e6b021c9d25b9385",
+    "duration": 43.689,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Mad World",
+    "composer": "Gary Jules",
+    "file": "modern/gary-jules-mad-world.mid",
+    "hash": "6db18fb4d99e61d9",
+    "duration": 228.957,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Let Me Down Slowly",
+    "composer": "Alec Benjamin",
+    "file": "modern/alec-benjamin-let-me-down-slowly.mid",
+    "hash": "dfb672efff0e5735",
+    "duration": 166.913,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Seasons: January",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-january.mid",
+    "hash": "d7f0b75572a85dd2",
+    "duration": 281.351,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Heaven",
+    "composer": "Bryan Adams",
+    "file": "modern/bryan-adams-heaven.mid",
+    "hash": "5208901c4ab429c8",
+    "duration": 241.369,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Interstellar",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-interstellar.mid",
+    "hash": "98c42ba86d1bb30d",
+    "duration": 237.967,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Great Deku Tree’s Last Words",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-great-deku-tree-s-last-words.mid",
+    "hash": "59e3e44edcfe55f2",
+    "duration": 27.321,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Jealous",
+    "composer": "Labrinth",
+    "file": "modern/labrinth-jealous.mid",
+    "hash": "d3fb9276c7fbd188",
+    "duration": 275.169,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "See You Tomorrow (How to Train Your Dragon)",
+    "composer": "John Powell",
+    "file": "modern/john-powell-see-you-tomorrow-how-to-train-your-dragon.mid",
+    "hash": "aa19c31c4a9ed098",
+    "duration": 153.409,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "we are never getting back together",
+    "composer": "Taylor Swift",
+    "file": "modern/taylor-swift-we-are-never-getting-back-together.mid",
+    "hash": "cbf0ac3af3835661",
+    "duration": 195.1,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Maps",
+    "composer": "Maroon 5",
+    "file": "modern/maroon-5-maps.mid",
+    "hash": "38e877c8e481393b",
+    "duration": 191.22,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Fall For You",
+    "composer": "Second Hand Serenade",
+    "file": "modern/second-hand-serenade-fall-for-you.mid",
+    "hash": "2d0da152e3e346d6",
+    "duration": 180.178,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Teardrop",
+    "composer": "Massive Attack",
+    "file": "modern/massive-attack-teardrop.mid",
+    "hash": "df806f847150d9bd",
+    "duration": 231.428,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Chopsticks",
+    "composer": "Euphemia Allen",
+    "file": "modern/euphemia-allen-chopsticks.mid",
+    "hash": "61d827b30de76b18",
+    "duration": 126.604,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "DJ Got Us Falling In Love Again",
+    "composer": "Usher",
+    "file": "modern/usher-dj-got-us-falling-in-love-again.mid",
+    "hash": "fadb33852e7fb505",
+    "duration": 208.128,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Thrift Shop",
+    "composer": "Macklemore & Ryan Lewis",
+    "file": "modern/macklemore-ryan-lewis-thrift-shop.mid",
+    "hash": "c01cfd05711e5df3",
+    "duration": 90.148,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Catch My Breath",
+    "composer": "Kelly Clarkson",
+    "file": "modern/kelly-clarkson-catch-my-breath.mid",
+    "hash": "c3a75bfd0071e698",
+    "duration": 80.009,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Where’s My Love",
+    "composer": "SYML",
+    "file": "modern/syml-where-s-my-love.mid",
+    "hash": "5e797bba61b9f271",
+    "duration": 237.085,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Stay With Me",
+    "composer": "Sam Smith",
+    "file": "modern/sam-smith-stay-with-me.mid",
+    "hash": "33b67471a7590f94",
+    "duration": 162.579,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Daylight",
+    "composer": "Maroon 5",
+    "file": "modern/maroon-5-daylight.mid",
+    "hash": "bd2a39afffd638be",
+    "duration": 217.998,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Moonlight Sonata (1st movement)",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-moonlight-sonata-1st-movement.mid",
+    "hash": "1c91308fdec168ea",
+    "duration": 404.35,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Drops of Jupiter",
+    "composer": "Train",
+    "file": "modern/train-drops-of-jupiter.mid",
+    "hash": "723629c07a3a7a02",
+    "duration": 283.109,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Another Love",
+    "composer": "Tom Odell",
+    "file": "modern/tom-odell-another-love.mid",
+    "hash": "b82393c37599a81b",
+    "duration": 241.866,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Pompeii",
+    "composer": "Bastille",
+    "file": "modern/bastille-pompeii.mid",
+    "hash": "4891e9d6d4c8d6c0",
+    "duration": 223.999,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "The Blood Ritual and Moonlight Serenade",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-the-blood-ritual-and-moonlight-serenade.mid",
+    "hash": "d15eb83edef40513",
+    "duration": 83.546,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Prelude in C (BWV 846)",
+    "composer": "J. S. Bach",
+    "file": "modern/j-s-bach-prelude-in-c-bwv-846.mid",
+    "hash": "21b78d7c00d6eaab",
+    "duration": 139.341,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "The Black Pearl",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-the-black-pearl.mid",
+    "hash": "5cf8be196805ab12",
+    "duration": 89.093,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Hard Out Here",
+    "composer": "Lily Allen",
+    "file": "modern/lily-allen-hard-out-here.mid",
+    "hash": "a1d10d92333a805d",
+    "duration": 112.251,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Time (Inception)",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-time-inception.mid",
+    "hash": "bf038870f2008e77",
+    "duration": 251.524,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Shake It Off",
+    "composer": "Taylor Swift",
+    "file": "modern/taylor-swift-shake-it-off.mid",
+    "hash": "0b4771dfaf565054",
+    "duration": 236.845,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Baby Got Back",
+    "composer": "Sir-Mix-A-Lot",
+    "file": "modern/sir-mix-a-lot-baby-got-back.mid",
+    "hash": "b6ed38556e6244c8",
+    "duration": 65.998,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Enemy",
+    "composer": "Imagine Dragons x J.I.D",
+    "file": "modern/imagine-dragons-x-j-i-d-enemy.mid",
+    "hash": "61f55b1ff5587850",
+    "duration": 170.826,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Stay the Night",
+    "composer": "Zedd ft. Hayley Williams",
+    "file": "modern/zedd-ft-hayley-williams-stay-the-night.mid",
+    "hash": "a7c7411809078193",
+    "duration": 217.15,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "It’s My Party",
+    "composer": "Jessie J",
+    "file": "modern/jessie-j-it-s-my-party.mid",
+    "hash": "bcda8cb966343c36",
+    "duration": 72.007,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Tears",
+    "composer": "The Daydream",
+    "file": "modern/the-daydream-tears.mid",
+    "hash": "2f28e99d4f1cd7b8",
+    "duration": 223.666,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Lon Lon Ranch",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-lon-lon-ranch.mid",
+    "hash": "eb929d092dcb2ad2",
+    "duration": 120.696,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Battle Scars",
+    "composer": "Guy Sebastian ft. Lupe Fiasco",
+    "file": "modern/guy-sebastian-ft-lupe-fiasco-battle-scars.mid",
+    "hash": "e9b1652b755f8f21",
+    "duration": 90.105,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Bohemian Rhapsody",
+    "composer": "Queen",
+    "file": "modern/queen-bohemian-rhapsody.mid",
+    "hash": "a06fc911508138ea",
+    "duration": 348.084,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "The Seasons: August",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-august.mid",
+    "hash": "040b65ae12ba5f22",
+    "duration": 189.82,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "The Seasons: December",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-december.mid",
+    "hash": "b5115200159673c5",
+    "duration": 239.152,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Rhapsody on a Theme of Paganini – Variation 18",
+    "composer": "Sergei Rachmaninoff",
+    "file": "modern/sergei-rachmaninoff-rhapsody-on-a-theme-of-paganini-variatio.mid",
+    "hash": "38fe7c5855f4e2f9",
+    "duration": 179.317,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Ice Cavern",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-ice-cavern.mid",
+    "hash": "e403a9aa72494d45",
+    "duration": 33.256,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Young and Beautiful",
+    "composer": "Lana Del Rey",
+    "file": "modern/lana-del-rey-young-and-beautiful.mid",
+    "hash": "7a01c757d059743c",
+    "duration": 86.767,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Inside The Deku Tree",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-inside-the-deku-tree.mid",
+    "hash": "a4089ca00b214257",
+    "duration": 91.288,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Happy Birthday",
+    "composer": "Chopin and Liszt style",
+    "file": "modern/chopin-and-liszt-style-happy-birthday.mid",
+    "hash": "10a5faa54c06f9bd",
+    "duration": 189.652,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Sonata K. 545 (1st movement)",
+    "composer": "W. A. Mozart",
+    "file": "modern/w-a-mozart-sonata-k-545-1st-movement.mid",
+    "hash": "80acc4a84fc99cfc",
+    "duration": 264.772,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Relocating the Lights",
+    "composer": "Feed Me & Ellie Goulding",
+    "file": "modern/feed-me-ellie-goulding-relocating-the-lights.mid",
+    "hash": "f5f97246202bae38",
+    "duration": 169.281,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "You Need Me, I Don’t Need You",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-you-need-me-i-don-t-need-you.mid",
+    "hash": "b4a592aa09765def",
+    "duration": 127.356,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hide and Seek",
+    "composer": "Imogen Heap",
+    "file": "modern/imogen-heap-hide-and-seek.mid",
+    "hash": "cecb7ba38383b1c3",
+    "duration": 253.949,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Solas",
+    "composer": "Jamie Duffy",
+    "file": "modern/jamie-duffy-solas.mid",
+    "hash": "85df89ad11540f48",
+    "duration": 219.253,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Diamonds",
+    "composer": "Rihanna",
+    "file": "modern/rihanna-diamonds.mid",
+    "hash": "bf503839c4cb3bfe",
+    "duration": 226.645,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Can’t Help Falling in Love",
+    "composer": "Elvis Presley",
+    "file": "modern/elvis-presley-can-t-help-falling-in-love.mid",
+    "hash": "d31f95cdc631a409",
+    "duration": 175.387,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Steal My Girl",
+    "composer": "One Direction",
+    "file": "modern/one-direction-steal-my-girl.mid",
+    "hash": "edf39b159aa8710a",
+    "duration": 231.53,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Seasons: February",
+    "composer": "Pyotr Tchaikovsky",
+    "file": "modern/pyotr-tchaikovsky-the-seasons-february.mid",
+    "hash": "9caf58c0ffa641c7",
+    "duration": 162.657,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Inside A House",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-inside-a-house.mid",
+    "hash": "279a90da3c038182",
+    "duration": 28.134,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Paparazzi",
+    "composer": "Lady Gaga",
+    "file": "modern/lady-gaga-paparazzi.mid",
+    "hash": "5f9e68d6122b019e",
+    "duration": 196.712,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Applause",
+    "composer": "Lady Gaga",
+    "file": "modern/lady-gaga-applause.mid",
+    "hash": "cc580a093f4eb477",
+    "duration": 78.855,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Dont You Worry Child",
+    "composer": "Swedish House Mafia",
+    "file": "modern/swedish-house-mafia-dont-you-worry-child.mid",
+    "hash": "93fae8b233589924",
+    "duration": 198.536,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "The Good, the Bad and the Ugly",
+    "composer": "Ennio Morricone",
+    "file": "modern/ennio-morricone-the-good-the-bad-and-the-ugly.mid",
+    "hash": "70bce62a7d096d9b",
+    "duration": 129,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Under the Bridge",
+    "composer": "Red Hot Chili Peppers",
+    "file": "modern/red-hot-chili-peppers-under-the-bridge.mid",
+    "hash": "ad2c007943f357c2",
+    "duration": 130.278,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Royals",
+    "composer": "Lorde",
+    "file": "modern/lorde-royals.mid",
+    "hash": "dff6889f68ff7ed2",
+    "duration": 161.014,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Demons",
+    "composer": "Imagine Dragons",
+    "file": "modern/imagine-dragons-demons.mid",
+    "hash": "8b3ecc533200c452",
+    "duration": 175.9,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Piano Man",
+    "composer": "Billy Joel",
+    "file": "modern/billy-joel-piano-man.mid",
+    "hash": "4d3a338a97f7bcb1",
+    "duration": 349.427,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Numb",
+    "composer": "Linkin Park",
+    "file": "modern/linkin-park-numb.mid",
+    "hash": "2bf5924fba1223b9",
+    "duration": 188.618,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Right Place Right Time",
+    "composer": "Olly Murs",
+    "file": "modern/olly-murs-right-place-right-time.mid",
+    "hash": "f3ef731d041bc636",
+    "duration": 197.461,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Love Somebody",
+    "composer": "Maroon 5",
+    "file": "modern/maroon-5-love-somebody.mid",
+    "hash": "bff20dec304ec7c0",
+    "duration": 75.998,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Piano Sonata Op. 1 (IV)",
+    "composer": "Johannes Brahms",
+    "file": "modern/johannes-brahms-piano-sonata-op-1-iv.mid",
+    "hash": "42bbef74a1d03c88",
+    "duration": 416.243,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "First Step (Interstellar)",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-first-step-interstellar.mid",
+    "hash": "94ca35b7e20d1936",
+    "duration": 158.308,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Chi Mai",
+    "composer": "Ennio Morricone",
+    "file": "modern/ennio-morricone-chi-mai.mid",
+    "hash": "e4c932f74699813b",
+    "duration": 151.465,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "She Wolf",
+    "composer": "David Guetta ft. Sia",
+    "file": "modern/david-guetta-ft-sia-she-wolf.mid",
+    "hash": "3fda2b6b3686650a",
+    "duration": 103.923,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "What I’ve Done",
+    "composer": "Linkin Park",
+    "file": "modern/linkin-park-what-i-ve-done.mid",
+    "hash": "11eea05214ddbf8f",
+    "duration": 193.188,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "A Sky Full of Stars",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-a-sky-full-of-stars.mid",
+    "hash": "288c249fdb56c534",
+    "duration": 281.999,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "A Thousand Years",
+    "composer": "Christina Perri",
+    "file": "modern/christina-perri-a-thousand-years.mid",
+    "hash": "99693cbfd826fad7",
+    "duration": 279.042,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "bury a friend",
+    "composer": "Billie Eilish",
+    "file": "modern/billie-eilish-bury-a-friend.mid",
+    "hash": "1ba6eb721a246225",
+    "duration": 197.109,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Atlas",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-atlas.mid",
+    "hash": "da71292d6eb90153",
+    "duration": 89.476,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "All the Small Things",
+    "composer": "Blink-182",
+    "file": "modern/blink-182-all-the-small-things.mid",
+    "hash": "0984ffd6f38c7305",
+    "duration": 197.8,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "Chop Suey!",
+    "composer": "System of a Down",
+    "file": "modern/system-of-a-down-chop-suey.mid",
+    "hash": "f33b631aa8f37f23",
+    "duration": 200.577,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Up is Down",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-up-is-down.mid",
+    "hash": "34873f45aa33596d",
+    "duration": 64.166,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Tempest Sonata (3rd movement)",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-tempest-sonata-3rd-movement.mid",
+    "hash": "c760c2b2fe9ca255",
+    "duration": 429.755,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Kakariko Village",
+    "composer": "Koji Kondo · Ocarina of Time",
+    "file": "modern/koji-kondo-ocarina-of-time-kakariko-village.mid",
+    "hash": "fcf6021ab383f1c2",
+    "duration": 101.567,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Made In The USA",
+    "composer": "Demi Lovato",
+    "file": "modern/demi-lovato-made-in-the-usa.mid",
+    "hash": "22440824167874d7",
+    "duration": 128.108,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Bad Romance",
+    "composer": "Lady Gaga",
+    "file": "modern/lady-gaga-bad-romance.mid",
+    "hash": "b2af656a678458df",
+    "duration": 270.715,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "A Thousand Miles",
+    "composer": "Vanessa Carlton",
+    "file": "modern/vanessa-carlton-a-thousand-miles.mid",
+    "hash": "2a60eeede4c3592b",
+    "duration": 223.2,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hey Jude",
+    "composer": "Beatles",
+    "file": "modern/beatles-hey-jude.mid",
+    "hash": "8dcb2646ff17f524",
+    "duration": 321.16,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Listen to Your Heart",
+    "composer": "Roxette",
+    "file": "modern/roxette-listen-to-your-heart.mid",
+    "hash": "7c476ed6fcdd06e5",
+    "duration": 292.97,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Wake Me Up",
+    "composer": "Avicii",
+    "file": "modern/avicii-wake-me-up.mid",
+    "hash": "446a5a69d42835d2",
+    "duration": 154.437,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "My Sharona",
+    "composer": "The Knacks",
+    "file": "modern/the-knacks-my-sharona.mid",
+    "hash": "6b9ee3b735ca8daa",
+    "duration": 66.049,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "I Giorni",
+    "composer": "Ludovico Einaudi",
+    "file": "modern/ludovico-einaudi-i-giorni.mid",
+    "hash": "7fb63c293b0b50e2",
+    "duration": 356.313,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Jar Of Hearts",
+    "composer": "Christina Perri",
+    "file": "modern/christina-perri-jar-of-hearts.mid",
+    "hash": "0ea7401f716d5117",
+    "duration": 459.057,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Infinity",
+    "composer": "Jaymes Young",
+    "file": "modern/jaymes-young-infinity.mid",
+    "hash": "9b6be97d456f5626",
+    "duration": 238.762,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Sorry (feat. Andre 3000)",
+    "composer": "T.I.",
+    "file": "modern/t-i-sorry-feat-andre-3000.mid",
+    "hash": "6606a77dcafe3bf9",
+    "duration": 78.249,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Every Teardrop is a Waterfall",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-every-teardrop-is-a-waterfall.mid",
+    "hash": "1be45ba24082fb6d",
+    "duration": 250.474,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Drink Up Me Hearties",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-drink-up-me-hearties.mid",
+    "hash": "c9b6a4722ee6a607",
+    "duration": 313.615,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Und Wenn Ein Lied",
+    "composer": "Söhne Mannheims",
+    "file": "modern/sohne-mannheims-und-wenn-ein-lied.mid",
+    "hash": "38d3b2cad7906426",
+    "duration": 301.486,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Break Free",
+    "composer": "Ariana Grande ft. Zedd",
+    "file": "modern/ariana-grande-ft-zedd-break-free.mid",
+    "hash": "4b3494c3696df936",
+    "duration": 199.375,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Believer",
+    "composer": "Imagine Dragons",
+    "file": "modern/imagine-dragons-believer.mid",
+    "hash": "5f93cad09578fe5e",
+    "duration": 191.088,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Bright Lights",
+    "composer": "30 Seconds 2 Mars",
+    "file": "modern/30-seconds-2-mars-bright-lights.mid",
+    "hash": "f7165f4cd6843269",
+    "duration": 156.854,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Piano Sonata Op. 1 (II)",
+    "composer": "Johannes Brahms",
+    "file": "modern/johannes-brahms-piano-sonata-op-1-ii.mid",
+    "hash": "83113055563a0a77",
+    "duration": 277.007,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Forget You",
+    "composer": "CeeLo Green",
+    "file": "modern/ceelo-green-forget-you.mid",
+    "hash": "988cb8531d63660c",
+    "duration": 219.753,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "This Kiss",
+    "composer": "Carly Rae Jepsen",
+    "file": "modern/carly-rae-jepsen-this-kiss.mid",
+    "hash": "5a2d7e5bf8a552ee",
+    "duration": 92.334,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Oath",
+    "composer": "Cher Lloyd ft. Becky B",
+    "file": "modern/cher-lloyd-ft-becky-b-oath.mid",
+    "hash": "3b209ab909d77705",
+    "duration": 83.633,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Ti Amo",
+    "composer": "Unknown artist",
+    "file": "modern/ti-amo.mid",
+    "hash": "840c4eb2b327b440",
+    "duration": 112.05,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "When I Was Your Man",
+    "composer": "Bruno Mars",
+    "file": "modern/bruno-mars-when-i-was-your-man.mid",
+    "hash": "bc9f04f00cf15b0e",
+    "duration": 204.321,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "deep end",
+    "composer": "Unknown artist",
+    "file": "modern/deep-end.mid",
+    "hash": "bd65655332fd1abd",
+    "duration": 145.083,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Davy Jones",
+    "composer": "Hans Zimmer",
+    "file": "modern/hans-zimmer-davy-jones.mid",
+    "hash": "cc534abd8c2a65fe",
+    "duration": 64.595,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Faded",
+    "composer": "Alan Walker",
+    "file": "modern/alan-walker-faded.mid",
+    "hash": "fd2ca450ccefd3fb",
+    "duration": 205.199,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Talking to the moon",
+    "composer": "Bruno Mars",
+    "file": "modern/bruno-mars-talking-to-the-moon.mid",
+    "hash": "240cf882ef2b3b51",
+    "duration": 217.676,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Safe And Sound",
+    "composer": "Capital Cities",
+    "file": "modern/capital-cities-safe-and-sound.mid",
+    "hash": "bb069b39777c96de",
+    "duration": 76.287,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "The Scientist",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-the-scientist.mid",
+    "hash": "485af687959b5e8b",
+    "duration": 300.719,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Strobe",
+    "composer": "deadmau5",
+    "file": "modern/deadmau5-strobe.mid",
+    "hash": "2120bdf36643fd67",
+    "duration": 456.52,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Clocks",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-clocks.mid",
+    "hash": "fdf05fec4ccd2b13",
+    "duration": 282.892,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Hello",
+    "composer": "Adele",
+    "file": "modern/adele-hello.mid",
+    "hash": "b1c54b1d4d6121ea",
+    "duration": 294.282,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "50 Ways to Say Goodbye",
+    "composer": "Train",
+    "file": "modern/train-50-ways-to-say-goodbye.mid",
+    "hash": "7d8b390c0f7e0b1a",
+    "duration": 241.614,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Piano Sonata Op. 1 (I)",
+    "composer": "Johannes Brahms",
+    "file": "modern/johannes-brahms-piano-sonata-op-1-i.mid",
+    "hash": "b7ca2bc14aceb9bd",
+    "duration": 687.526,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Die For You",
+    "composer": "The Weeknd",
+    "file": "modern/the-weeknd-die-for-you.mid",
+    "hash": "09d34668d39ccadb",
+    "duration": 74.141,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Too Close",
+    "composer": "Alex Clare",
+    "file": "modern/alex-clare-too-close.mid",
+    "hash": "08d9850404e07c63",
+    "duration": 239.996,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Mr. Saxobeat",
+    "composer": "Alexandra Stan",
+    "file": "modern/alexandra-stan-mr-saxobeat.mid",
+    "hash": "00487af560e2838e",
+    "duration": 190.773,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Breezeblocks",
+    "composer": "Alt-J",
+    "file": "modern/alt-j-breezeblocks.mid",
+    "hash": "a59568a753738be1",
+    "duration": 224.354,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Only Ones Who Know",
+    "composer": "Arctic Monkeys",
+    "file": "modern/arctic-monkeys-only-ones-who-know.mid",
+    "hash": "31a4f63b3a4baf19",
+    "duration": 191.883,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Levels",
+    "composer": "Avicii",
+    "file": "modern/avicii-levels.mid",
+    "hash": "32e0c095c8f7f534",
+    "duration": 162.66,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "What The Hell",
+    "composer": "Avril Lavigne",
+    "file": "modern/avril-lavigne-what-the-hell.mid",
+    "hash": "a6988ab7f79eef08",
+    "duration": 217.961,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "When You're Gone",
+    "composer": "Avril Lavigne",
+    "file": "modern/avril-lavigne-when-you-re-gone.mid",
+    "hash": "21dd33006c99e3cd",
+    "duration": 229.837,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "Sail",
+    "composer": "AWOLNATION",
+    "file": "modern/awolnation-sail.mid",
+    "hash": "ef2fc615ca158a2f",
+    "duration": 257.951,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Airplanes",
+    "composer": "B.o.B ft. Hayley Williams",
+    "file": "modern/b-o-b-ft-hayley-williams-airplanes.mid",
+    "hash": "65c1aff2d28a98e8",
+    "duration": 286.325,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Bad Blood",
+    "composer": "Bastille",
+    "file": "modern/bastille-bad-blood.mid",
+    "hash": "7770568188b42a59",
+    "duration": 198.042,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Flaws",
+    "composer": "Bastille",
+    "file": "modern/bastille-flaws.mid",
+    "hash": "3105afc1adefb9a6",
+    "duration": 159,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Icarus",
+    "composer": "Bastille",
+    "file": "modern/bastille-icarus.mid",
+    "hash": "5436714e9c1064f2",
+    "duration": 297.595,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Things We Lost In The Fire",
+    "composer": "Bastille",
+    "file": "modern/bastille-things-we-lost-in-the-fire.mid",
+    "hash": "5125fe6b2f0a7a7a",
+    "duration": 191.996,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Just The Way You Are",
+    "composer": "Bruno Mars",
+    "file": "modern/bruno-mars-just-the-way-you-are.mid",
+    "hash": "c6f92b521d411119",
+    "duration": 211.268,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Lazy Song",
+    "composer": "Bruno Mars",
+    "file": "modern/bruno-mars-the-lazy-song.mid",
+    "hash": "0b0f0a3add58392e",
+    "duration": 189.19,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Ready For The Weekend",
+    "composer": "Calvin Harris",
+    "file": "modern/calvin-harris-ready-for-the-weekend.mid",
+    "hash": "db039b80e02f1ab8",
+    "duration": 85.233,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Magic",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-magic.mid",
+    "hash": "76ab58638c17526d",
+    "duration": 233.597,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Let It Go",
+    "composer": "Demi Lovato",
+    "file": "modern/demi-lovato-let-it-go.mid",
+    "hash": "0c551f6b6601441c",
+    "duration": 219.204,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Ma Cherie",
+    "composer": "DJ Antoine feat. The Beat Shakers",
+    "file": "modern/dj-antoine-feat-the-beat-shakers-ma-cherie.mid",
+    "hash": "24183073f24d8a5b",
+    "duration": 186,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Stereo Love",
+    "composer": "Edward Maya feat Vika Jigulina",
+    "file": "modern/edward-maya-feat-vika-jigulina-stereo-love.mid",
+    "hash": "5ddb81d8246f285b",
+    "duration": 256,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Love The Way You Lie",
+    "composer": "Eminem ft. Rihanna",
+    "file": "modern/eminem-ft-rihanna-love-the-way-you-lie.mid",
+    "hash": "2aa3a674da95a474",
+    "duration": 244.083,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Tonight",
+    "composer": "Enrique Iglesias",
+    "file": "modern/enrique-iglesias-tonight.mid",
+    "hash": "307da63f96ff7565",
+    "duration": 224.908,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Bring Me to Life",
+    "composer": "Evanescence",
+    "file": "modern/evanescence-bring-me-to-life.mid",
+    "hash": "0e585d19bf50f5d7",
+    "duration": 199.083,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Rocketeer",
+    "composer": "Far East Movement",
+    "file": "modern/far-east-movement-rocketeer.mid",
+    "hash": "34c41a542f057b75",
+    "duration": 218.883,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Good Feeling",
+    "composer": "Flo Rida",
+    "file": "modern/flo-rida-good-feeling.mid",
+    "hash": "70ffb605024e4cdc",
+    "duration": 239.996,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Coming of Age",
+    "composer": "Foster The People",
+    "file": "modern/foster-the-people-coming-of-age.mid",
+    "hash": "7ccd579b7267f0f7",
+    "duration": 154.839,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Pumped up Kicks",
+    "composer": "Foster The People",
+    "file": "modern/foster-the-people-pumped-up-kicks.mid",
+    "hash": "3a4a7dd6a57a808a",
+    "duration": 163.125,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Somebody That I Used to Know",
+    "composer": "Gotye ft. Kimbra",
+    "file": "modern/gotye-ft-kimbra-somebody-that-i-used-to-know.mid",
+    "hash": "fc5469304da6bc81",
+    "duration": 240,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Harry Potter Medley",
+    "composer": "John Williams",
+    "file": "modern/john-williams-harry-potter-medley.mid",
+    "hash": "56ed1791860b35e8",
+    "duration": 775.475,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "On The Floor",
+    "composer": "Jennifer Lopez ft. Pitbull",
+    "file": "modern/jennifer-lopez-ft-pitbull-on-the-floor.mid",
+    "hash": "b5e4259c93256d3a",
+    "duration": 273.925,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Pray",
+    "composer": "Justin Bieber",
+    "file": "modern/justin-bieber-pray.mid",
+    "hash": "f092fcdfcdb27614",
+    "duration": 203.343,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "E.T.",
+    "composer": "Katy Perry",
+    "file": "modern/katy-perry-e-t.mid",
+    "hash": "883f3cee50f582ef",
+    "duration": 288.122,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Last Friday Night",
+    "composer": "Katy Perry",
+    "file": "modern/katy-perry-last-friday-night.mid",
+    "hash": "b45a6095e54f7bb3",
+    "duration": 81.231,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Divenire",
+    "composer": "Ludovico Einaudi",
+    "file": "modern/ludovico-einaudi-divenire.mid",
+    "hash": "ff1387216bd24414",
+    "duration": 397.236,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Für Elise",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-fur-elise.mid",
+    "hash": "adc26c9968da8166",
+    "duration": 165.596,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "I Follow Rivers",
+    "composer": "Lykke Li",
+    "file": "modern/lykke-li-i-follow-rivers.mid",
+    "hash": "458b11b8cc6293a3",
+    "duration": 192.396,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Magic In The Air Feat. Chawki",
+    "composer": "Magic System",
+    "file": "modern/magic-system-magic-in-the-air-feat-chawki.mid",
+    "hash": "e323d57a6fe1a296",
+    "duration": 240.75,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Anti Hero",
+    "composer": "Marlon Roudette",
+    "file": "modern/marlon-roudette-anti-hero.mid",
+    "hash": "40b9d61cfad24b71",
+    "duration": 237.813,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Hello",
+    "composer": "Martin Solveig ft. Dragonette",
+    "file": "modern/martin-solveig-ft-dragonette-hello.mid",
+    "hash": "c3aca3ecb07c5a9f",
+    "duration": 201.5,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "It's Hard To Say Goodbye",
+    "composer": "Michael Ortega",
+    "file": "modern/michael-ortega-it-s-hard-to-say-goodbye.mid",
+    "hash": "b7a0454ac79c93a6",
+    "duration": 288.804,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Ai Se Eu Te Pego",
+    "composer": "Michel Teló",
+    "file": "modern/michel-telo-ai-se-eu-te-pego.mid",
+    "hash": "60fb4d4cae2698c7",
+    "duration": 79.995,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Underwater",
+    "composer": "Mika",
+    "file": "modern/mika-underwater.mid",
+    "hash": "fbb808b49ac32509",
+    "duration": 202.1,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Heart Skips a Beat",
+    "composer": "Olly Murs ft. Rizzle Kicks",
+    "file": "modern/olly-murs-ft-rizzle-kicks-heart-skips-a-beat.mid",
+    "hash": "4db6bcf1cde4764e",
+    "duration": 129.765,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "He’s a Pirate",
+    "composer": "Klaus Badelt & Hans Zimmer",
+    "file": "modern/klaus-badelt-hans-zimmer-he-s-a-pirate.mid",
+    "hash": "2981a2cbbdd217de",
+    "duration": 103.522,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Castle Made Of Sand feat. Kelly Rowland & Jamie Drastik",
+    "composer": "Pitbull",
+    "file": "modern/pitbull-castle-made-of-sand-feat-kelly-rowland-jamie-drastik.mid",
+    "hash": "9525c23846fc5818",
+    "duration": 210.46,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Pokémon Theme",
+    "composer": "Pokémon",
+    "file": "modern/pokemon-pokemon-theme.mid",
+    "hash": "a2c2efe6c2388e7a",
+    "duration": 504.226,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "What’s My Name?",
+    "composer": "Rihanna ft. Drake",
+    "file": "modern/rihanna-ft-drake-what-s-my-name.mid",
+    "hash": "61ed0400db1e990a",
+    "duration": 263.883,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Prayer in C",
+    "composer": "Robin Schulz",
+    "file": "modern/robin-schulz-prayer-in-c.mid",
+    "hash": "589072ac97629879",
+    "duration": 109.264,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Underwater Theme (Super Mario World)",
+    "composer": "Koji Kondo",
+    "file": "modern/koji-kondo-underwater-theme-super-mario-world.mid",
+    "hash": "b4aa3e1bb6ea7df2",
+    "duration": 92.903,
+    "genres": [
+      "modern-games"
+    ]
+  },
+  {
+    "title": "Dynamite",
+    "composer": "Taio Cruz",
+    "file": "modern/taio-cruz-dynamite.mid",
+    "hash": "fa04005e648afca2",
+    "duration": 196.097,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Break Your Heart",
+    "composer": "Taio Cruz feat Ludacris",
+    "file": "modern/taio-cruz-feat-ludacris-break-your-heart.mid",
+    "hash": "812aa4b04d2d0757",
+    "duration": 202,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Everything Is Awesome",
+    "composer": "Tegan and Sara",
+    "file": "modern/tegan-and-sara-everything-is-awesome.mid",
+    "hash": "7b1283746b6d0430",
+    "duration": 77.027,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Just Can't Get Enough",
+    "composer": "The Black Eyed Peas",
+    "file": "modern/the-black-eyed-peas-just-can-t-get-enough.mid",
+    "hash": "edf95f327d8795b9",
+    "duration": 247.659,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Transformers Theme",
+    "composer": "Steve Jablonsky",
+    "file": "modern/steve-jablonsky-transformers-theme.mid",
+    "hash": "33bb694b92d17f79",
+    "duration": 88.683,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "True Colors",
+    "composer": "Coeur de Pirate",
+    "file": "modern/coeur-de-pirate-true-colors.mid",
+    "hash": "2bce99fa71723d29",
+    "duration": 147.186,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Riptide",
+    "composer": "Vance Joy",
+    "file": "modern/vance-joy-riptide.mid",
+    "hash": "3ffbb93391938434",
+    "duration": 245.997,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "My Love",
+    "composer": "Westlife",
+    "file": "modern/westlife-my-love.mid",
+    "hash": "c87d7384288b70a6",
+    "duration": 231.663,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Young Wild and Free",
+    "composer": "Wiz Khalifa ft. Snoop Dogg",
+    "file": "modern/wiz-khalifa-ft-snoop-dogg-young-wild-and-free.mid",
+    "hash": "ebc18b5298b28d89",
+    "duration": 65.637,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "La Noyée",
+    "composer": "Yann Tiersen",
+    "file": "modern/yann-tiersen-la-noyee.mid",
+    "hash": "1967a99719ac6d3b",
+    "duration": 140.48,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "La Valse des Monstres",
+    "composer": "Yann Tiersen",
+    "file": "modern/yann-tiersen-la-valse-des-monstres.mid",
+    "hash": "1b89f4b45a246b09",
+    "duration": 169.499,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Le Matin",
+    "composer": "Yann Tiersen",
+    "file": "modern/yann-tiersen-le-matin.mid",
+    "hash": "50b506a1e56a2369",
+    "duration": 122.091,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "La Valse d’Amélie",
+    "composer": "Yann Tiersen",
+    "file": "modern/yann-tiersen-la-valse-d-amelie.mid",
+    "hash": "9a113beb7945ded0",
+    "duration": 163.036,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Kiss the Rain",
+    "composer": "Yiruma",
+    "file": "modern/yiruma-kiss-the-rain.mid",
+    "hash": "1f7ac93c4515f3e7",
+    "duration": 233.043,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Maybe",
+    "composer": "Yiruma",
+    "file": "modern/yiruma-maybe.mid",
+    "hash": "5df2cea936433a0f",
+    "duration": 225.594,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Hymn For The Weekend",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-hymn-for-the-weekend.mid",
+    "hash": "0cca261e6790073b",
+    "duration": 203.198,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Children",
+    "composer": "Robert Miles",
+    "file": "modern/robert-miles-children.mid",
+    "hash": "4501115fff49335c",
+    "duration": 265.074,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Human",
+    "composer": "Christina Perri",
+    "file": "modern/christina-perri-human.mid",
+    "hash": "ea94ca289305af24",
+    "duration": 114,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Heartbreak Girl",
+    "composer": "5 Seconds of Summer",
+    "file": "modern/5-seconds-of-summer-heartbreak-girl.mid",
+    "hash": "294aaffdcbe71160",
+    "duration": 200.545,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "As Time Goes By",
+    "composer": "Herman Hupfeld",
+    "file": "modern/herman-hupfeld-as-time-goes-by.mid",
+    "hash": "8452f0eb3b91f6b1",
+    "duration": 68.731,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Careless Whisper",
+    "composer": "George Michael",
+    "file": "modern/george-michael-careless-whisper.mid",
+    "hash": "35faa808e9f315dd",
+    "duration": 236.949,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "This Is War",
+    "composer": "30 Seconds To Mars",
+    "file": "modern/30-seconds-to-mars-this-is-war.mid",
+    "hash": "a2317adedcca4506",
+    "duration": 295.428,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "How You Like That",
+    "composer": "BLACKPINK",
+    "file": "modern/blackpink-how-you-like-that.mid",
+    "hash": "8d7ddeb303a78a48",
+    "duration": 177.49,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Diamond Heart (feat. Sophia Somajo)",
+    "composer": "Alan Walker",
+    "file": "modern/alan-walker-diamond-heart-feat-sophia-somajo.mid",
+    "hash": "bd1cc1d69b77816a",
+    "duration": 198.833,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Daybreak",
+    "composer": "Unknown artist",
+    "file": "modern/daybreak.mid",
+    "hash": "d82b8dcaba7216bd",
+    "duration": 163.199,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "My Heart Will Go On",
+    "composer": "Celine Dion",
+    "file": "modern/celine-dion-my-heart-will-go-on.mid",
+    "hash": "33c353a6a88f013c",
+    "duration": 281.667,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Try",
+    "composer": "Colbie Caillat",
+    "file": "modern/colbie-caillat-try.mid",
+    "hash": "db7d83d7ac9ba618",
+    "duration": 204.252,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Autumn Leaves",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-autumn-leaves.mid",
+    "hash": "5cdef5ce5735c39d",
+    "duration": 145.569,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Gangsta’s Paradise",
+    "composer": "Coolio",
+    "file": "modern/coolio-gangsta-s-paradise.mid",
+    "hash": "479b6fdf4fc04b37",
+    "duration": 243.101,
+    "genres": [
+      "modern-hiphop"
+    ]
+  },
+  {
+    "title": "Love Story (Where Do I Begin)",
+    "composer": "Francis Lai",
+    "file": "modern/francis-lai-love-story-where-do-i-begin.mid",
+    "hash": "2287d0df60046c1a",
+    "duration": 285.375,
+    "genres": [
+      "modern-film"
+    ]
+  },
+  {
+    "title": "Africa",
+    "composer": "Toto",
+    "file": "modern/toto-africa.mid",
+    "hash": "71502331e312bd23",
+    "duration": 261.324,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Ignite",
+    "composer": "K-391 & Alan Walker",
+    "file": "modern/k-391-alan-walker-ignite.mid",
+    "hash": "534f76f76167c598",
+    "duration": 204.333,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Call Me Maybe",
+    "composer": "Carly Rae Jepsen",
+    "file": "modern/carly-rae-jepsen-call-me-maybe.mid",
+    "hash": "18c1113a82cd94be",
+    "duration": 190.001,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Piano Sonata Op. 1 (III)",
+    "composer": "Johannes Brahms",
+    "file": "modern/johannes-brahms-piano-sonata-op-1-iii.mid",
+    "hash": "3b2149af261dc095",
+    "duration": 381.821,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Alan Walker & Ava Max",
+    "composer": "Alone, Pt. II",
+    "file": "modern/alone-pt-ii-alan-walker-ava-max.mid",
+    "hash": "a9ded6ee09116632",
+    "duration": 176.372,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Alone",
+    "composer": "Alan Walker",
+    "file": "modern/alan-walker-alone.mid",
+    "hash": "b59aee1cfb560694",
+    "duration": 183.912,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Adam’s Song",
+    "composer": "Blink-182",
+    "file": "modern/blink-182-adam-s-song.mid",
+    "hash": "a32b2f5ac96de843",
+    "duration": 228.224,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "The A Team",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-the-a-team.mid",
+    "hash": "acb5f2ddb2493929",
+    "duration": 239.997,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Happier",
+    "composer": "Ed Sheeran",
+    "file": "modern/ed-sheeran-happier.mid",
+    "hash": "36f1fd6e2d0457ac",
+    "duration": 210.096,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "My Songs Know What You Did in the Dark",
+    "composer": "Fall Out Boy",
+    "file": "modern/fall-out-boy-my-songs-know-what-you-did-in-the-dark.mid",
+    "hash": "4024c419631c048c",
+    "duration": 139,
+    "genres": [
+      "modern-punk"
+    ]
+  },
+  {
+    "title": "City Of Angels",
+    "composer": "30 Seconds 2 Mars",
+    "file": "modern/30-seconds-2-mars-city-of-angels.mid",
+    "hash": "efff05482f62a49a",
+    "duration": 91.447,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "Heart Attack",
+    "composer": "Demi Lovato",
+    "file": "modern/demi-lovato-heart-attack.mid",
+    "hash": "3afa3b9d60084aaf",
+    "duration": 160.34,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "Arcade",
+    "composer": "Duncan Laurence feat. Fletcher",
+    "file": "modern/duncan-laurence-feat-fletcher-arcade.mid",
+    "hash": "40ad77e7fea6deff",
+    "duration": 184.208,
+    "genres": [
+      "modern-pop"
+    ]
+  },
+  {
+    "title": "The Way It Is",
+    "composer": "Bruce Hornsby",
+    "file": "modern/bruce-hornsby-the-way-it-is.mid",
+    "hash": "9f32f618e3cf2393",
+    "duration": 229.661,
+    "genres": [
+      "modern-rock"
+    ]
+  },
+  {
+    "title": "I Need Your Love",
+    "composer": "Calvin Harris ft. Ellie Goulding",
+    "file": "modern/calvin-harris-ft-ellie-goulding-i-need-your-love.mid",
+    "hash": "e0427403bbc7859f",
+    "duration": 149.658,
+    "genres": [
+      "modern-electronic"
+    ]
+  },
+  {
+    "title": "Symphony No. 7 (Allegretto)",
+    "composer": "Ludwig van Beethoven",
+    "file": "modern/ludwig-van-beethoven-symphony-no-7-allegretto.mid",
+    "hash": "0be8e364abd63acc",
+    "duration": 455.153,
+    "genres": [
+      "modern-piano"
+    ]
+  },
+  {
+    "title": "Viva La Vida",
+    "composer": "Coldplay",
+    "file": "modern/coldplay-viva-la-vida.mid",
+    "hash": "039c98275ffa3730",
+    "duration": 236.413,
+    "genres": [
+      "modern-rock"
+    ]
+  }
+]

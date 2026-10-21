@@ -30,5 +30,26 @@ export function parseMidi(data: ArrayBuffer, fallbackName: string): Song {
     name: midi.header.name?.trim() || fallbackName,
     duration,
     tracks,
+    bpm: midi.header.tempos?.[0]?.bpm,
+    bars: barTimes(midi, duration),
+  }
+}
+
+/** Bar start times from the file's (first) time signature, for phrasing. */
+function barTimes(midi: Midi, duration: number): number[] | undefined {
+  try {
+    const header = midi.header
+    const ts = header.timeSignatures?.[0]?.timeSignature ?? [4, 4]
+    const ticksPerBar = (header.ppq * 4 * ts[0]) / ts[1]
+    if (!(ticksPerBar > 0)) return undefined
+    const bars: number[] = []
+    for (let tick = header.timeSignatures?.[0]?.ticks ?? 0; ; tick += ticksPerBar) {
+      const t = header.ticksToSeconds(tick)
+      if (t >= duration || bars.length > 4000) break
+      bars.push(t)
+    }
+    return bars.length > 1 ? bars : undefined
+  } catch {
+    return undefined
   }
 }

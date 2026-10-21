@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "node --test src/music/music.test.ts src/music/musicxml.test.ts src/music/abc.test.ts src/music/humanize.test.ts src/music/voice.test.ts src/radio/radio.test.ts",
+    "test": "node --test src/music/music.test.ts src/music/musicxml.test.ts src/music/abc.test.ts src/music/humanize.test.ts src/music/voice.test.ts src/radio/radio.test.ts src/library/library.test.ts",
     "gen:midi": "node scripts/generate-demo-midi.mjs"
   },
   "dependencies": {
