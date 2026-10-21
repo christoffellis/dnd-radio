@@ -56,6 +56,17 @@ const CLASSIC_SETS = INSTRUMENT_SETS.filter((s) => s.id !== 'minstrels')
 const LOOKAHEAD_MS = 3000
 const PITCH_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 
+/**
+ * The station lives in the URL: <app>/medieval, <app>/modern-pop, and free
+ * play is just <app>/. GitHub Pages serves 404.html (a copy of index.html) for
+ * those paths, so a station link opens straight onto that station.
+ */
+const APP_ROOT = location.pathname.replace(/[^/]*$/, '') // drop the last segment: station, index.html or ''
+const stationFromUrl = (): string | null => {
+  const last = location.pathname.slice(APP_ROOT.length)
+  return THEMES.some((t) => t.id === last) ? last : null
+}
+
 function load<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(`dnd-radio:${key}`)
@@ -160,7 +171,7 @@ export default function App() {
 
   // ---- Settings -----------------------------------------------------------
 
-  const [themeId, setThemeId] = useState<string>(() => load('theme', 'medieval'))
+  const [themeId, setThemeId] = useState<string>(() => stationFromUrl() ?? load('theme', 'medieval'))
   const theme = getTheme(themeId)
   const stationTempo = theme.tempo ?? 1
   const [scaleChoice, setScaleChoice] = useState('genre')
@@ -179,6 +190,12 @@ export default function App() {
   const [volume, setVolume] = useState<number>(() => load('volume', 90))
 
   const [mode, setMode] = useState<'radio' | 'free'>('radio')
+
+  // Keep the address bar on the station being listened to (the bare app root in free play).
+  useEffect(() => {
+    const path = mode === 'radio' ? APP_ROOT + themeId : APP_ROOT
+    if (location.pathname !== path) history.replaceState(history.state, '', path + location.search + location.hash)
+  }, [mode, themeId])
   const [freeEntry, setFreeEntry] = useState<Entry | null>(null)
   const [tempo, setTempo] = useState(1)
   const [loop, setLoop] = useState(true)

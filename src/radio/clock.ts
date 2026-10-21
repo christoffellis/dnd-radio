@@ -104,7 +104,8 @@ async function samplePageDate(fetchImpl: typeof fetch): Promise<Sample | null> {
   for (let i = 0; i < 3; i++) {
     try {
       const sent = performance.now()
-      const res = await fetchImpl(`${location.pathname}?_=${Date.now()}`, {
+      // The app folder (its index.html), not the current path: station paths are 404s on GitHub Pages.
+      const res = await fetchImpl(`${location.pathname.replace(/[^/]*$/, "")}?_=${Date.now()}`, {
         method: 'HEAD',
         cache: 'no-store',
       })

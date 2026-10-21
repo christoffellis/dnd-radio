@@ -52,6 +52,12 @@ several seconds, joining at different times, heard the same notes within a few
 milliseconds, on stations of local MIDI, remote MusicXML and remote ABC songs,
 and across song changes.
 
+Each station has its own address, `…/dnd-radio/<station id>` (e.g.
+`/dnd-radio/tavern`, `/dnd-radio/modern-pop`), so a link drops the party
+straight onto it; free play shows the bare `…/dnd-radio/`. GitHub Pages has no
+routing, so the build copies `index.html` to `404.html`, which Pages serves for
+those paths.
+
 Changing a playlist (adding, removing or re-tagging songs) shifts that
 station's schedule for everyone, which is fine as long as everyone loads the
 same build.
